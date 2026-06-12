@@ -92,30 +92,6 @@ export default async function handler(req, res) {
       return res.status(200).json({ entry });
     }
 
-    // TEMP: one-off maintenance to delete entries by name from both boards.
-    if (req.method === "DELETE") {
-      const target = String(req.query.name ?? "");
-      if (!target) return res.status(400).json({ error: "name required" });
-      let removed = 0;
-      for (const key of [KEY_ALL, keyWeek()]) {
-        const raw = await redis.zrange(key, 0, -1);
-        for (const m of raw) {
-          let parsed = m;
-          if (typeof m === "string") {
-            try {
-              parsed = JSON.parse(m);
-            } catch {
-              continue;
-            }
-          }
-          if (parsed && parsed.n === target) {
-            removed += await redis.zrem(key, m);
-          }
-        }
-      }
-      return res.status(200).json({ removed });
-    }
-
     res.setHeader("Allow", "GET, POST");
     return res.status(405).json({ error: "method not allowed" });
   } catch (e) {
