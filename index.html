@@ -16,12 +16,30 @@
         />
         <!-- Open Graph / social preview -->
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Riskr — Free Fake-Money Arcade" />
+        <meta property="og:site_name" content="Riskr" />
+        <meta property="og:title" content="Riskr Casino Challenge" />
         <meta
             property="og:description"
-            content="Start with $1,000 of pretend money and chase the top of the leaderboard. No real money, no gambling, no prizes — just fun. 18+."
+            content="Start with $1,000 of fake money. Run it up across Crash, Plinko, Slots, Blackjack & Roulette and climb the global leaderboard. No real money, no prizes — just bragging rights. 18+."
         />
         <meta property="og:url" content="https://riskr.bet/" />
+        <meta property="og:image" content="https://riskr.bet/og.png" />
+        <meta property="og:image:secure_url" content="https://riskr.bet/og.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta
+            property="og:image:alt"
+            content="Riskr Casino Challenge — start with $1,000 of fake money and climb the leaderboard."
+        />
+        <!-- Twitter / iMessage large card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Riskr Casino Challenge" />
+        <meta
+            name="twitter:description"
+            content="Start with $1,000 of fake money. Run it up and climb the global leaderboard. No real money, no prizes — just bragging rights. 18+."
+        />
+        <meta name="twitter:image" content="https://riskr.bet/og.png" />
 
         <script
             async
@@ -1916,11 +1934,20 @@
                     Posted. Now make them beat it.
                 </div>
                 <div class="row">
+                    <button class="go-btn" id="brag-share" style="display: none">
+                        Share
+                    </button>
                     <button class="go-btn" id="brag-copy">
                         Copy Brag Line
                     </button>
-                    <button class="ghost-btn" id="brag-close">Done</button>
                 </div>
+                <button
+                    class="ghost-btn"
+                    id="brag-close"
+                    style="width: 100%; margin-top: 10px"
+                >
+                    Done
+                </button>
             </div>
         </div>
 
@@ -3633,6 +3660,8 @@
             ================================================================ */
             let lastName = "";
             let lastBrag = "";
+            const SHARE_URL = "https://riskr.bet/";
+            const shareText = () => lastBrag + " " + SHARE_URL;
 
             $("cashout-btn").addEventListener("click", () => {
                 if (sessionLocked || !(bankroll > START) || pendingRounds > 0)
@@ -3691,8 +3720,7 @@
                     amt +
                     " (" +
                     m +
-                    ") at Riskr 🎰 — beat my number. " +
-                    "www.ggottlieb.com/games/bigwinners";
+                    ") on the Riskr Casino Challenge 🎰 — beat my number.";
                 sessionLocked = true;
                 renderBank();
                 updateNavLock();
@@ -3711,14 +3739,15 @@
                 $("cashedout-overlay").classList.add("show");
             });
             $("brag-copy").addEventListener("click", async () => {
+                const text = shareText();
                 let ok = false;
                 try {
-                    await navigator.clipboard.writeText(lastBrag);
+                    await navigator.clipboard.writeText(text);
                     ok = true;
                 } catch (e) {
                     try {
                         const ta = document.createElement("textarea");
-                        ta.value = lastBrag;
+                        ta.value = text;
                         ta.style.position = "fixed";
                         ta.style.opacity = "0";
                         document.body.appendChild(ta);
@@ -3729,8 +3758,28 @@
                         ok = false;
                     }
                 }
-                toast(ok ? "Brag line copied — go post it." : lastBrag);
+                toast(ok ? "Brag line copied — go post it." : text);
             });
+
+            // Native share sheet (phones + supported desktops). Falls back to
+            // copy when the Web Share API isn't available.
+            if (navigator.share) {
+                const shareBtn = $("brag-share");
+                shareBtn.style.display = "";
+                // share is the primary action when available; copy steps back
+                $("brag-copy").className = "ghost-btn";
+                shareBtn.addEventListener("click", async () => {
+                    try {
+                        await navigator.share({
+                            title: "Riskr Casino Challenge",
+                            text: lastBrag,
+                            url: SHARE_URL,
+                        });
+                    } catch (e) {
+                        // user dismissed the sheet, or share failed — ignore
+                    }
+                });
+            }
             $("locked-restart").addEventListener("click", () =>
                 window.location.reload(),
             );
