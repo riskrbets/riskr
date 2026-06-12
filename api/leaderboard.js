@@ -1,10 +1,17 @@
 import { Redis } from "@upstash/redis";
 
-// The Upstash Marketplace integration injects KV_REST_API_* ; a direct
-// Upstash account uses UPSTASH_REDIS_REST_* . Accept either.
+// The Upstash Marketplace integration injects KV_REST_API_* (optionally with a
+// storage-name prefix, e.g. RISKR_STORAGE_KV_REST_API_*); a direct Upstash
+// account uses UPSTASH_REDIS_REST_* . Accept any of them.
 const redis = new Redis({
-  url: process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL,
-  token: process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN,
+  url:
+    process.env.KV_REST_API_URL ||
+    process.env.RISKR_STORAGE_KV_REST_API_URL ||
+    process.env.UPSTASH_REDIS_REST_URL,
+  token:
+    process.env.KV_REST_API_TOKEN ||
+    process.env.RISKR_STORAGE_KV_REST_API_TOKEN ||
+    process.env.UPSTASH_REDIS_REST_TOKEN,
 });
 
 const KEY_ALL = "riskr:board:alltime";
