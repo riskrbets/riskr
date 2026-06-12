@@ -1443,8 +1443,8 @@
                     <h2>Plinko</h2>
                     <div class="deco-rule"><span>◆</span></div>
                     <p class="sub">
-                        Drop a ball through the pegs. The edges pay 4x — the
-                        middle eats your money.
+                        Drop a ball through the pegs. The middle pays 4x — the
+                        outside eats your money.
                     </p>
                     <div class="cwrap">
                         <canvas
@@ -2458,7 +2458,7 @@
                     SPACING = 48,
                     PEG_R = 5,
                     BALL_R = 7;
-                const MULTS = [4, 2.5, 1.1, 0.5, 0.2, 0.5, 1.1, 2.5, 4];
+                const MULTS = [0.2, 0.5, 0.9, 2.5, 4, 2.5, 0.9, 0.5, 0.2];
                 const NB = MULTS.length;
                 const span = NB * SPACING; // bucket span = 432
                 const left = W / 2 - span / 2,
