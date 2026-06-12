@@ -1,11 +1,1 @@
-# ads.txt — Authorized Digital Sellers (https://iabtechlab.com/ads-txt/)
-#
-# AdSense requires this file once you are approved, so advertisers can verify
-# that Google is authorized to sell ads on your domain.
-#
-# 1) Apply for AdSense and get your publisher ID (looks like: pub-0000000000000000).
-# 2) Replace pub-0000000000000000 below with YOUR publisher ID.
-# 3) Uncomment the line (remove the leading "#").
-# 4) Redeploy. Verify it loads at https://riskr.bet/ads.txt
-#
-# google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
+google.com, pub-3084591484596901, DIRECT, f08c47fec0942fa0
