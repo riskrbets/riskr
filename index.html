@@ -24,7 +24,10 @@
         />
         <meta property="og:url" content="https://riskr.bet/" />
         <meta property="og:image" content="https://riskr.bet/og.png" />
-        <meta property="og:image:secure_url" content="https://riskr.bet/og.png" />
+        <meta
+            property="og:image:secure_url"
+            content="https://riskr.bet/og.png"
+        />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
@@ -1440,7 +1443,7 @@
                     <h2>Plinko</h2>
                     <div class="deco-rule"><span>◆</span></div>
                     <p class="sub">
-                        Drop a ball through the pegs. The edges pay 8x — the
+                        Drop a ball through the pegs. The edges pay 4x — the
                         middle eats your money.
                     </p>
                     <div class="cwrap">
@@ -1934,7 +1937,11 @@
                     Posted. Now make them beat it.
                 </div>
                 <div class="row">
-                    <button class="go-btn" id="brag-share" style="display: none">
+                    <button
+                        class="go-btn"
+                        id="brag-share"
+                        style="display: none"
+                    >
                         Share
                     </button>
                     <button class="go-btn" id="brag-copy">
@@ -2451,7 +2458,7 @@
                     SPACING = 48,
                     PEG_R = 5,
                     BALL_R = 7;
-                const MULTS = [8, 2.5, 1.1, 0.5, 0.2, 0.5, 1.1, 2.5, 8]; // ~0.73 EV if binomial
+                const MULTS = [4, 2.5, 1.1, 0.5, 0.2, 0.5, 1.1, 2.5, 4];
                 const NB = MULTS.length;
                 const span = NB * SPACING; // bucket span = 432
                 const left = W / 2 - span / 2,
@@ -2706,7 +2713,6 @@
             SLOTS
             ================================================================ */
             (function () {
-                // weighted symbols — EV ≈ 0.97 with the paytable below
                 const SYMS = [
                     { k: "cherry", ch: "🍒", w: 6, pay3: 8 },
                     { k: "lemon", ch: "🍋", w: 5, pay3: 10 },
