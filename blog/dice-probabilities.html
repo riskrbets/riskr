@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Dice Probabilities Explained — Riskr Blog</title>
+        <meta
+            name="description"
+            content="The 36 equally likely outcomes of two dice, why 7 is the most common total and 2 and 12 the rarest, the bell-shaped distribution of totals, and how it drives every craps payout."
+        />
+        <link
+            rel="canonical"
+            href="https://riskr.bet/blog/dice-probabilities"
+        />
+        <link
+            rel="icon"
+            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23d4af37'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%230c0906' font-family='serif' font-weight='bold'%3E%24%3C/text%3E%3C/svg%3E"
+        />
+
+        <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3084591484596901"
+            crossorigin="anonymous"
+        ></script>
+
+        <style>
+            :root {
+                --bg: #0c0906;
+                --panel: #171108;
+                --edge: #3a2c12;
+                --gold: #d4af37;
+                --gold-hi: #f2d57c;
+                --ink: #ece3cf;
+                --muted: #9b8d6d;
+            }
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                background: var(--bg);
+                color: var(--ink);
+                font-family: "Manrope", system-ui, sans-serif;
+                line-height: 1.7;
+                padding: 0 16px 80px;
+            }
+            .wrap {
+                max-width: 720px;
+                margin: 0 auto;
+            }
+            header {
+                padding: 22px 0 18px;
+                border-bottom: 1px solid var(--edge);
+                margin-bottom: 30px;
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            .brand {
+                font-family: "Cinzel", serif;
+                font-weight: 900;
+                font-size: 20px;
+                letter-spacing: 0.14em;
+                color: var(--gold-hi);
+                text-decoration: none;
+            }
+            nav a {
+                color: var(--muted);
+                text-decoration: none;
+                margin-left: 16px;
+                font-size: 14px;
+            }
+            nav a:hover {
+                color: var(--gold-hi);
+            }
+            .eyebrow {
+                color: var(--gold);
+                font-size: 13px;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                margin-bottom: 10px;
+            }
+            h1 {
+                font-family: "Cinzel", serif;
+                color: var(--gold-hi);
+                font-size: 30px;
+                line-height: 1.25;
+                margin-bottom: 10px;
+            }
+            .meta {
+                color: var(--muted);
+                font-size: 14px;
+                margin-bottom: 26px;
+            }
+            h2 {
+                color: var(--gold);
+                font-size: 21px;
+                margin: 30px 0 10px;
+            }
+            p,
+            li {
+                color: var(--ink);
+                margin-bottom: 14px;
+            }
+            ul,
+            ol {
+                padding-left: 22px;
+            }
+            a {
+                color: var(--gold-hi);
+            }
+            strong {
+                color: var(--gold-hi);
+            }
+            .lede {
+                font-size: 18px;
+                color: var(--ink);
+            }
+            .callout {
+                background: var(--panel);
+                border: 1px solid var(--edge);
+                border-left: 3px solid var(--gold);
+                border-radius: 8px;
+                padding: 14px 18px;
+                margin: 22px 0;
+            }
+            .callout p:last-child {
+                margin-bottom: 0;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 18px 0;
+                font-size: 15px;
+            }
+            th,
+            td {
+                border: 1px solid var(--edge);
+                padding: 9px 12px;
+                text-align: left;
+            }
+            th {
+                color: var(--gold);
+                background: var(--panel);
+            }
+            .cta {
+                display: inline-block;
+                margin-top: 8px;
+                background: linear-gradient(
+                    180deg,
+                    var(--gold-hi),
+                    var(--gold)
+                );
+                color: #0c0906;
+                font-weight: 800;
+                text-decoration: none;
+                padding: 12px 26px;
+                border-radius: 10px;
+            }
+            .related {
+                margin-top: 40px;
+                padding-top: 22px;
+                border-top: 1px solid var(--edge);
+            }
+            .related h3 {
+                color: var(--gold);
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+            .related a {
+                display: block;
+                margin-bottom: 6px;
+            }
+            footer {
+                margin-top: 50px;
+                padding-top: 22px;
+                border-top: 1px solid var(--edge);
+                color: var(--muted);
+                font-size: 13px;
+            }
+            footer a {
+                color: var(--muted);
+                margin-right: 14px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrap">
+            <header>
+                <a class="brand" href="/">RISKR</a>
+                <nav>
+                    <a href="/">Play</a>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy</a>
+                    <a href="/terms">Terms</a>
+                    <a href="/contact">Contact</a>
+                </nav>
+            </header>
+
+            <article>
+                <div class="eyebrow">Probability &amp; Math</div>
+                <h1>Dice Probabilities Explained</h1>
+                <p class="meta">By the Riskr team · 6 min read</p>
+
+                <p class="lede">
+                    Two dice are about the friendliest probability lesson there
+                    is. There are only 36 things that can happen, every one of
+                    them equally likely, and you can count them on paper in a
+                    minute. Once you've counted them, the entire craps table —
+                    every payout, every edge — suddenly makes sense.
+                </p>
+
+                <h2>36 equally likely outcomes</h2>
+                <p>
+                    Each die has six faces, and the two dice are independent. So
+                    the number of combinations is 6 × 6 = <strong>36</strong>.
+                    The key word is <em>equally likely</em>: rolling a 2 then a 5
+                    is just as probable as rolling a 6 then a 1. On fair dice,
+                    every one of those 36 ordered pairs has exactly a 1-in-36
+                    chance.
+                </p>
+                <p>
+                    The catch is that we don't usually care about the individual
+                    faces — we care about the <strong>total</strong>. And totals
+                    are not equally likely, because some totals can be made in
+                    more ways than others. There's only one way to make a 2
+                    (1+1), but a 7 can be made six different ways.
+                </p>
+
+                <h2>The shape of the totals</h2>
+                <p>
+                    If you count how many of the 36 combinations produce each
+                    total, you get a triangle — a little bell. The totals climb
+                    from 2 up to a peak at 7, then fall symmetrically back down to
+                    12. The middle is fat; the ends are thin.
+                </p>
+
+                <table>
+                    <tr>
+                        <th>Total</th>
+                        <th>Ways to make it</th>
+                        <th>Probability</th>
+                    </tr>
+                    <tr><td>2</td><td>1</td><td>1/36 ≈ 2.8%</td></tr>
+                    <tr><td>3</td><td>2</td><td>2/36 ≈ 5.6%</td></tr>
+                    <tr><td>4</td><td>3</td><td>3/36 ≈ 8.3%</td></tr>
+                    <tr><td>5</td><td>4</td><td>4/36 ≈ 11.1%</td></tr>
+                    <tr><td>6</td><td>5</td><td>5/36 ≈ 13.9%</td></tr>
+                    <tr><td>7</td><td>6</td><td>6/36 ≈ 16.7%</td></tr>
+                    <tr><td>8</td><td>5</td><td>5/36 ≈ 13.9%</td></tr>
+                    <tr><td>9</td><td>4</td><td>4/36 ≈ 11.1%</td></tr>
+                    <tr><td>10</td><td>3</td><td>3/36 ≈ 8.3%</td></tr>
+                    <tr><td>11</td><td>2</td><td>2/36 ≈ 5.6%</td></tr>
+                    <tr><td>12</td><td>1</td><td>1/36 ≈ 2.8%</td></tr>
+                </table>
+
+                <p>
+                    Add the "ways" column and you get 36 — every outcome
+                    accounted for. The <strong>7 sits at the top</strong> with six
+                    combinations (1-6, 2-5, 3-4, 4-3, 5-2, 6-1), while
+                    <strong>2 and 12 are the rarest</strong>, with just one each.
+                </p>
+
+                <div class="callout">
+                    <p>
+                        <strong>The 7 is no accident.</strong> It's the only total
+                        the size of which the table is built around. It's the most
+                        common roll precisely because it has the most
+                        combinations — and that's why "seven out" ends so many
+                        craps rounds.
+                    </p>
+                </div>
+
+                <h2>How this drives every payout</h2>
+                <p>
+                    Craps is just this table dressed up. Consider a Place bet on
+                    the 6: you win if a 6 comes before a 7. There are 5 ways to
+                    roll a 6 and 6 ways to roll a 7, so among the rolls that
+                    matter you win 5 times for every 6 losses — odds of 6 to 5
+                    against you. A truly fair payout would be 6-for-5; the casino
+                    pays 7-for-6 instead, and the gap between those two numbers is
+                    the house edge.
+                </p>
+                <p>
+                    The same counting explains the come-out roll. A 7 or 11 wins
+                    the Pass line because together they have 8 combinations
+                    (6 + 2). A 2, 3, or 12 loses with 4 combinations (1 + 2 + 1).
+                    Every rule on the felt traces straight back to how many of the
+                    36 outcomes fall where.
+                </p>
+
+                <h2>Why this beats intuition</h2>
+                <p>
+                    People routinely guess that 6 and 8 are "as likely as" 2 and
+                    12 because each is "just one number." The combination count
+                    says otherwise: a 6 is five times more likely than a 2. This
+                    is the same reason "hard" combinations (rolling a total with a
+                    matching pair, like 3-3 for a 6) are rarer than the same total
+                    made with mixed dice. The dice don't have memory or momentum —
+                    they just have geometry, and the geometry is fixed at 36.
+                </p>
+
+                <div class="callout">
+                    <p>
+                        On Riskr you can roll the Craps table as many times as you
+                        like with fake chips and watch this distribution emerge:
+                        the 7s pile up, the 2s and 12s stay rare, and the bell
+                        takes shape. It's the cleanest way to see probability turn
+                        into reality.
+                    </p>
+                </div>
+
+                <a class="cta" href="/">Try the Craps table on Riskr</a>
+
+                <div class="related">
+                    <h3>Keep reading</h3>
+                    <a href="/blog/how-craps-works">How Craps Works →</a>
+                    <a href="/blog/the-law-of-large-numbers"
+                        >The Law of Large Numbers →</a
+                    >
+                    <a href="/blog/variance-explained">Variance Explained →</a>
+                </div>
+            </article>
+
+            <footer>
+                <div>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms &amp; Disclaimer</a>
+                    <a href="/contact">Contact</a>
+                </div>
+                <p style="margin-top: 10px">
+                    This article is for education and entertainment only and is
+                    not financial, betting, or investment advice. Riskr is a
+                    free, fake-money game. No real money, no gambling, no prizes.
+                    18+.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>

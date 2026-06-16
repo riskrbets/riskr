@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>How Craps Works — Riskr Blog</title>
+        <meta
+            name="description"
+            content="A plain-English guide to how craps works: the come-out roll, establishing a point, sevening out, Pass vs Don't Pass, the Field and Place bets, and why different bets carry wildly different house edges."
+        />
+        <link
+            rel="canonical"
+            href="https://riskr.bet/blog/how-craps-works"
+        />
+        <link
+            rel="icon"
+            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23d4af37'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%230c0906' font-family='serif' font-weight='bold'%3E%24%3C/text%3E%3C/svg%3E"
+        />
+
+        <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3084591484596901"
+            crossorigin="anonymous"
+        ></script>
+
+        <style>
+            :root {
+                --bg: #0c0906;
+                --panel: #171108;
+                --edge: #3a2c12;
+                --gold: #d4af37;
+                --gold-hi: #f2d57c;
+                --ink: #ece3cf;
+                --muted: #9b8d6d;
+            }
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                background: var(--bg);
+                color: var(--ink);
+                font-family: "Manrope", system-ui, sans-serif;
+                line-height: 1.7;
+                padding: 0 16px 80px;
+            }
+            .wrap {
+                max-width: 720px;
+                margin: 0 auto;
+            }
+            header {
+                padding: 22px 0 18px;
+                border-bottom: 1px solid var(--edge);
+                margin-bottom: 30px;
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            .brand {
+                font-family: "Cinzel", serif;
+                font-weight: 900;
+                font-size: 20px;
+                letter-spacing: 0.14em;
+                color: var(--gold-hi);
+                text-decoration: none;
+            }
+            nav a {
+                color: var(--muted);
+                text-decoration: none;
+                margin-left: 16px;
+                font-size: 14px;
+            }
+            nav a:hover {
+                color: var(--gold-hi);
+            }
+            .eyebrow {
+                color: var(--gold);
+                font-size: 13px;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                margin-bottom: 10px;
+            }
+            h1 {
+                font-family: "Cinzel", serif;
+                color: var(--gold-hi);
+                font-size: 30px;
+                line-height: 1.25;
+                margin-bottom: 10px;
+            }
+            .meta {
+                color: var(--muted);
+                font-size: 14px;
+                margin-bottom: 26px;
+            }
+            h2 {
+                color: var(--gold);
+                font-size: 21px;
+                margin: 30px 0 10px;
+            }
+            p,
+            li {
+                color: var(--ink);
+                margin-bottom: 14px;
+            }
+            ul,
+            ol {
+                padding-left: 22px;
+            }
+            a {
+                color: var(--gold-hi);
+            }
+            strong {
+                color: var(--gold-hi);
+            }
+            .lede {
+                font-size: 18px;
+                color: var(--ink);
+            }
+            .callout {
+                background: var(--panel);
+                border: 1px solid var(--edge);
+                border-left: 3px solid var(--gold);
+                border-radius: 8px;
+                padding: 14px 18px;
+                margin: 22px 0;
+            }
+            .callout p:last-child {
+                margin-bottom: 0;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 18px 0;
+                font-size: 15px;
+            }
+            th,
+            td {
+                border: 1px solid var(--edge);
+                padding: 9px 12px;
+                text-align: left;
+            }
+            th {
+                color: var(--gold);
+                background: var(--panel);
+            }
+            .cta {
+                display: inline-block;
+                margin-top: 8px;
+                background: linear-gradient(
+                    180deg,
+                    var(--gold-hi),
+                    var(--gold)
+                );
+                color: #0c0906;
+                font-weight: 800;
+                text-decoration: none;
+                padding: 12px 26px;
+                border-radius: 10px;
+            }
+            .related {
+                margin-top: 40px;
+                padding-top: 22px;
+                border-top: 1px solid var(--edge);
+            }
+            .related h3 {
+                color: var(--gold);
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+            .related a {
+                display: block;
+                margin-bottom: 6px;
+            }
+            footer {
+                margin-top: 50px;
+                padding-top: 22px;
+                border-top: 1px solid var(--edge);
+                color: var(--muted);
+                font-size: 13px;
+            }
+            footer a {
+                color: var(--muted);
+                margin-right: 14px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrap">
+            <header>
+                <a class="brand" href="/">RISKR</a>
+                <nav>
+                    <a href="/">Play</a>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy</a>
+                    <a href="/terms">Terms</a>
+                    <a href="/contact">Contact</a>
+                </nav>
+            </header>
+
+            <article>
+                <div class="eyebrow">Probability &amp; Math</div>
+                <h1>How Craps Works</h1>
+                <p class="meta">By the Riskr team · 7 min read</p>
+
+                <p class="lede">
+                    Craps looks chaotic — a crowded table, a wall of bets, people
+                    shouting at two tumbling dice. But the heart of the game is
+                    simple. Almost everything revolves around one bet, the Pass
+                    line, and one number that ends rounds: the 7. Learn that
+                    spine and the rest of the table stops being intimidating.
+                </p>
+
+                <h2>The come-out roll</h2>
+                <p>
+                    Every round starts with a <strong>come-out roll</strong>. The
+                    shooter throws two dice, and on that first throw the Pass line
+                    bet resolves immediately for some totals:
+                </p>
+                <ul>
+                    <li>
+                        Roll a <strong>7 or 11</strong> — the Pass line wins
+                        even money. This is a "natural."
+                    </li>
+                    <li>
+                        Roll a <strong>2, 3, or 12</strong> — this is
+                        "craps," and the Pass line loses.
+                    </li>
+                    <li>
+                        Roll a <strong>4, 5, 6, 8, 9, or 10</strong> — that
+                        number becomes the <strong>point</strong>, and the round
+                        continues.
+                    </li>
+                </ul>
+
+                <h2>Establishing a point</h2>
+                <p>
+                    Once a point is set, the goal flips. The shooter keeps rolling,
+                    and now you're waiting to see one of two numbers. If the
+                    <strong>point</strong> is rolled again before a 7, the Pass
+                    line wins. If a <strong>7</strong> shows first, you
+                    "seven out" and the Pass line loses. Any other total in
+                    between simply doesn't matter — the dice just roll again.
+                </p>
+                <p>
+                    Notice the role reversal. On the come-out, 7 was your friend.
+                    The instant a point is established, 7 becomes the enemy. That
+                    single number doing two opposite jobs is what makes craps feel
+                    alive and what gives the round its tension.
+                </p>
+
+                <div class="callout">
+                    <p>
+                        <strong>Why the 7 rules the table:</strong> with two dice,
+                        7 is the most likely total — it comes up 6 ways out of 36.
+                        After a point is set, the 7 is more likely than any single
+                        point number, which is exactly why the house holds an edge
+                        on the Pass line.
+                    </p>
+                </div>
+
+                <h2>Pass vs Don't Pass</h2>
+                <p>
+                    The <strong>Don't Pass</strong> bet is the near-mirror image.
+                    It wins when the Pass line loses — a 2 or 3 on the come-out, or
+                    a 7 rolled before the point. It loses on a come-out 7 or 11.
+                    The one quirk: a come-out 12 (or sometimes 2, depending on the
+                    table) is a push, a tie that returns your bet rather than
+                    paying it. That single "barred" number is how the casino keeps
+                    a small edge even on the bet that's siding against the shooter.
+                </p>
+                <p>
+                    Both bets carry a house edge of roughly
+                    <strong>1.4%</strong> — among the best you'll find on a casino
+                    floor. They are the foundation everything else is built on.
+                </p>
+
+                <h2>The Field, Place bets, and the rest</h2>
+                <p>
+                    Beyond the line bets, the layout fills with options. The
+                    <strong>Field</strong> is a one-roll bet that the next total is
+                    2, 3, 4, 9, 10, 11, or 12 — seven numbers, which sounds
+                    generous until you notice the missing 5, 6, 7, and 8 are the
+                    most common totals. <strong>Place bets</strong> let you wager
+                    that a specific number (say, 6 or 8) rolls before a 7, paid at
+                    fixed odds. And then there are the flashy
+                    <strong>proposition bets</strong> in the center of the table —
+                    single-roll wagers on a specific total or combination.
+                </p>
+                <p>
+                    The trap is that not all bets are created equal. The line bets
+                    sip a little over 1% from you. The center props gulp far more.
+                </p>
+
+                <h2>Different bets, very different edges</h2>
+                <p>
+                    Here's a small sample of common craps bets and the rough house
+                    edge each carries. The spread is enormous:
+                </p>
+
+                <table>
+                    <tr>
+                        <th>Bet</th>
+                        <th>What it does</th>
+                        <th>Approx. house edge</th>
+                    </tr>
+                    <tr>
+                        <td>Pass / Don't Pass</td>
+                        <td>The core line bet</td>
+                        <td>~1.41% / ~1.36%</td>
+                    </tr>
+                    <tr>
+                        <td>Place 6 or 8</td>
+                        <td>Number rolls before a 7</td>
+                        <td>~1.52%</td>
+                    </tr>
+                    <tr>
+                        <td>Field</td>
+                        <td>One-roll on 2,3,4,9,10,11,12</td>
+                        <td>~2.78% (varies)</td>
+                    </tr>
+                    <tr>
+                        <td>Any 7</td>
+                        <td>One-roll on a 7</td>
+                        <td>~16.7%</td>
+                    </tr>
+                    <tr>
+                        <td>Hardways / props</td>
+                        <td>Specific combinations</td>
+                        <td>~9% to 11%+</td>
+                    </tr>
+                </table>
+                <p>
+                    The lesson writes itself: the bets that pay the loudest cost
+                    the most. A 16.7% edge on "Any 7" means that for every dollar
+                    bet, you give up about 17 cents on average — more than ten
+                    times the bite of the Pass line. Knowing which bets are cheap
+                    and which are expensive is most of what "knowing craps" really
+                    means.
+                </p>
+
+                <div class="callout">
+                    <p>
+                        On Riskr, the Craps table runs on these exact rules — the
+                        come-out, the point, the seven-out — except the chips are
+                        fake and the only stake is your spot on the leaderboard.
+                        It's a risk-free way to feel how the 7 controls the table.
+                    </p>
+                </div>
+
+                <a class="cta" href="/">Try the Craps table on Riskr</a>
+
+                <div class="related">
+                    <h3>Keep reading</h3>
+                    <a href="/blog/dice-probabilities"
+                        >Dice Probabilities Explained →</a
+                    >
+                    <a href="/blog/house-edge-explained">House Edge Explained →</a>
+                    <a href="/blog/true-odds-and-the-odds-bet"
+                        >True Odds and the Odds Bet →</a
+                    >
+                </div>
+            </article>
+
+            <footer>
+                <div>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms &amp; Disclaimer</a>
+                    <a href="/contact">Contact</a>
+                </div>
+                <p style="margin-top: 10px">
+                    This article is for education and entertainment only and is
+                    not financial, betting, or investment advice. Riskr is a
+                    free, fake-money game. No real money, no gambling, no prizes.
+                    18+.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>

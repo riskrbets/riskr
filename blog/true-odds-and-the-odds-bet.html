@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>True Odds and the Odds Bet — Riskr Blog</title>
+        <meta
+            name="description"
+            content="The difference between true odds and payout odds, and why the craps free-odds bet behind the Pass line is the rare casino wager with zero house edge — plus a worked example on a point of 4."
+        />
+        <link
+            rel="canonical"
+            href="https://riskr.bet/blog/true-odds-and-the-odds-bet"
+        />
+        <link
+            rel="icon"
+            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23d4af37'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%230c0906' font-family='serif' font-weight='bold'%3E%24%3C/text%3E%3C/svg%3E"
+        />
+
+        <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3084591484596901"
+            crossorigin="anonymous"
+        ></script>
+
+        <style>
+            :root {
+                --bg: #0c0906;
+                --panel: #171108;
+                --edge: #3a2c12;
+                --gold: #d4af37;
+                --gold-hi: #f2d57c;
+                --ink: #ece3cf;
+                --muted: #9b8d6d;
+            }
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                background: var(--bg);
+                color: var(--ink);
+                font-family: "Manrope", system-ui, sans-serif;
+                line-height: 1.7;
+                padding: 0 16px 80px;
+            }
+            .wrap {
+                max-width: 720px;
+                margin: 0 auto;
+            }
+            header {
+                padding: 22px 0 18px;
+                border-bottom: 1px solid var(--edge);
+                margin-bottom: 30px;
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            .brand {
+                font-family: "Cinzel", serif;
+                font-weight: 900;
+                font-size: 20px;
+                letter-spacing: 0.14em;
+                color: var(--gold-hi);
+                text-decoration: none;
+            }
+            nav a {
+                color: var(--muted);
+                text-decoration: none;
+                margin-left: 16px;
+                font-size: 14px;
+            }
+            nav a:hover {
+                color: var(--gold-hi);
+            }
+            .eyebrow {
+                color: var(--gold);
+                font-size: 13px;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                margin-bottom: 10px;
+            }
+            h1 {
+                font-family: "Cinzel", serif;
+                color: var(--gold-hi);
+                font-size: 30px;
+                line-height: 1.25;
+                margin-bottom: 10px;
+            }
+            .meta {
+                color: var(--muted);
+                font-size: 14px;
+                margin-bottom: 26px;
+            }
+            h2 {
+                color: var(--gold);
+                font-size: 21px;
+                margin: 30px 0 10px;
+            }
+            p,
+            li {
+                color: var(--ink);
+                margin-bottom: 14px;
+            }
+            ul,
+            ol {
+                padding-left: 22px;
+            }
+            a {
+                color: var(--gold-hi);
+            }
+            strong {
+                color: var(--gold-hi);
+            }
+            .lede {
+                font-size: 18px;
+                color: var(--ink);
+            }
+            .callout {
+                background: var(--panel);
+                border: 1px solid var(--edge);
+                border-left: 3px solid var(--gold);
+                border-radius: 8px;
+                padding: 14px 18px;
+                margin: 22px 0;
+            }
+            .callout p:last-child {
+                margin-bottom: 0;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 18px 0;
+                font-size: 15px;
+            }
+            th,
+            td {
+                border: 1px solid var(--edge);
+                padding: 9px 12px;
+                text-align: left;
+            }
+            th {
+                color: var(--gold);
+                background: var(--panel);
+            }
+            .cta {
+                display: inline-block;
+                margin-top: 8px;
+                background: linear-gradient(
+                    180deg,
+                    var(--gold-hi),
+                    var(--gold)
+                );
+                color: #0c0906;
+                font-weight: 800;
+                text-decoration: none;
+                padding: 12px 26px;
+                border-radius: 10px;
+            }
+            .related {
+                margin-top: 40px;
+                padding-top: 22px;
+                border-top: 1px solid var(--edge);
+            }
+            .related h3 {
+                color: var(--gold);
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+            .related a {
+                display: block;
+                margin-bottom: 6px;
+            }
+            footer {
+                margin-top: 50px;
+                padding-top: 22px;
+                border-top: 1px solid var(--edge);
+                color: var(--muted);
+                font-size: 13px;
+            }
+            footer a {
+                color: var(--muted);
+                margin-right: 14px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrap">
+            <header>
+                <a class="brand" href="/">RISKR</a>
+                <nav>
+                    <a href="/">Play</a>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy</a>
+                    <a href="/terms">Terms</a>
+                    <a href="/contact">Contact</a>
+                </nav>
+            </header>
+
+            <article>
+                <div class="eyebrow">Game Theory</div>
+                <h1>True Odds and the Odds Bet</h1>
+                <p class="meta">By the Riskr team · 7 min read</p>
+
+                <p class="lede">
+                    Almost every bet in a casino pays you a little less than it
+                    should. That gap is the house edge, and it's everywhere — with
+                    one famous exception. The craps "free-odds" bet pays you
+                    exactly what the math says it's worth: no edge at all. To see
+                    why that's remarkable, you first have to separate two ideas
+                    that sound the same.
+                </p>
+
+                <h2>True odds vs payout odds</h2>
+                <p>
+                    <strong>True odds</strong> describe how likely something really
+                    is. If an event happens once for every two times it doesn't,
+                    its true odds are 2-to-1 against. <strong>Payout odds</strong>
+                    describe what the casino actually pays when you win. In a
+                    perfectly fair game, the two match. In a real casino, the
+                    payout odds are set slightly worse than the true odds, and that
+                    sliver is the house's profit.
+                </p>
+                <p>
+                    Take a single number in double-zero roulette: the true odds
+                    are 37-to-1 against, but it pays only 35-to-1. You're being
+                    shorted on every win. That shortfall, repeated, is the entire
+                    business model.
+                </p>
+
+                <h2>The free-odds bet</h2>
+                <p>
+                    Craps does something almost no other game does. After a point
+                    is established on the Pass line, you're allowed to place an
+                    additional bet "behind the line" — the <strong>odds
+                    bet</strong> — and that extra wager is paid at
+                    <strong>true odds</strong>. No shaving, no shortfall. Its house
+                    edge is exactly <strong>zero</strong>.
+                </p>
+                <p>
+                    The true odds depend on which point was set, because each point
+                    number has a different chance of repeating before a 7:
+                </p>
+
+                <table>
+                    <tr>
+                        <th>Point</th>
+                        <th>Ways to make it</th>
+                        <th>True odds (vs 7)</th>
+                        <th>Odds bet pays</th>
+                    </tr>
+                    <tr><td>4 or 10</td><td>3</td><td>2 to 1</td><td>2 to 1</td></tr>
+                    <tr><td>5 or 9</td><td>4</td><td>3 to 2</td><td>3 to 2</td></tr>
+                    <tr><td>6 or 8</td><td>5</td><td>6 to 5</td><td>6 to 5</td></tr>
+                </table>
+
+                <h2>A worked example: point of 4</h2>
+                <p>
+                    Say the point is <strong>4</strong>. There are 3 ways to roll
+                    a 4 and 6 ways to roll a 7, so the true odds are 6-to-3, which
+                    simplifies to <strong>2-to-1 against</strong>. You'll make the
+                    4 once for every two times you seven out.
+                </p>
+                <p>
+                    Now put $10 of odds behind the line. Over three "typical"
+                    decisions you'd expect to win once and lose twice:
+                </p>
+                <ul>
+                    <li>Two losses: −$10 − $10 = <strong>−$20</strong></li>
+                    <li>One win at 2-to-1: +$20 = <strong>+$20</strong></li>
+                    <li>Net over three decisions: <strong>$0</strong></li>
+                </ul>
+                <p>
+                    It breaks even in the long run. That's what "zero house edge"
+                    means in practice — the odds bet is neither helping nor hurting
+                    your expected value on its own. Compare that to the same $10 on
+                    almost any other bet, which would bleed a few percent.
+                </p>
+
+                <div class="callout">
+                    <p>
+                        <strong>Important nuance:</strong> the odds bet is a
+                        fair bet, not a winning one. It doesn't make money over
+                        time — it simply doesn't lose money to an edge. The Pass
+                        line bet it sits behind still carries its ~1.41% edge.
+                    </p>
+                </div>
+
+                <h2>Why casinos cap it</h2>
+                <p>
+                    If the odds bet is free, why not bet a fortune on it? Because
+                    casinos won't let you. Tables cap odds at some multiple of your
+                    line bet — "2x odds," "3x-4x-5x," sometimes more. The cap
+                    exists precisely because the casino makes nothing on this
+                    portion; they only allow it as an inducement to make the line
+                    bet, which <em>does</em> carry an edge. An uncapped odds bet
+                    would let you pour money through a zero-edge bet attached to a
+                    tiny edged one.
+                </p>
+
+                <h2>Lowering your blended edge</h2>
+                <p>
+                    Here's the practical payoff. Because the odds portion is free,
+                    adding it dilutes the edge on your total action. Bet $10 on the
+                    Pass line alone and you face ~1.41%. Add $20 of odds and you're
+                    now risking $30, but the casino's edge still only applies to
+                    the original $10 — so your <strong>blended edge</strong> on the
+                    full $30 drops to roughly 0.5%. Pile on more odds and it falls
+                    further. You can't erase the edge, but the odds bet is the one
+                    legitimate lever that shrinks it.
+                </p>
+
+                <div class="callout">
+                    <p>
+                        On Riskr you can experiment with line bets and odds using
+                        fake chips — watch the blended edge shrink as you back the
+                        point, with nothing real on the line but leaderboard
+                        bragging rights.
+                    </p>
+                </div>
+
+                <a class="cta" href="/">Play Riskr — risk-free</a>
+
+                <div class="related">
+                    <h3>Keep reading</h3>
+                    <a href="/blog/how-craps-works">How Craps Works →</a>
+                    <a href="/blog/house-edge-explained">House Edge Explained →</a>
+                    <a href="/blog/positive-vs-negative-expectation"
+                        >Positive vs. Negative Expectation →</a
+                    >
+                </div>
+            </article>
+
+            <footer>
+                <div>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms &amp; Disclaimer</a>
+                    <a href="/contact">Contact</a>
+                </div>
+                <p style="margin-top: 10px">
+                    This article is for education and entertainment only and is
+                    not financial, betting, or investment advice. Riskr is a
+                    free, fake-money game. No real money, no gambling, no prizes.
+                    18+.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>

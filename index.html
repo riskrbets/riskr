@@ -6,7 +6,7 @@
         <title>Riskr — Free Fake-Money Arcade &amp; Leaderboard</title>
         <meta
             name="description"
-            content="Riskr is a free, fake-money arcade — Crash, Plinko, Slots, Blackjack and Roulette — with a global leaderboard. No real money, no gambling, no prizes. Just bragging rights. 18+."
+            content="Riskr is a free, fake-money arcade — Crash, Plinko, Slots, Blackjack, Roulette and Craps — with a global leaderboard. No real money, no gambling, no prizes. Just bragging rights. 18+."
         />
         <meta name="theme-color" content="#0c0906" />
         <link rel="canonical" href="https://riskr.bet/" />
@@ -20,7 +20,7 @@
         <meta property="og:title" content="Riskr Casino Challenge" />
         <meta
             property="og:description"
-            content="Start with $1,000 of fake money. Run it up across Crash, Plinko, Slots, Blackjack & Roulette and climb the global leaderboard. No real money, no prizes — just bragging rights. 18+."
+            content="Start with $1,000 of fake money. Run it up across Crash, Plinko, Slots, Blackjack, Roulette & Craps and climb the global leaderboard. No real money, no prizes — just bragging rights. 18+."
         />
         <meta property="og:url" content="https://riskr.bet/" />
         <meta property="og:image" content="https://riskr.bet/og.png" />
@@ -1328,6 +1328,240 @@
                 cursor: not-allowed;
             }
 
+            /* ---------- craps ---------- */
+            #cr-dice-area {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                margin: 6px 0 16px;
+            }
+            #cr-dice {
+                display: flex;
+                gap: 16px;
+                justify-content: center;
+            }
+            .cr-die {
+                width: 52px;
+                height: 52px;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: repeat(3, 1fr);
+                gap: 2px;
+                padding: 7px;
+                border-radius: 11px;
+                background: linear-gradient(145deg, #fffdf6, #e3d8bd);
+                box-shadow:
+                    inset 0 0 0 1px rgba(0, 0, 0, 0.15),
+                    0 4px 10px rgba(0, 0, 0, 0.45);
+            }
+            .cr-die span {
+                display: block;
+                border-radius: 50%;
+            }
+            .cr-die span.on {
+                background: radial-gradient(
+                    circle at 35% 30%,
+                    #3a2a0c,
+                    #120b03
+                );
+                box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.6);
+            }
+            #cr-dice.rolling .cr-die {
+                animation: cr-tumble 0.28s linear infinite;
+            }
+            #cr-dice.rolling .cr-die:last-child {
+                animation-delay: 0.12s;
+            }
+            @keyframes cr-tumble {
+                0% {
+                    transform: translateY(0) rotate(0deg);
+                }
+                25% {
+                    transform: translateY(-9px) rotate(-12deg);
+                }
+                50% {
+                    transform: translateY(0) rotate(8deg);
+                }
+                75% {
+                    transform: translateY(-5px) rotate(14deg);
+                }
+                100% {
+                    transform: translateY(0) rotate(0deg);
+                }
+            }
+            #cr-status {
+                font-family: var(--mono);
+                font-size: 13px;
+                color: var(--gold-hi);
+                text-align: center;
+                min-height: 18px;
+            }
+            #cr-felt {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                background-image: radial-gradient(
+                    circle at 50% 0,
+                    #11543c,
+                    #082b1f
+                );
+                border: 2px solid var(--gold-dim);
+                border-radius: 10px;
+                padding: 10px;
+            }
+            .cr-group {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 6px;
+                justify-content: center;
+            }
+            .cr-spot {
+                position: relative;
+                flex: 1 1 78px;
+                min-width: 64px;
+                min-height: 46px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                padding: 6px 4px;
+                border: 1px solid rgba(212, 175, 55, 0.4);
+                border-radius: 6px;
+                background: rgba(7, 40, 29, 0.55);
+                color: var(--ink);
+                cursor: pointer;
+                user-select: none;
+                transition:
+                    filter 0.12s,
+                    box-shadow 0.12s;
+            }
+            .cr-spot:hover {
+                filter: brightness(1.35);
+                box-shadow: inset 0 0 0 1px var(--gold-hi);
+            }
+            .cr-spot .cr-lbl {
+                font-family: var(--mono);
+                font-weight: 700;
+                font-size: 12px;
+                color: var(--gold-hi);
+                line-height: 1.1;
+            }
+            .cr-spot .cr-pay {
+                font-family: var(--mono);
+                font-size: 9px;
+                color: var(--muted);
+                margin-top: 2px;
+            }
+            .cr-spot.wide {
+                flex-basis: 100%;
+            }
+            .cr-spot.cr-line {
+                background: rgba(212, 175, 55, 0.08);
+            }
+            .cr-spot.cr-prop {
+                flex: 1 1 52px;
+                min-width: 46px;
+                min-height: 40px;
+            }
+            .cr-spot.disabled {
+                opacity: 0.4;
+                pointer-events: none;
+            }
+            .cr-spot.cr-point {
+                box-shadow:
+                    0 0 0 2px var(--gold-hi),
+                    inset 0 0 12px rgba(242, 213, 124, 0.25);
+            }
+            .cr-spot.cr-point::before {
+                content: "ON";
+                position: absolute;
+                top: -8px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: var(--emerald, #2bb673);
+                color: #04130b;
+                font-family: var(--mono);
+                font-size: 8px;
+                font-weight: 800;
+                padding: 1px 5px;
+                border-radius: 999px;
+                letter-spacing: 0.05em;
+            }
+            .cr-spot.win-hl {
+                box-shadow:
+                    0 0 0 2px var(--gold-hi),
+                    0 0 16px rgba(242, 213, 124, 0.8);
+                z-index: 2;
+            }
+            #cr-chips {
+                display: flex;
+                gap: 8px;
+                flex-wrap: wrap;
+                justify-content: center;
+                margin-top: 12px;
+            }
+            .cr-denom {
+                width: 46px;
+                height: 46px;
+                border-radius: 50%;
+                border: 3px dashed rgba(255, 255, 255, 0.6);
+                font-family: var(--mono);
+                font-weight: 800;
+                font-size: 12px;
+                color: #fff;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+                transition:
+                    transform 0.12s,
+                    box-shadow 0.12s;
+            }
+            .cr-denom:hover {
+                transform: translateY(-2px);
+            }
+            .cr-denom.sel {
+                box-shadow:
+                    0 0 0 3px var(--gold-hi),
+                    0 2px 6px rgba(0, 0, 0, 0.6);
+                transform: translateY(-3px);
+            }
+            .cr-denom.c1 {
+                background: #d9d2c2;
+                color: #2a1d05;
+            }
+            .cr-denom.c5 {
+                background: #c0392b;
+            }
+            .cr-denom.c25 {
+                background: #1e7a46;
+            }
+            .cr-denom.c100 {
+                background: #1a1a1a;
+            }
+            .cr-denom.c500 {
+                background: #6a2c8f;
+            }
+            #cr-actions {
+                display: flex;
+                gap: 10px;
+                align-items: center;
+                flex-wrap: wrap;
+                justify-content: center;
+                margin-top: 12px;
+            }
+            #cr-total {
+                font-family: var(--mono);
+                font-size: 13px;
+                color: var(--gold-hi);
+                font-weight: 700;
+                min-width: 130px;
+                text-align: center;
+            }
+
             /* ---------- crash ---------- */
             #crash-stats {
                 display: flex;
@@ -1650,6 +1884,35 @@
                     height: 28px;
                     font-size: 15px;
                 }
+                .cr-die {
+                    width: 44px;
+                    height: 44px;
+                    padding: 6px;
+                }
+                #cr-felt {
+                    padding: 7px;
+                }
+                .cr-spot {
+                    flex-basis: 60px;
+                    min-width: 52px;
+                    min-height: 42px;
+                    padding: 5px 3px;
+                }
+                .cr-spot .cr-lbl {
+                    font-size: 11px;
+                }
+                .cr-spot .cr-pay {
+                    font-size: 8px;
+                }
+                .cr-spot.cr-prop {
+                    flex-basis: 44px;
+                    min-width: 42px;
+                }
+                .cr-denom {
+                    width: 40px;
+                    height: 40px;
+                    font-size: 11px;
+                }
                 .card {
                     width: 52px;
                     height: 76px;
@@ -1782,6 +2045,7 @@
                 <button class="nav-btn" data-view="slots">Slots</button>
                 <button class="nav-btn" data-view="blackjack">Blackjack</button>
                 <button class="nav-btn" data-view="roulette">Roulette</button>
+                <button class="nav-btn" data-view="craps">Craps</button>
                 <button class="nav-btn" data-view="leaderboard">
                     Leaderboard
                 </button>
@@ -2206,6 +2470,55 @@
                                 Pick a chip and place it on the table.
                             </div>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ CRAPS ============ -->
+            <section class="view" id="view-craps">
+                <div class="panel">
+                    <h2>Craps</h2>
+                    <div class="deco-rule"><span>◆</span></div>
+                    <p class="sub">
+                        Roll the dice and bet the table — the line, the numbers,
+                        the field, hardways and props. Place chips like a real
+                        craps table.
+                    </p>
+                    <button class="htp-open-btn" type="button" data-htp="craps">
+                        ?
+                    </button>
+
+                    <div id="cr-dice-area">
+                        <div id="cr-dice">
+                            <div class="cr-die" id="cr-d1"></div>
+                            <div class="cr-die" id="cr-d2"></div>
+                        </div>
+                        <div id="cr-status">Come-out roll — place your bets.</div>
+                    </div>
+
+                    <div id="cr-felt">
+                        <div class="cr-group" id="cr-line"></div>
+                        <div class="cr-group" id="cr-place"></div>
+                        <div class="cr-group" id="cr-field-wrap"></div>
+                        <div class="cr-group" id="cr-center"></div>
+                        <div class="cr-group" id="cr-big"></div>
+                    </div>
+
+                    <div id="cr-chips"></div>
+                    <div id="cr-actions">
+                        <span id="cr-total">Total bet: $0.00</span>
+                        <button class="ro-ctl" id="cr-undo" disabled>
+                            Undo
+                        </button>
+                        <button class="ro-ctl" id="cr-clear" disabled>
+                            Clear
+                        </button>
+                        <button class="go-btn" id="cr-roll" disabled>
+                            Roll Dice
+                        </button>
+                    </div>
+                    <div class="msg info" id="cr-msg">
+                        Pick a chip and place a bet, then roll.
                     </div>
                 </div>
             </section>
@@ -4583,6 +4896,452 @@
             })();
 
             /* ================================================================
+            CRAPS
+            ================================================================ */
+            (function () {
+                // bet spots: label + payout caption. Resolution logic is in resolve().
+                const SPOTS = {
+                    pass: { label: "PASS LINE", pay: "1:1", grp: "cr-line", cls: "cr-line" },
+                    dontpass: { label: "DON'T PASS", pay: "1:1 · bar 12", grp: "cr-line", cls: "cr-line" },
+                    passodds: { label: "PASS ODDS", pay: "true odds", grp: "cr-line", cls: "cr-line" },
+                    place4: { label: "4", pay: "9:5", grp: "cr-place" },
+                    place5: { label: "5", pay: "7:5", grp: "cr-place" },
+                    place6: { label: "6", pay: "7:6", grp: "cr-place" },
+                    place8: { label: "8", pay: "7:6", grp: "cr-place" },
+                    place9: { label: "9", pay: "7:5", grp: "cr-place" },
+                    place10: { label: "10", pay: "9:5", grp: "cr-place" },
+                    field: { label: "FIELD", pay: "2,3,4,9,10,11,12 — 2 pays 2:1, 12 pays 3:1", grp: "cr-field-wrap", cls: "wide" },
+                    any7: { label: "ANY 7", pay: "4:1", grp: "cr-center", cls: "cr-prop" },
+                    hard4: { label: "HARD 4", pay: "7:1", grp: "cr-center", cls: "cr-prop" },
+                    hard6: { label: "HARD 6", pay: "9:1", grp: "cr-center", cls: "cr-prop" },
+                    hard8: { label: "HARD 8", pay: "9:1", grp: "cr-center", cls: "cr-prop" },
+                    hard10: { label: "HARD 10", pay: "7:1", grp: "cr-center", cls: "cr-prop" },
+                    anycraps: { label: "ANY CRAPS", pay: "7:1", grp: "cr-center", cls: "cr-prop" },
+                    c2: { label: "2", pay: "30:1", grp: "cr-center", cls: "cr-prop" },
+                    c3: { label: "3", pay: "15:1", grp: "cr-center", cls: "cr-prop" },
+                    c11: { label: "11", pay: "15:1", grp: "cr-center", cls: "cr-prop" },
+                    c12: { label: "12", pay: "30:1", grp: "cr-center", cls: "cr-prop" },
+                    big6: { label: "BIG 6", pay: "1:1", grp: "cr-big" },
+                    big8: { label: "BIG 8", pay: "1:1", grp: "cr-big" },
+                };
+                const POINTS = [4, 5, 6, 8, 9, 10];
+                const placeWin = (n) =>
+                    n === 4 || n === 10 ? 9 / 5 : n === 5 || n === 9 ? 7 / 5 : 7 / 6;
+                const oddsMult = (p) =>
+                    p === 4 || p === 10 ? 2 : p === 5 || p === 9 ? 1.5 : 1.2;
+
+                const bets = {}; // spotId -> staked amount
+                const placements = []; // chips placed since the last roll (for Undo)
+                let chip = 25,
+                    point = 0,
+                    animating = false,
+                    pending = false,
+                    rollTimer = null;
+                const spotEls = {};
+
+                function chipLabel(v) {
+                    return v >= 1000
+                        ? v % 1000 === 0
+                            ? v / 1000 + "k"
+                            : (v / 1000).toFixed(1) + "k"
+                        : String(v);
+                }
+                function totalBet() {
+                    let t = 0;
+                    for (const k in bets) t = cents(t + bets[k]);
+                    return t;
+                }
+
+                // ---- dice rendering ----
+                const PIPS = {
+                    1: [5],
+                    2: [1, 9],
+                    3: [1, 5, 9],
+                    4: [1, 3, 7, 9],
+                    5: [1, 3, 5, 7, 9],
+                    6: [1, 3, 4, 6, 7, 9],
+                };
+                function buildDie(el) {
+                    el.innerHTML = "";
+                    for (let i = 1; i <= 9; i++)
+                        el.appendChild(document.createElement("span"));
+                }
+                function dieFace(el, n) {
+                    const on = new Set(PIPS[n]);
+                    [...el.children].forEach((s, i) =>
+                        s.classList.toggle("on", on.has(i + 1)),
+                    );
+                }
+
+                // ---- build the felt ----
+                (function build() {
+                    for (const id in SPOTS) {
+                        const sp = SPOTS[id];
+                        const d = document.createElement("div");
+                        d.className = "cr-spot" + (sp.cls ? " " + sp.cls : "");
+                        d.dataset.bet = id;
+                        d.innerHTML =
+                            '<span class="cr-lbl">' +
+                            sp.label +
+                            '</span><span class="cr-pay">' +
+                            sp.pay +
+                            "</span>";
+                        d.addEventListener("click", () => place(id));
+                        $(sp.grp).appendChild(d);
+                        spotEls[id] = d;
+                    }
+                    buildDie($("cr-d1"));
+                    buildDie($("cr-d2"));
+                    dieFace($("cr-d1"), 1);
+                    dieFace($("cr-d2"), 1);
+
+                    const tray = $("cr-chips");
+                    [
+                        [1, "c1"],
+                        [5, "c5"],
+                        [25, "c25"],
+                        [100, "c100"],
+                        [500, "c500"],
+                    ].forEach(([v, c]) => {
+                        const b = document.createElement("button");
+                        b.className = "cr-denom " + c + (v === chip ? " sel" : "");
+                        b.textContent = "$" + chipLabel(v);
+                        b.addEventListener("click", () => {
+                            chip = v;
+                            tray
+                                .querySelectorAll(".cr-denom")
+                                .forEach((e) => e.classList.remove("sel"));
+                            b.classList.add("sel");
+                        });
+                        tray.appendChild(b);
+                    });
+                })();
+
+                function renderChips() {
+                    for (const id in spotEls) {
+                        const cell = spotEls[id];
+                        let tok = cell.querySelector(".ro-chip-tok");
+                        if (bets[id] > 0) {
+                            if (!tok) {
+                                tok = document.createElement("div");
+                                tok.className = "ro-chip-tok";
+                                cell.appendChild(tok);
+                            }
+                            tok.textContent = chipLabel(bets[id]);
+                        } else if (tok) {
+                            tok.remove();
+                        }
+                    }
+                }
+                function clearHighlights() {
+                    for (const id in spotEls)
+                        spotEls[id].classList.remove("win-hl");
+                }
+                function updateStatus() {
+                    // point puck on the matching place box
+                    POINTS.forEach((n) =>
+                        spotEls["place" + n].classList.toggle(
+                            "cr-point",
+                            point === n,
+                        ),
+                    );
+                    // pass odds only live once a point is set
+                    spotEls.passodds.classList.toggle("disabled", point === 0);
+                    if (animating) {
+                        $("cr-status").textContent = "Rolling…";
+                    } else if (point === 0) {
+                        $("cr-status").textContent =
+                            "Come-out roll — 7 or 11 wins the Pass Line; 2, 3, 12 lose.";
+                    } else {
+                        $("cr-status").textContent =
+                            "Point is " +
+                            point +
+                            " — roll " +
+                            point +
+                            " to win the line, 7 to seven-out.";
+                    }
+                }
+                function updateControls() {
+                    $("cr-total").textContent = "Total bet: " + fmt$(totalBet());
+                    $("cr-roll").disabled =
+                        animating || Object.keys(bets).length === 0;
+                    $("cr-undo").disabled = animating || placements.length === 0;
+                    $("cr-clear").disabled = animating || totalBet() <= 0;
+                }
+
+                function canPlace(id) {
+                    if (id === "pass" || id === "dontpass") return point === 0;
+                    if (id === "passodds") return point !== 0 && bets.pass > 0;
+                    return true;
+                }
+                function place(id) {
+                    if (animating) return;
+                    clearHighlights();
+                    if (!canPlace(id)) {
+                        const why =
+                            id === "passodds"
+                                ? "Back the Pass Line with odds only after a point is set."
+                                : "Line bets go down on the come-out roll only.";
+                        setMsg("cr-msg", why, "lose");
+                        return;
+                    }
+                    if (id === "passodds") {
+                        const cap = 3 * (bets.pass || 0);
+                        if ((bets.passodds || 0) + chip > cap + 1e-9) {
+                            setMsg(
+                                "cr-msg",
+                                "Odds are capped at 3× your Pass Line bet.",
+                                "lose",
+                            );
+                            return;
+                        }
+                    }
+                    if (!takeBet(chip)) {
+                        setMsg(
+                            "cr-msg",
+                            "Not enough left to cover that $" +
+                                chipLabel(chip) +
+                                " chip.",
+                            "lose",
+                        );
+                        return;
+                    }
+                    if (!pending) {
+                        beginRound();
+                        pending = true;
+                    }
+                    bets[id] = cents((bets[id] || 0) + chip);
+                    placements.push({ id, amt: chip });
+                    renderChips();
+                    updateControls();
+                    setMsg(
+                        "cr-msg",
+                        "Total on the table: " + fmt$(totalBet()) + ".",
+                        "info",
+                    );
+                }
+
+                $("cr-undo").addEventListener("click", () => {
+                    if (animating) return;
+                    const last = placements.pop();
+                    if (!last) return;
+                    bets[last.id] = cents((bets[last.id] || 0) - last.amt);
+                    if (bets[last.id] <= 0.0001) delete bets[last.id];
+                    payout(last.amt);
+                    if (Object.keys(bets).length === 0) endRoundIfClear();
+                    renderChips();
+                    updateControls();
+                });
+                $("cr-clear").addEventListener("click", () => {
+                    if (animating) return;
+                    const refund = totalBet();
+                    if (refund <= 0) return;
+                    payout(refund);
+                    for (const k in bets) delete bets[k];
+                    placements.length = 0;
+                    point = 0;
+                    endRoundIfClear();
+                    renderChips();
+                    updateControls();
+                    updateStatus();
+                    setMsg("cr-msg", "Bets cleared.", "info");
+                });
+
+                function endRoundIfClear() {
+                    if (pending && Object.keys(bets).length === 0) {
+                        pending = false;
+                        point = 0;
+                        endRound();
+                    }
+                }
+
+                $("cr-roll").addEventListener("click", () => {
+                    if (animating || Object.keys(bets).length === 0) return;
+                    clearHighlights();
+                    placements.length = 0; // can't undo across a roll
+                    animating = true;
+                    updateControls();
+                    updateStatus();
+                    const d1 = 1 + Math.floor(rand() * 6),
+                        d2 = 1 + Math.floor(rand() * 6);
+                    $("cr-dice").classList.add("rolling");
+                    rollTimer = setInterval(() => {
+                        dieFace($("cr-d1"), 1 + Math.floor(rand() * 6));
+                        dieFace($("cr-d2"), 1 + Math.floor(rand() * 6));
+                    }, 90);
+                    setMsg("cr-msg", "Rolling…", "info");
+                    setTimeout(() => {
+                        clearInterval(rollTimer);
+                        rollTimer = null;
+                        dieFace($("cr-d1"), d1);
+                        dieFace($("cr-d2"), d2);
+                        $("cr-dice").classList.remove("rolling");
+                        animating = false;
+                        resolve(d1, d2);
+                    }, 1000);
+                });
+
+                function resolve(d1, d2) {
+                    const total = d1 + d2,
+                        hard = d1 === d2;
+                    let ret = 0;
+                    const winners = [];
+                    const del = (id) => delete bets[id];
+                    const winDown = (id, mult) => {
+                        ret = cents(ret + bets[id] * (mult + 1));
+                        winners.push(id);
+                        del(id);
+                    };
+                    const winStanding = (id, mult) => {
+                        ret = cents(ret + bets[id] * mult);
+                        winners.push(id);
+                    };
+                    const pushBack = (id) => {
+                        ret = cents(ret + bets[id]);
+                        del(id);
+                    };
+
+                    // PASS LINE
+                    if (bets.pass) {
+                        if (point === 0) {
+                            if (total === 7 || total === 11) winDown("pass", 1);
+                            else if (total === 2 || total === 3 || total === 12)
+                                del("pass");
+                        } else {
+                            if (total === point) winDown("pass", 1);
+                            else if (total === 7) del("pass");
+                        }
+                    }
+                    // PASS ODDS (resolves with the point)
+                    if (bets.passodds && point !== 0) {
+                        if (total === point)
+                            winDown("passodds", oddsMult(point));
+                        else if (total === 7) del("passodds");
+                    }
+                    // DON'T PASS
+                    if (bets.dontpass) {
+                        if (point === 0) {
+                            if (total === 2 || total === 3)
+                                winDown("dontpass", 1);
+                            else if (total === 12) pushBack("dontpass");
+                            else if (total === 7 || total === 11)
+                                del("dontpass");
+                        } else {
+                            if (total === 7) winDown("dontpass", 1);
+                            else if (total === point) del("dontpass");
+                        }
+                    }
+                    // FIELD (one-roll)
+                    if (bets.field) {
+                        if (total === 2) winDown("field", 2);
+                        else if (total === 12) winDown("field", 3);
+                        else if ([3, 4, 9, 10, 11].includes(total))
+                            winDown("field", 1);
+                        else del("field");
+                    }
+                    // PLACE bets — standing, working only when a point is on
+                    POINTS.forEach((n) => {
+                        const id = "place" + n;
+                        if (!bets[id] || point === 0) return;
+                        if (total === n) winStanding(id, placeWin(n));
+                        else if (total === 7) del(id);
+                    });
+                    // BIG 6 / BIG 8 — standing, working when a point is on
+                    [
+                        ["big6", 6],
+                        ["big8", 8],
+                    ].forEach(([id, n]) => {
+                        if (!bets[id] || point === 0) return;
+                        if (total === n) winStanding(id, 1);
+                        else if (total === 7) del(id);
+                    });
+                    // HARDWAYS — standing, working when a point is on
+                    [
+                        ["hard4", 4, 7],
+                        ["hard6", 6, 9],
+                        ["hard8", 8, 9],
+                        ["hard10", 10, 7],
+                    ].forEach(([id, n, w]) => {
+                        if (!bets[id] || point === 0) return;
+                        if (total === n && hard) winStanding(id, w);
+                        else if ((total === n && !hard) || total === 7)
+                            del(id);
+                    });
+                    // ONE-ROLL PROPS
+                    const props = {
+                        any7: { 7: 4 },
+                        anycraps: { 2: 7, 3: 7, 12: 7 },
+                        c2: { 2: 30 },
+                        c3: { 3: 15 },
+                        c11: { 11: 15 },
+                        c12: { 12: 30 },
+                    };
+                    for (const id in props) {
+                        if (!bets[id]) continue;
+                        const m = props[id][total];
+                        if (m != null) winDown(id, m);
+                        else del(id);
+                    }
+
+                    // resolve the point / shooter state
+                    let headline = "Rolled " + d1 + " + " + d2 + " = " + total;
+                    if (point === 0) {
+                        if (POINTS.includes(total)) {
+                            point = total;
+                            headline += " — point is " + total + ".";
+                        } else if (total === 7 || total === 11) {
+                            headline += " — a natural!";
+                        } else if (total === 2 || total === 3 || total === 12) {
+                            headline += " — craps.";
+                        }
+                    } else {
+                        if (total === point) {
+                            headline += " — point made!";
+                            point = 0;
+                        } else if (total === 7) {
+                            headline += " — seven out.";
+                            point = 0;
+                        }
+                    }
+
+                    if (ret > 0) payout(ret);
+                    winners.forEach((id) =>
+                        spotEls[id] && spotEls[id].classList.add("win-hl"),
+                    );
+
+                    setMsg(
+                        "cr-msg",
+                        headline +
+                            (ret > 0
+                                ? " Won " + fmt$(ret) + "."
+                                : winners.length === 0
+                                  ? " No win this roll."
+                                  : ""),
+                        ret > 0 ? "win" : "info",
+                    );
+
+                    // if the table is empty, the round is over
+                    if (Object.keys(bets).length === 0) endRoundIfClear();
+                    renderChips();
+                    updateControls();
+                    updateStatus();
+                }
+
+                views.craps = {
+                    activate() {
+                        updateStatus();
+                        updateControls();
+                    },
+                    deactivate() {
+                        if (rollTimer) {
+                            clearInterval(rollTimer);
+                            rollTimer = null;
+                        }
+                    },
+                };
+            })();
+
+            /* ================================================================
             LEADERBOARD
             ================================================================ */
             (function () {
@@ -4961,6 +5720,28 @@
                             <h3>House edge</h3>
                             <ul>
                                 <li><b>5.26%</b> on every bet — except the five-number bet, which is <b>7.89%</b>.</li>
+                            </ul>`,
+                    },
+                    craps: {
+                        title: "How to Play — Craps",
+                        body: `
+                            <p>Pick a chip, place bets on the table, then roll two dice. Many bets can ride at once, and several stay up across multiple rolls.</p>
+                            <h3>The Pass Line</h3>
+                            <ul>
+                                <li><b>Come-out roll</b> (no point yet): 7 or 11 wins, 2/3/12 (craps) loses.</li>
+                                <li>Any other number becomes the <b>point</b>. Roll the point again to win; roll a 7 first ("seven-out") to lose.</li>
+                                <li><b>Don't Pass</b> is the near-opposite (12 is a push). After a point is set you can back the Pass Line with <b>Odds</b> — paid at true odds with <b>no house edge</b> (capped at 3× here).</li>
+                            </ul>
+                            <h3>Other bets</h3>
+                            <ul>
+                                <li><b>Field</b> (one roll): wins on 2,3,4,9,10,11,12 — 2 pays 2:1, 12 pays 3:1.</li>
+                                <li><b>Place</b> 4,5,6,8,9,10: win if your number rolls before a 7 (working once a point is set).</li>
+                                <li><b>Hardways</b>: e.g. Hard 8 = 4+4 before any other 8 or a 7.</li>
+                                <li><b>Props</b> (one roll): Any 7 (4:1), Any Craps (7:1), 2 &amp; 12 (30:1), 3 &amp; 11 (15:1).</li>
+                            </ul>
+                            <h3>House edge</h3>
+                            <ul>
+                                <li>Pass / Don't Pass are among the best bets (~1.4%); the Odds bet is 0%. Props and hardways are much worse (9–16%).</li>
                             </ul>`,
                     },
                 };

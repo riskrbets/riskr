@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Comparing House Edges Across Casino Games — Riskr Blog</title>
+        <meta
+            name="description"
+            content="A comparison-table look at the house edge across common casino games — blackjack, craps, baccarat, roulette, slots, keno — and why edge multiplied by how fast you bet decides how fast you lose."
+        />
+        <link
+            rel="canonical"
+            href="https://riskr.bet/blog/comparing-house-edges"
+        />
+        <link
+            rel="icon"
+            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23d4af37'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%230c0906' font-family='serif' font-weight='bold'%3E%24%3C/text%3E%3C/svg%3E"
+        />
+
+        <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3084591484596901"
+            crossorigin="anonymous"
+        ></script>
+
+        <style>
+            :root {
+                --bg: #0c0906;
+                --panel: #171108;
+                --edge: #3a2c12;
+                --gold: #d4af37;
+                --gold-hi: #f2d57c;
+                --ink: #ece3cf;
+                --muted: #9b8d6d;
+            }
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                background: var(--bg);
+                color: var(--ink);
+                font-family: "Manrope", system-ui, sans-serif;
+                line-height: 1.7;
+                padding: 0 16px 80px;
+            }
+            .wrap {
+                max-width: 720px;
+                margin: 0 auto;
+            }
+            header {
+                padding: 22px 0 18px;
+                border-bottom: 1px solid var(--edge);
+                margin-bottom: 30px;
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            .brand {
+                font-family: "Cinzel", serif;
+                font-weight: 900;
+                font-size: 20px;
+                letter-spacing: 0.14em;
+                color: var(--gold-hi);
+                text-decoration: none;
+            }
+            nav a {
+                color: var(--muted);
+                text-decoration: none;
+                margin-left: 16px;
+                font-size: 14px;
+            }
+            nav a:hover {
+                color: var(--gold-hi);
+            }
+            .eyebrow {
+                color: var(--gold);
+                font-size: 13px;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                margin-bottom: 10px;
+            }
+            h1 {
+                font-family: "Cinzel", serif;
+                color: var(--gold-hi);
+                font-size: 30px;
+                line-height: 1.25;
+                margin-bottom: 10px;
+            }
+            .meta {
+                color: var(--muted);
+                font-size: 14px;
+                margin-bottom: 26px;
+            }
+            h2 {
+                color: var(--gold);
+                font-size: 21px;
+                margin: 30px 0 10px;
+            }
+            p,
+            li {
+                color: var(--ink);
+                margin-bottom: 14px;
+            }
+            ul,
+            ol {
+                padding-left: 22px;
+            }
+            a {
+                color: var(--gold-hi);
+            }
+            strong {
+                color: var(--gold-hi);
+            }
+            .lede {
+                font-size: 18px;
+                color: var(--ink);
+            }
+            .callout {
+                background: var(--panel);
+                border: 1px solid var(--edge);
+                border-left: 3px solid var(--gold);
+                border-radius: 8px;
+                padding: 14px 18px;
+                margin: 22px 0;
+            }
+            .callout p:last-child {
+                margin-bottom: 0;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 18px 0;
+                font-size: 15px;
+            }
+            th,
+            td {
+                border: 1px solid var(--edge);
+                padding: 9px 12px;
+                text-align: left;
+            }
+            th {
+                color: var(--gold);
+                background: var(--panel);
+            }
+            .cta {
+                display: inline-block;
+                margin-top: 8px;
+                background: linear-gradient(
+                    180deg,
+                    var(--gold-hi),
+                    var(--gold)
+                );
+                color: #0c0906;
+                font-weight: 800;
+                text-decoration: none;
+                padding: 12px 26px;
+                border-radius: 10px;
+            }
+            .related {
+                margin-top: 40px;
+                padding-top: 22px;
+                border-top: 1px solid var(--edge);
+            }
+            .related h3 {
+                color: var(--gold);
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+            .related a {
+                display: block;
+                margin-bottom: 6px;
+            }
+            footer {
+                margin-top: 50px;
+                padding-top: 22px;
+                border-top: 1px solid var(--edge);
+                color: var(--muted);
+                font-size: 13px;
+            }
+            footer a {
+                color: var(--muted);
+                margin-right: 14px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrap">
+            <header>
+                <a class="brand" href="/">RISKR</a>
+                <nav>
+                    <a href="/">Play</a>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy</a>
+                    <a href="/terms">Terms</a>
+                    <a href="/contact">Contact</a>
+                </nav>
+            </header>
+
+            <article>
+                <div class="eyebrow">Educational</div>
+                <h1>Comparing House Edges Across Casino Games</h1>
+                <p class="meta">By the Riskr team · 7 min read</p>
+
+                <p class="lede">
+                    Every casino game is rigged in the same direction — toward the
+                    house — but not by the same amount. The difference between the
+                    cheapest bet on the floor and the most expensive one is well
+                    over tenfold. Knowing where each game sits, and how that edge
+                    actually drains a bankroll, is the single most useful thing a
+                    player can understand.
+                </p>
+
+                <h2>What "house edge" means</h2>
+                <p>
+                    The <strong>house edge</strong> is the average percentage of
+                    each bet the casino expects to keep over the long run. A 1%
+                    edge means that, on average, every $100 wagered returns $99 to
+                    players and $1 to the house. It says nothing about any single
+                    bet — you can win big or lose fast in the short term — but over
+                    enough plays, the edge is destiny.
+                </p>
+
+                <h2>The games, ranked</h2>
+                <p>
+                    Here's roughly where common games and their main bets fall.
+                    Exact numbers vary with rules and pay tables, but the ordering
+                    is stable:
+                </p>
+
+                <table>
+                    <tr>
+                        <th>Game / bet</th>
+                        <th>Typical house edge</th>
+                        <th>Notes</th>
+                    </tr>
+                    <tr>
+                        <td>Blackjack (basic strategy)</td>
+                        <td>~0.5% or less</td>
+                        <td>Requires correct play every hand</td>
+                    </tr>
+                    <tr>
+                        <td>Baccarat (banker bet)</td>
+                        <td>~1.06%</td>
+                        <td>Among the lowest, no decisions</td>
+                    </tr>
+                    <tr>
+                        <td>Craps (Pass line)</td>
+                        <td>~1.41%</td>
+                        <td>Even lower with odds behind it</td>
+                    </tr>
+                    <tr>
+                        <td>Roulette (single-zero)</td>
+                        <td>~2.70%</td>
+                        <td>European wheel, one green pocket</td>
+                    </tr>
+                    <tr>
+                        <td>Roulette (double-zero)</td>
+                        <td>~5.26%</td>
+                        <td>American wheel, two green pockets</td>
+                    </tr>
+                    <tr>
+                        <td>Slots</td>
+                        <td>~2% to 10%+</td>
+                        <td>Hidden, set by the machine</td>
+                    </tr>
+                    <tr>
+                        <td>Keno / big six wheel</td>
+                        <td>~10% to 25%+</td>
+                        <td>The most expensive on the floor</td>
+                    </tr>
+                </table>
+
+                <h2>Why one wheel beats another</h2>
+                <p>
+                    Roulette is the cleanest illustration. The single-zero
+                    (European) wheel and the double-zero (American) wheel pay the
+                    same on every bet — but the American wheel adds a second green
+                    pocket. That extra pocket is the entire difference, and it
+                    nearly doubles the edge from <strong>2.70% to 5.26%</strong>.
+                    Same game, same payouts, twice the cost, just from one
+                    additional slot the ball can land in.
+                </p>
+
+                <div class="callout">
+                    <p>
+                        <strong>The takeaway:</strong> a game can look identical
+                        and still cost you twice as much. The pay table and the
+                        rules — not the glamour — determine the edge. Always look
+                        for the cheaper version of the same game.
+                    </p>
+                </div>
+
+                <h2>Edge alone doesn't tell the story</h2>
+                <p>
+                    A low edge is only half the picture. How fast you lose depends
+                    on <strong>edge multiplied by how much you bet, multiplied by
+                    how many bets you make per hour.</strong> This is sometimes
+                    called the expected loss, and it explains why slots can empty a
+                    wallet faster than roulette despite a comparable edge.
+                </p>
+                <p>
+                    Compare two players, each with $5 bets:
+                </p>
+                <ul>
+                    <li>
+                        <strong>Roulette, single-zero, ~40 spins/hour:</strong>
+                        $5 × 40 × 2.70% ≈ <strong>$5.40 expected loss per
+                        hour.</strong>
+                    </li>
+                    <li>
+                        <strong>Slots, 6% edge, ~600 spins/hour:</strong>
+                        $5 × 600 × 6% = <strong>$180 expected loss per hour.</strong>
+                    </li>
+                </ul>
+                <p>
+                    The slot player faces a higher edge <em>and</em> bets fifteen
+                    times as often. The combination — not either factor alone — is
+                    what drains the bankroll roughly thirty times faster. Speed is
+                    the silent killer.
+                </p>
+
+                <h2>Putting it together</h2>
+                <p>
+                    If you only remember one rule, make it this: a small edge over
+                    many fast bets is just as ruinous as a large edge over a few
+                    slow ones. The way to lose the least is to pick low-edge bets
+                    <em>and</em> bet slowly and rarely. The way to lose the most is
+                    a high-edge, high-speed game. No "system" changes either side
+                    of that equation — the edge is baked in, and negative expected
+                    value stays negative no matter how you stagger the bets.
+                </p>
+
+                <div class="callout">
+                    <p>
+                        On Riskr you can play across Crash, Plinko, Slots,
+                        Blackjack, Roulette, and Craps with fake chips and watch
+                        these edges behave exactly as the math predicts — no real
+                        money at risk, just your leaderboard rank.
+                    </p>
+                </div>
+
+                <a class="cta" href="/">Play Riskr — risk-free</a>
+
+                <div class="related">
+                    <h3>Keep reading</h3>
+                    <a href="/blog/house-edge-explained">House Edge Explained →</a>
+                    <a href="/blog/understanding-rtp"
+                        >Understanding RTP (Return to Player) →</a
+                    >
+                    <a href="/blog/difference-between-gambling-and-investing"
+                        >The Difference Between Gambling and Investing →</a
+                    >
+                </div>
+            </article>
+
+            <footer>
+                <div>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms &amp; Disclaimer</a>
+                    <a href="/contact">Contact</a>
+                </div>
+                <p style="margin-top: 10px">
+                    This article is for education and entertainment only and is
+                    not financial, betting, or investment advice. Riskr is a
+                    free, fake-money game. No real money, no gambling, no prizes.
+                    18+.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>
