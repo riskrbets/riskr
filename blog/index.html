@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Blog — Riskr</title>
+        <meta
+            name="description"
+            content="The Riskr blog: plain-English explainers on probability, game theory, the psychology of risk, and the math behind games of chance. Learn how the odds really work."
+        />
+        <link rel="canonical" href="https://riskr.bet/blog" />
+        <link
+            rel="icon"
+            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23d4af37'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%230c0906' font-family='serif' font-weight='bold'%3E%24%3C/text%3E%3C/svg%3E"
+        />
+
+        <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3084591484596901"
+            crossorigin="anonymous"
+        ></script>
+
+        <style>
+            :root {
+                --bg: #0c0906;
+                --panel: #171108;
+                --edge: #3a2c12;
+                --gold: #d4af37;
+                --gold-hi: #f2d57c;
+                --ink: #ece3cf;
+                --muted: #9b8d6d;
+            }
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                background: var(--bg);
+                color: var(--ink);
+                font-family: "Manrope", system-ui, sans-serif;
+                line-height: 1.65;
+                padding: 0 16px 80px;
+            }
+            .wrap {
+                max-width: 760px;
+                margin: 0 auto;
+            }
+            header {
+                padding: 22px 0 18px;
+                border-bottom: 1px solid var(--edge);
+                margin-bottom: 30px;
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            .brand {
+                font-family: "Cinzel", serif;
+                font-weight: 900;
+                font-size: 20px;
+                letter-spacing: 0.14em;
+                color: var(--gold-hi);
+                text-decoration: none;
+            }
+            nav a {
+                color: var(--muted);
+                text-decoration: none;
+                margin-left: 16px;
+                font-size: 14px;
+            }
+            nav a:hover {
+                color: var(--gold-hi);
+            }
+            h1 {
+                font-family: "Cinzel", serif;
+                color: var(--gold-hi);
+                font-size: 30px;
+                margin-bottom: 8px;
+            }
+            .lede {
+                color: var(--muted);
+                margin-bottom: 10px;
+            }
+            h2 {
+                color: var(--gold);
+                font-size: 20px;
+                margin: 34px 0 14px;
+                padding-bottom: 8px;
+                border-bottom: 1px solid var(--edge);
+            }
+            p {
+                color: var(--ink);
+                margin-bottom: 12px;
+            }
+            a {
+                color: var(--gold-hi);
+            }
+            .posts {
+                list-style: none;
+                display: grid;
+                gap: 12px;
+            }
+            .card {
+                display: block;
+                background: var(--panel);
+                border: 1px solid var(--edge);
+                border-radius: 10px;
+                padding: 16px 18px;
+                text-decoration: none;
+                transition:
+                    border-color 0.15s ease,
+                    transform 0.15s ease;
+            }
+            .card:hover {
+                border-color: var(--gold);
+                transform: translateY(-1px);
+            }
+            .card .title {
+                color: var(--gold-hi);
+                font-weight: 800;
+                font-size: 17px;
+                margin-bottom: 4px;
+            }
+            .card .dek {
+                color: var(--muted);
+                font-size: 14px;
+            }
+            .notice {
+                background: var(--panel);
+                border: 1px solid var(--edge);
+                border-left: 3px solid var(--gold);
+                border-radius: 8px;
+                padding: 14px 18px;
+                margin: 22px 0 30px;
+                font-size: 14px;
+            }
+            footer {
+                margin-top: 50px;
+                padding-top: 22px;
+                border-top: 1px solid var(--edge);
+                color: var(--muted);
+                font-size: 13px;
+            }
+            footer a {
+                color: var(--muted);
+                margin-right: 14px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrap">
+            <header>
+                <a class="brand" href="/">RISKR</a>
+                <nav>
+                    <a href="/">Play</a>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy</a>
+                    <a href="/terms">Terms</a>
+                    <a href="/contact">Contact</a>
+                </nav>
+            </header>
+
+            <h1>The Riskr Blog</h1>
+            <p class="lede">
+                Plain-English explainers on probability, game theory, and the
+                psychology of risk — the math behind every game of chance, and
+                why understanding it makes you a smarter, more skeptical player.
+            </p>
+
+            <div class="notice">
+                <strong>Educational, not advice.</strong> These articles explain
+                how odds and randomness work. Riskr is a free, fake-money game —
+                nothing here is financial, betting, or investment advice. 18+.
+            </div>
+
+            <h2>Probability &amp; Math</h2>
+            <ul class="posts">
+                <li>
+                    <a class="card" href="/blog/how-crash-games-work">
+                        <div class="title">How Crash Games Work</div>
+                        <div class="dek">
+                            What's really happening behind that rising
+                            multiplier — and why the curve has to crash.
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="card" href="/blog/how-plinko-works">
+                        <div class="title">How Plinko Works</div>
+                        <div class="dek">
+                            Why the ball almost always drifts to the middle, and
+                            how the payout table turns that into a house edge.
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="card" href="/blog/expected-value-in-crash">
+                        <div class="title">Expected Value in Crash</div>
+                        <div class="dek">
+                            The single number that tells you what a bet is
+                            "worth" on average — and why it's never in your
+                            favor.
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="card" href="/blog/house-edge-explained">
+                        <div class="title">House Edge Explained</div>
+                        <div class="dek">
+                            How a tiny built-in margin guarantees the house wins
+                            over time, no matter who's lucky tonight.
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="card" href="/blog/probability-behind-roulette">
+                        <div class="title">The Probability Behind Roulette</div>
+                        <div class="dek">
+                            Why every roulette bet pays slightly less than it
+                            should — and where that gap comes from.
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="card" href="/blog/why-most-players-go-broke">
+                        <div class="title">Why Most Players Go Broke</div>
+                        <div class="dek">
+                            The math of ruin: how a small edge plus enough time
+                            empties almost every bankroll.
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="card" href="/blog/gamblers-fallacy-explained">
+                        <div class="title">The Gambler's Fallacy Explained</div>
+                        <div class="dek">
+                            Why "it's due" is a trap — and what independent
+                            events really mean.
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="card" href="/blog/understanding-rtp">
+                        <div class="title">Understanding RTP (Return to Player)</div>
+                        <div class="dek">
+                            The flip side of house edge — what "97% RTP" really
+                            promises, and what it doesn't.
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="card" href="/blog/the-law-of-large-numbers">
+                        <div class="title">The Law of Large Numbers</div>
+                        <div class="dek">
+                            Why a tiny edge becomes a certainty over enough
+                            bets — and why the house is never in a hurry.
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="card" href="/blog/volatility-explained">
+                        <div class="title">Volatility vs. House Edge</div>
+                        <div class="dek">
+                            Two games with the same RTP can feel worlds apart.
+                            Here's the difference swings make.
+                        </div>
+                    </a>
+                </li>
+            </ul>
+
+            <h2>Game Theory</h2>
+            <ul class="posts">
+                <li>
+                    <a class="card" href="/blog/risk-vs-reward">
+                        <div class="title">Risk vs. Reward</div>
+                        <div class="dek">
+                            How to weigh the size of a payout against the chance
+                            of getting it.
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="card" href="/blog/kelly-criterion">
+                        <div class="title">The Kelly Criterion</div>
+                        <div class="dek">
+                            The formula for how much to stake when you actually
+                            do have an edge — and why over-betting ruins you.
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="card" href="/blog/bankroll-management">
+                        <div class="title">Bankroll Management</div>
+                        <div class="dek">
+                            Why how much you bet matters more than what you bet
+                            on.
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="card" href="/blog/variance-explained">
+                        <div class="title">Variance Explained</div>
+                        <div class="dek">
+                            Why the short run looks nothing like the long run,
+                            and how swings fool your brain.
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="card" href="/blog/the-martingale-system">
+                        <div class="title">The Martingale System (and Why It Fails)</div>
+                        <div class="dek">
+                            Doubling after a loss feels foolproof. The math of
+                            why it eventually wipes you out.
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="card" href="/blog/positive-vs-negative-expectation">
+                        <div class="title">Positive vs. Negative Expectation</div>
+                        <div class="dek">
+                            The line between a bet worth making and one that
+                            only loses if you play long enough.
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="card" href="/blog/when-to-walk-away">
+                        <div class="title">Knowing When to Walk Away</div>
+                        <div class="dek">
+                            In a negative-edge game, the only winning move at
+                            some point is to stop. The math agrees.
+                        </div>
+                    </a>
+                </li>
+            </ul>
+
+            <h2>Psychology</h2>
+            <ul class="posts">
+                <li>
+                    <a class="card" href="/blog/why-people-chase-losses">
+                        <div class="title">Why People Chase Losses</div>
+                        <div class="dek">
+                            The psychology that turns one bad hand into a much
+                            bigger one.
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="card" href="/blog/why-slot-machines-feel-rewarding">
+                        <div class="title">
+                            Why Slot Machines Feel So Rewarding
+                        </div>
+                        <div class="dek">
+                            Lights, sounds, and near-misses — the engineering of
+                            "just one more spin."
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="card" href="/blog/cognitive-biases-in-gambling">
+                        <div class="title">Cognitive Biases in Gambling</div>
+                        <div class="dek">
+                            The mental shortcuts that quietly distort how we read
+                            odds and luck.
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="card" href="/blog/the-near-miss-effect">
+                        <div class="title">The Near-Miss Effect</div>
+                        <div class="dek">
+                            Why "so close" lights up the brain almost like a win
+                            — and keeps you playing.
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="card" href="/blog/the-illusion-of-control">
+                        <div class="title">The Illusion of Control</div>
+                        <div class="dek">
+                            Why we feel our choices sway random outcomes, from
+                            dice rituals to cash-out timing.
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="card" href="/blog/responsible-play">
+                        <div class="title">Responsible Play: Setting Limits That Stick</div>
+                        <div class="dek">
+                            Treating play as entertainment, not income — and the
+                            limits that actually hold.
+                        </div>
+                    </a>
+                </li>
+            </ul>
+
+            <h2>Educational</h2>
+            <ul class="posts">
+                <li>
+                    <a
+                        class="card"
+                        href="/blog/difference-between-gambling-and-investing"
+                    >
+                        <div class="title">
+                            The Difference Between Gambling and Investing
+                        </div>
+                        <div class="dek">
+                            They can feel similar — but one has a positive
+                            expected value and the other doesn't.
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="card" href="/blog/risk-management-basics">
+                        <div class="title">Risk Management Basics</div>
+                        <div class="dek">
+                            Simple principles for thinking clearly about
+                            uncertainty, in games and in life.
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a
+                        class="card"
+                        href="/blog/understanding-random-number-generators"
+                    >
+                        <div class="title">
+                            Understanding Random Number Generators
+                        </div>
+                        <div class="dek">
+                            What an RNG actually is, and why "random" doesn't
+                            mean "rigged."
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="card" href="/blog/how-blackjack-odds-work">
+                        <div class="title">How Blackjack Odds Work</div>
+                        <div class="dek">
+                            Why blackjack has one of the lowest house edges —
+                            and how the rules quietly move it.
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="card" href="/blog/how-slot-machines-work">
+                        <div class="title">How Slot Machines Really Work</div>
+                        <div class="dek">
+                            Virtual reels, symbol weighting, and why there's no
+                            such thing as a "hot" or "due" machine.
+                        </div>
+                    </a>
+                </li>
+            </ul>
+
+            <footer>
+                <div>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms &amp; Disclaimer</a>
+                    <a href="/contact">Contact</a>
+                </div>
+                <p style="margin-top: 10px">
+                    Riskr is a free, fake-money game for entertainment only. No
+                    real money, no gambling, no prizes. 18+.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>

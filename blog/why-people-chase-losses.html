@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Why People Chase Losses — Riskr Blog</title>
+        <meta
+            name="description"
+            content="Loss aversion, the sunk-cost fallacy, and the break-even effect explain why people chase losses with bigger bets. A plain-English look at the psychology — and how to interrupt it."
+        />
+        <link
+            rel="canonical"
+            href="https://riskr.bet/blog/why-people-chase-losses"
+        />
+        <link
+            rel="icon"
+            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23d4af37'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%230c0906' font-family='serif' font-weight='bold'%3E%24%3C/text%3E%3C/svg%3E"
+        />
+
+        <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3084591484596901"
+            crossorigin="anonymous"
+        ></script>
+
+        <style>
+            :root {
+                --bg: #0c0906;
+                --panel: #171108;
+                --edge: #3a2c12;
+                --gold: #d4af37;
+                --gold-hi: #f2d57c;
+                --ink: #ece3cf;
+                --muted: #9b8d6d;
+            }
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                background: var(--bg);
+                color: var(--ink);
+                font-family: "Manrope", system-ui, sans-serif;
+                line-height: 1.7;
+                padding: 0 16px 80px;
+            }
+            .wrap {
+                max-width: 720px;
+                margin: 0 auto;
+            }
+            header {
+                padding: 22px 0 18px;
+                border-bottom: 1px solid var(--edge);
+                margin-bottom: 30px;
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            .brand {
+                font-family: "Cinzel", serif;
+                font-weight: 900;
+                font-size: 20px;
+                letter-spacing: 0.14em;
+                color: var(--gold-hi);
+                text-decoration: none;
+            }
+            nav a {
+                color: var(--muted);
+                text-decoration: none;
+                margin-left: 16px;
+                font-size: 14px;
+            }
+            nav a:hover {
+                color: var(--gold-hi);
+            }
+            .eyebrow {
+                color: var(--gold);
+                font-size: 13px;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                margin-bottom: 10px;
+            }
+            h1 {
+                font-family: "Cinzel", serif;
+                color: var(--gold-hi);
+                font-size: 30px;
+                line-height: 1.25;
+                margin-bottom: 10px;
+            }
+            .meta {
+                color: var(--muted);
+                font-size: 14px;
+                margin-bottom: 26px;
+            }
+            h2 {
+                color: var(--gold);
+                font-size: 21px;
+                margin: 30px 0 10px;
+            }
+            p,
+            li {
+                color: var(--ink);
+                margin-bottom: 14px;
+            }
+            ul,
+            ol {
+                padding-left: 22px;
+            }
+            a {
+                color: var(--gold-hi);
+            }
+            strong {
+                color: var(--gold-hi);
+            }
+            .lede {
+                font-size: 18px;
+                color: var(--ink);
+            }
+            .callout {
+                background: var(--panel);
+                border: 1px solid var(--edge);
+                border-left: 3px solid var(--gold);
+                border-radius: 8px;
+                padding: 14px 18px;
+                margin: 22px 0;
+            }
+            .callout p:last-child {
+                margin-bottom: 0;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 18px 0;
+                font-size: 15px;
+            }
+            th,
+            td {
+                border: 1px solid var(--edge);
+                padding: 9px 12px;
+                text-align: left;
+            }
+            th {
+                color: var(--gold);
+                background: var(--panel);
+            }
+            .cta {
+                display: inline-block;
+                margin-top: 8px;
+                background: linear-gradient(
+                    180deg,
+                    var(--gold-hi),
+                    var(--gold)
+                );
+                color: #0c0906;
+                font-weight: 800;
+                text-decoration: none;
+                padding: 12px 26px;
+                border-radius: 10px;
+            }
+            .related {
+                margin-top: 40px;
+                padding-top: 22px;
+                border-top: 1px solid var(--edge);
+            }
+            .related h3 {
+                color: var(--gold);
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+            .related a {
+                display: block;
+                margin-bottom: 6px;
+            }
+            footer {
+                margin-top: 50px;
+                padding-top: 22px;
+                border-top: 1px solid var(--edge);
+                color: var(--muted);
+                font-size: 13px;
+            }
+            footer a {
+                color: var(--muted);
+                margin-right: 14px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrap">
+            <header>
+                <a class="brand" href="/">RISKR</a>
+                <nav>
+                    <a href="/">Play</a>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy</a>
+                    <a href="/terms">Terms</a>
+                    <a href="/contact">Contact</a>
+                </nav>
+            </header>
+
+            <article>
+                <div class="eyebrow">Psychology</div>
+                <h1>Why People Chase Losses</h1>
+                <p class="meta">By the Riskr team · 6 min read</p>
+
+                <p class="lede">
+                    You meant to play one round. Then you lost, and instead of
+                    walking away you doubled your bet to "win it back." That move
+                    — chasing losses — is one of the most predictable patterns in
+                    gambling, and it has almost nothing to do with bad
+                    self-control. It's wired into how the human brain values
+                    losing. Once you see the machinery, the urge gets a lot
+                    easier to spot and interrupt.
+                </p>
+
+                <h2>Losses hurt about twice as much as wins feel good</h2>
+                <p>
+                    Psychologists Daniel Kahneman and Amos Tversky called this
+                    <strong>loss aversion</strong>. Across decades of
+                    experiments, people consistently feel the sting of losing a
+                    given amount roughly <strong>twice</strong> as intensely as
+                    they feel the pleasure of winning the same amount. Losing $20
+                    doesn't register as a small dip — it registers as something
+                    closer to the joy of winning $40, flipped into pain.
+                </p>
+                <p>
+                    That asymmetry warps your decisions. A loss creates a hole
+                    that feels urgent to fill, and the brain treats getting back
+                    to zero as far more valuable than it actually is. So you keep
+                    playing — not because the next bet is a good bet, but because
+                    stopping while behind means accepting a pain your mind is
+                    desperate to avoid.
+                </p>
+
+                <h2>The sunk-cost fallacy</h2>
+                <p>
+                    The <strong>sunk-cost fallacy</strong> is the belief that
+                    because you've already put something in, you should keep
+                    going to "make it count." It's the same logic that keeps
+                    people sitting through a bad movie because they paid for the
+                    ticket. In gambling it sounds like: <em>"I've already lost
+                    this much — I can't quit now."</em>
+                </p>
+                <p>
+                    But money already lost is gone. It has no bearing on whether
+                    the next round is worth playing. The odds of that round are
+                    exactly what they'd be if you'd just walked up fresh. The
+                    losing streak behind you feels like an investment you're
+                    protecting; in reality it's a story your mind tells to
+                    justify staying in.
+                </p>
+
+                <h2>The break-even effect</h2>
+                <p>
+                    There's a specific, well-documented twist called the
+                    <strong>break-even effect</strong>: people who are behind
+                    become far more willing to take long-shot, high-risk bets
+                    that they'd never make from a neutral starting point. Getting
+                    back to zero feels so important that a normally cautious
+                    player will suddenly reach for the riskiest option on the
+                    table — because only a big swing can erase the hole in one
+                    move.
+                </p>
+
+                <div class="callout">
+                    <p>
+                        <strong>The trap in one line:</strong> being behind makes
+                        the loss hurt more (loss aversion), makes you feel
+                        committed (sunk cost), and makes you crave a big swing to
+                        get even (break-even effect). All three push in the same
+                        direction — bet more, right now.
+                    </p>
+                </div>
+
+                <h2>How chasing escalates</h2>
+                <p>
+                    Chasing isn't a single bad decision; it's a feedback loop.
+                    Each loss deepens the hole, which raises the emotional
+                    pressure to recover it, which pushes the next bet higher. A
+                    player who started at $5 a round can find themselves betting
+                    $50 not because they decided to, but because every step felt
+                    like a small, reasonable response to the step before.
+                </p>
+                <p>
+                    Notice what's driving all of this: feeling, not arithmetic.
+                    The math hasn't changed — every round still carries the same
+                    built-in house edge it always did. Chasing doesn't improve
+                    your odds. It just enlarges your exposure at the exact moment
+                    your judgment is most compromised.
+                </p>
+
+                <table>
+                    <tr>
+                        <th>What you tell yourself</th>
+                        <th>What's actually true</th>
+                    </tr>
+                    <tr>
+                        <td>"I'm due for a win."</td>
+                        <td>Past losses don't change future odds.</td>
+                    </tr>
+                    <tr>
+                        <td>"I can't quit while I'm down."</td>
+                        <td>Money already lost is gone either way.</td>
+                    </tr>
+                    <tr>
+                        <td>"One big bet fixes everything."</td>
+                        <td>It also risks a much deeper hole.</td>
+                    </tr>
+                </table>
+
+                <h2>How to recognize and interrupt it</h2>
+                <p>
+                    The single most useful habit is to notice the
+                    <em>emotion</em> behind a bet before you place it. If your
+                    reason for the next round is "to get even" rather than "this
+                    is fun," you're chasing. That feeling — urgency, frustration,
+                    a tightness that says <em>just one more</em> — is the signal.
+                </p>
+                <p>
+                    A few simple circuit-breakers help: decide your limit
+                    <em>before</em> you start, treat that number as already
+                    spent, and step away the moment you catch yourself trying to
+                    win something back. Stopping while behind isn't failure; it's
+                    the one move the psychology is built to talk you out of, which
+                    is exactly why it's the right one.
+                </p>
+
+                <div class="callout">
+                    <p>
+                        Riskr is a good place to feel all of this with nothing on
+                        the line. The money is fake, the only stake is your
+                        leaderboard spot — so when the urge to "win it back"
+                        shows up, you can watch it for what it is instead of
+                        paying to learn the lesson.
+                    </p>
+                </div>
+
+                <a class="cta" href="/">Play Riskr — risk-free</a>
+
+                <div class="related">
+                    <h3>Keep reading</h3>
+                    <a href="/blog/cognitive-biases-in-gambling"
+                        >Cognitive Biases in Gambling →</a
+                    >
+                    <a href="/blog/gamblers-fallacy-explained"
+                        >The Gambler's Fallacy Explained →</a
+                    >
+                    <a href="/blog/bankroll-management">Bankroll Management →</a>
+                </div>
+            </article>
+
+            <footer>
+                <div>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms &amp; Disclaimer</a>
+                    <a href="/contact">Contact</a>
+                </div>
+                <p style="margin-top: 10px">
+                    This article is for education and entertainment only and is
+                    not financial, betting, or investment advice. Riskr is a
+                    free, fake-money game. No real money, no gambling, no prizes.
+                    18+.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>

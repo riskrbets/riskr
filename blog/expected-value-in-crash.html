@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Expected Value in Crash — Riskr Blog</title>
+        <meta
+            name="description"
+            content="Expected value is the long-run truth behind every crash bet. We work a simple example showing why any cash-out target has an EV slightly below your stake."
+        />
+        <link
+            rel="canonical"
+            href="https://riskr.bet/blog/expected-value-in-crash"
+        />
+        <link
+            rel="icon"
+            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23d4af37'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%230c0906' font-family='serif' font-weight='bold'%3E%24%3C/text%3E%3C/svg%3E"
+        />
+
+        <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3084591484596901"
+            crossorigin="anonymous"
+        ></script>
+
+        <style>
+            :root {
+                --bg: #0c0906;
+                --panel: #171108;
+                --edge: #3a2c12;
+                --gold: #d4af37;
+                --gold-hi: #f2d57c;
+                --ink: #ece3cf;
+                --muted: #9b8d6d;
+            }
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                background: var(--bg);
+                color: var(--ink);
+                font-family: "Manrope", system-ui, sans-serif;
+                line-height: 1.7;
+                padding: 0 16px 80px;
+            }
+            .wrap {
+                max-width: 720px;
+                margin: 0 auto;
+            }
+            header {
+                padding: 22px 0 18px;
+                border-bottom: 1px solid var(--edge);
+                margin-bottom: 30px;
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            .brand {
+                font-family: "Cinzel", serif;
+                font-weight: 900;
+                font-size: 20px;
+                letter-spacing: 0.14em;
+                color: var(--gold-hi);
+                text-decoration: none;
+            }
+            nav a {
+                color: var(--muted);
+                text-decoration: none;
+                margin-left: 16px;
+                font-size: 14px;
+            }
+            nav a:hover {
+                color: var(--gold-hi);
+            }
+            .eyebrow {
+                color: var(--gold);
+                font-size: 13px;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                margin-bottom: 10px;
+            }
+            h1 {
+                font-family: "Cinzel", serif;
+                color: var(--gold-hi);
+                font-size: 30px;
+                line-height: 1.25;
+                margin-bottom: 10px;
+            }
+            .meta {
+                color: var(--muted);
+                font-size: 14px;
+                margin-bottom: 26px;
+            }
+            h2 {
+                color: var(--gold);
+                font-size: 21px;
+                margin: 30px 0 10px;
+            }
+            p,
+            li {
+                color: var(--ink);
+                margin-bottom: 14px;
+            }
+            ul,
+            ol {
+                padding-left: 22px;
+            }
+            a {
+                color: var(--gold-hi);
+            }
+            strong {
+                color: var(--gold-hi);
+            }
+            .lede {
+                font-size: 18px;
+                color: var(--ink);
+            }
+            .callout {
+                background: var(--panel);
+                border: 1px solid var(--edge);
+                border-left: 3px solid var(--gold);
+                border-radius: 8px;
+                padding: 14px 18px;
+                margin: 22px 0;
+            }
+            .callout p:last-child {
+                margin-bottom: 0;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 18px 0;
+                font-size: 15px;
+            }
+            th,
+            td {
+                border: 1px solid var(--edge);
+                padding: 9px 12px;
+                text-align: left;
+            }
+            th {
+                color: var(--gold);
+                background: var(--panel);
+            }
+            .cta {
+                display: inline-block;
+                margin-top: 8px;
+                background: linear-gradient(
+                    180deg,
+                    var(--gold-hi),
+                    var(--gold)
+                );
+                color: #0c0906;
+                font-weight: 800;
+                text-decoration: none;
+                padding: 12px 26px;
+                border-radius: 10px;
+            }
+            .related {
+                margin-top: 40px;
+                padding-top: 22px;
+                border-top: 1px solid var(--edge);
+            }
+            .related h3 {
+                color: var(--gold);
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+            .related a {
+                display: block;
+                margin-bottom: 6px;
+            }
+            footer {
+                margin-top: 50px;
+                padding-top: 22px;
+                border-top: 1px solid var(--edge);
+                color: var(--muted);
+                font-size: 13px;
+            }
+            footer a {
+                color: var(--muted);
+                margin-right: 14px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrap">
+            <header>
+                <a class="brand" href="/">RISKR</a>
+                <nav>
+                    <a href="/">Play</a>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy</a>
+                    <a href="/terms">Terms</a>
+                    <a href="/contact">Contact</a>
+                </nav>
+            </header>
+
+            <article>
+                <div class="eyebrow">Probability &amp; Math</div>
+                <h1>Expected Value in Crash</h1>
+                <p class="meta">By the Riskr team · 6 min read</p>
+
+                <p class="lede">
+                    "Expected value" sounds like jargon, but it's the single most
+                    useful idea for understanding any game of chance. It answers a
+                    plain question: if you made this exact bet over and over,
+                    forever, how much would you walk away with per dollar on
+                    average? For a crash game, the answer is always the same —
+                    slightly less than you put in. Here's how to see that for
+                    yourself.
+                </p>
+
+                <h2>What expected value actually is</h2>
+                <p>
+                    Expected value, or <strong>EV</strong>, is just a weighted
+                    average of every possible outcome. You take each thing that
+                    could happen, multiply its <em>payoff</em> by its
+                    <em>probability</em>, and add them all up:
+                </p>
+                <p>
+                    <strong
+                        >EV = (probability of outcome 1 × payoff 1) + (probability
+                        of outcome 2 × payoff 2) + …</strong
+                    >
+                </p>
+                <p>
+                    EV is not a prediction of any single round. You will never
+                    actually win "0.99 of your bet" on a given spin — you'll win
+                    the full payout or nothing. EV is the long-run average those
+                    individual results drift toward as you play more and more.
+                </p>
+
+                <h2>A worked example: cashing out at 2×</h2>
+                <p>
+                    Suppose you bet <strong>$1</strong> and set your cash-out
+                    target to <strong>2×</strong>. In a perfectly fair game, the
+                    round would reach 2× exactly half the time. Let's add a small
+                    house edge by saying it actually reaches 2× only
+                    <strong>49.5%</strong> of the time — the missing half-percent
+                    is the operator's skim, mostly from rounds that crash instantly
+                    near 1.00×. Two things can happen:
+                </p>
+                <ul>
+                    <li>
+                        You hit 2× (probability 0.495) and get back $2 — a payoff
+                        of $2.
+                    </li>
+                    <li>
+                        It crashes first (probability 0.505) and you get back $0.
+                    </li>
+                </ul>
+                <p>Plug those into the formula:</p>
+                <p>
+                    <strong
+                        >EV = (0.495 × $2) + (0.505 × $0) = $0.99</strong
+                    >
+                </p>
+                <p>
+                    You staked $1 and the bet is worth $0.99. That missing penny is
+                    the house edge — about <strong>1%</strong> — and it doesn't
+                    matter how you slice the round. Watch what happens at other
+                    targets.
+                </p>
+
+                <table>
+                    <tr>
+                        <th>Cash-out target</th>
+                        <th>Chance it hits</th>
+                        <th>Payoff if it hits</th>
+                        <th>EV on a $1 bet</th>
+                    </tr>
+                    <tr>
+                        <td>1.5×</td>
+                        <td>66.0%</td>
+                        <td>$1.50</td>
+                        <td>$0.99</td>
+                    </tr>
+                    <tr>
+                        <td>2×</td>
+                        <td>49.5%</td>
+                        <td>$2.00</td>
+                        <td>$0.99</td>
+                    </tr>
+                    <tr>
+                        <td>5×</td>
+                        <td>19.8%</td>
+                        <td>$5.00</td>
+                        <td>$0.99</td>
+                    </tr>
+                    <tr>
+                        <td>10×</td>
+                        <td>9.9%</td>
+                        <td>$10.00</td>
+                        <td>$0.99</td>
+                    </tr>
+                </table>
+                <p>
+                    Every target lands on the same $0.99. That's not a coincidence
+                    — it's the whole design. The chance of hitting a target falls
+                    in almost exact proportion to how much it pays, so the products
+                    all collapse to the same number. The house edge is baked into
+                    the curve, not into any one choice you make.
+                </p>
+
+                <div class="callout">
+                    <p>
+                        <strong>Key idea:</strong> changing your cash-out target
+                        changes how your wins are <em>shaped</em> — frequent small
+                        wins versus rare big ones — but it does not change your
+                        expected value. There is no target that turns a
+                        negative-EV game positive.
+                    </p>
+                </div>
+
+                <h2>Why short runs lie</h2>
+                <p>
+                    If EV is below your stake, why does anyone ever finish a session
+                    ahead? Because EV is a long-run average, and short runs are
+                    noisy. Flip to the 10× target: it pays $10 but only hits about 1
+                    time in 10. Get lucky in your first three rounds and you might be
+                    up $27 on $3 of bets — a 9× return that feels like genius.
+                </p>
+                <p>
+                    That feeling is the trap. The math hasn't changed; you just
+                    sampled the good tail early. Keep playing and the rare wins get
+                    diluted by the common losses until your results converge on that
+                    $0.99-per-dollar reality. The longer you play, the more tightly
+                    the average pins you to the edge. Short-term swings are real and
+                    can be large — but they're variance, not an exploit.
+                </p>
+
+                <h2>Using EV the smart way</h2>
+                <p>
+                    EV won't tell you what will happen tonight. What it tells you is
+                    the direction the river flows. Any bet with EV below your stake
+                    is, on average, a slow leak — and no betting pattern, streak
+                    sense, or "system" repairs a negative expected value. The only
+                    bet with a non-negative EV is the one you don't make with money
+                    that matters.
+                </p>
+
+                <div class="callout">
+                    <p>
+                        On Riskr, the Crash table runs on these same numbers —
+                        except the stakes are fake. You can hold for 50× as
+                        recklessly as you like and watch expected value grind the
+                        leaderboard back to earth, with nothing real on the line.
+                    </p>
+                </div>
+
+                <a class="cta" href="/">Try the Crash table on Riskr</a>
+
+                <div class="related">
+                    <h3>Keep reading</h3>
+                    <a href="/blog/how-crash-games-work"
+                        >How Crash Games Work →</a
+                    >
+                    <a href="/blog/house-edge-explained">House Edge Explained →</a>
+                    <a href="/blog/why-most-players-go-broke"
+                        >Why Most Players Go Broke →</a
+                    >
+                </div>
+            </article>
+
+            <footer>
+                <div>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms &amp; Disclaimer</a>
+                    <a href="/contact">Contact</a>
+                </div>
+                <p style="margin-top: 10px">
+                    This article is for education and entertainment only and is
+                    not financial, betting, or investment advice. Riskr is a
+                    free, fake-money game. No real money, no gambling, no prizes.
+                    18+.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>

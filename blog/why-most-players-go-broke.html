@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Why Most Players Go Broke — Riskr Blog</title>
+        <meta
+            name="description"
+            content="Gambler's ruin explained: a negative-edge game plus enough trials drains any finite bankroll. Why variance gives false hope and why doubling systems fail."
+        />
+        <link
+            rel="canonical"
+            href="https://riskr.bet/blog/why-most-players-go-broke"
+        />
+        <link
+            rel="icon"
+            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23d4af37'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%230c0906' font-family='serif' font-weight='bold'%3E%24%3C/text%3E%3C/svg%3E"
+        />
+
+        <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3084591484596901"
+            crossorigin="anonymous"
+        ></script>
+
+        <style>
+            :root {
+                --bg: #0c0906;
+                --panel: #171108;
+                --edge: #3a2c12;
+                --gold: #d4af37;
+                --gold-hi: #f2d57c;
+                --ink: #ece3cf;
+                --muted: #9b8d6d;
+            }
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                background: var(--bg);
+                color: var(--ink);
+                font-family: "Manrope", system-ui, sans-serif;
+                line-height: 1.7;
+                padding: 0 16px 80px;
+            }
+            .wrap {
+                max-width: 720px;
+                margin: 0 auto;
+            }
+            header {
+                padding: 22px 0 18px;
+                border-bottom: 1px solid var(--edge);
+                margin-bottom: 30px;
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            .brand {
+                font-family: "Cinzel", serif;
+                font-weight: 900;
+                font-size: 20px;
+                letter-spacing: 0.14em;
+                color: var(--gold-hi);
+                text-decoration: none;
+            }
+            nav a {
+                color: var(--muted);
+                text-decoration: none;
+                margin-left: 16px;
+                font-size: 14px;
+            }
+            nav a:hover {
+                color: var(--gold-hi);
+            }
+            .eyebrow {
+                color: var(--gold);
+                font-size: 13px;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                margin-bottom: 10px;
+            }
+            h1 {
+                font-family: "Cinzel", serif;
+                color: var(--gold-hi);
+                font-size: 30px;
+                line-height: 1.25;
+                margin-bottom: 10px;
+            }
+            .meta {
+                color: var(--muted);
+                font-size: 14px;
+                margin-bottom: 26px;
+            }
+            h2 {
+                color: var(--gold);
+                font-size: 21px;
+                margin: 30px 0 10px;
+            }
+            p,
+            li {
+                color: var(--ink);
+                margin-bottom: 14px;
+            }
+            ul,
+            ol {
+                padding-left: 22px;
+            }
+            a {
+                color: var(--gold-hi);
+            }
+            strong {
+                color: var(--gold-hi);
+            }
+            .lede {
+                font-size: 18px;
+                color: var(--ink);
+            }
+            .callout {
+                background: var(--panel);
+                border: 1px solid var(--edge);
+                border-left: 3px solid var(--gold);
+                border-radius: 8px;
+                padding: 14px 18px;
+                margin: 22px 0;
+            }
+            .callout p:last-child {
+                margin-bottom: 0;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 18px 0;
+                font-size: 15px;
+            }
+            th,
+            td {
+                border: 1px solid var(--edge);
+                padding: 9px 12px;
+                text-align: left;
+            }
+            th {
+                color: var(--gold);
+                background: var(--panel);
+            }
+            .cta {
+                display: inline-block;
+                margin-top: 8px;
+                background: linear-gradient(
+                    180deg,
+                    var(--gold-hi),
+                    var(--gold)
+                );
+                color: #0c0906;
+                font-weight: 800;
+                text-decoration: none;
+                padding: 12px 26px;
+                border-radius: 10px;
+            }
+            .related {
+                margin-top: 40px;
+                padding-top: 22px;
+                border-top: 1px solid var(--edge);
+            }
+            .related h3 {
+                color: var(--gold);
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+            .related a {
+                display: block;
+                margin-bottom: 6px;
+            }
+            footer {
+                margin-top: 50px;
+                padding-top: 22px;
+                border-top: 1px solid var(--edge);
+                color: var(--muted);
+                font-size: 13px;
+            }
+            footer a {
+                color: var(--muted);
+                margin-right: 14px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrap">
+            <header>
+                <a class="brand" href="/">RISKR</a>
+                <nav>
+                    <a href="/">Play</a>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy</a>
+                    <a href="/terms">Terms</a>
+                    <a href="/contact">Contact</a>
+                </nav>
+            </header>
+
+            <article>
+                <div class="eyebrow">Probability &amp; Math</div>
+                <h1>Why Most Players Go Broke</h1>
+                <p class="meta">By the Riskr team · 7 min read</p>
+
+                <p class="lede">
+                    There's a reason the phrase is "the house always wins" and not
+                    "the house usually wins." Given a small built-in edge and enough
+                    rounds, a player with a finite bankroll doesn't just tend to lose
+                    — they go broke with near-certainty. Mathematicians have a name
+                    for it: <strong>gambler's ruin</strong>. It's less a warning than
+                    a theorem.
+                </p>
+
+                <h2>The setup: a finite bankroll against infinity</h2>
+                <p>
+                    Picture the matchup honestly. You bring a fixed amount of money —
+                    $100, say. The house has, for all practical purposes, unlimited
+                    money and unlimited time. Every bet has a slightly negative
+                    expected value for you. You can quit, but the pull to "win it
+                    back" or "ride the streak" keeps you in the chair.
+                </p>
+                <p>
+                    In that contest, the house only needs you to keep playing.
+                    Because each bet leaks a little value, your bankroll takes a
+                    random walk that's tilted downward. A random walk with a downward
+                    drift, against an opponent who can't be bankrupted, has exactly
+                    one long-run destination: zero.
+                </p>
+
+                <h2>Why "playing longer" guarantees losing more</h2>
+                <p>
+                    This is the part players get backwards. They think a long session
+                    gives the bankroll "time to recover." The math says the opposite.
+                    Your expected loss is the house edge times the
+                    <em>total amount wagered</em> — and total wagered only grows the
+                    longer you play.
+                </p>
+
+                <table>
+                    <tr>
+                        <th>Rounds played ($1 each, 2% edge)</th>
+                        <th>Total wagered</th>
+                        <th>Expected loss</th>
+                    </tr>
+                    <tr>
+                        <td>100</td>
+                        <td>$100</td>
+                        <td>$2</td>
+                    </tr>
+                    <tr>
+                        <td>1,000</td>
+                        <td>$1,000</td>
+                        <td>$20</td>
+                    </tr>
+                    <tr>
+                        <td>10,000</td>
+                        <td>$10,000</td>
+                        <td>$200</td>
+                    </tr>
+                </table>
+                <p>
+                    More time on the felt doesn't heal a bankroll — it feeds more
+                    money through the edge. The clock is the house's ally, not yours.
+                </p>
+
+                <div class="callout">
+                    <p>
+                        <strong>Key idea:</strong> in a negative-EV game, the only
+                        truly winning move is to stop. Every additional bet adds to
+                        the total the edge gets to skim. "Just one more" is the exact
+                        mechanism of going broke.
+                    </p>
+                </div>
+
+                <h2>Variance: the source of false hope</h2>
+                <p>
+                    If the edge is so relentless, why doesn't everyone lose steadily
+                    and obviously? Because of <strong>variance</strong> — the
+                    short-term swings around the average. Variance is what lets you
+                    win three sessions in a row, hit a 50× crash, or double your stack
+                    at the roulette table. Those moments feel like skill or luck you
+                    can summon again.
+                </p>
+                <p>
+                    Variance doesn't change the edge; it disguises it. It scatters
+                    your results widely enough that the slow downward drift is hard to
+                    feel session by session. The wins are real, but they're the bait
+                    that keeps the line in the water long enough for the edge to do its
+                    quiet, inevitable work.
+                </p>
+
+                <h2>The doubling trap</h2>
+                <p>
+                    Sooner or later, someone hears about the <strong>martingale</strong>:
+                    double your bet after every loss, and the first win recovers
+                    everything plus one unit. On paper it looks unbeatable. In reality
+                    it's the cleanest illustration of gambler's ruin.
+                </p>
+                <p>
+                    Start at $1 and lose a few in a row: $1, $2, $4, $8, $16, $32,
+                    $64, $128, $256, $512. Just nine losses in a row — which happens
+                    far more often than people expect — and your tenth bet is $512 to
+                    win back a single dollar of profit. Two things end the run: you
+                    hit the <strong>table limit</strong> (every table has a maximum,
+                    precisely to stop this), or you run out of money. Either way the
+                    losing streak that was always coming wipes out every small win you
+                    banked before it. The system doesn't beat the edge; it just trades
+                    many small wins for one catastrophic loss.
+                </p>
+                <p>
+                    No staking pattern — martingale, reverse martingale, Fibonacci,
+                    "due" numbers — changes expected value. Rearranging the order and
+                    size of negative-EV bets produces a different-looking ride to the
+                    same destination.
+                </p>
+
+                <div class="callout">
+                    <p>
+                        On Riskr you can run a martingale for a thousand rounds and
+                        watch gambler's ruin play out in real time — the streak, the
+                        scramble, the wipeout — except the only thing you lose is a
+                        spot on the leaderboard. It's the lesson without the bill.
+                    </p>
+                </div>
+
+                <a class="cta" href="/">Play Riskr — fake money, real fun</a>
+
+                <div class="related">
+                    <h3>Keep reading</h3>
+                    <a href="/blog/house-edge-explained"
+                        >House Edge Explained →</a
+                    >
+                    <a href="/blog/bankroll-management"
+                        >Bankroll Management →</a
+                    >
+                    <a href="/blog/variance-explained"
+                        >Variance Explained →</a
+                    >
+                </div>
+            </article>
+
+            <footer>
+                <div>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms &amp; Disclaimer</a>
+                    <a href="/contact">Contact</a>
+                </div>
+                <p style="margin-top: 10px">
+                    This article is for education and entertainment only and is
+                    not financial, betting, or investment advice. Riskr is a
+                    free, fake-money game. No real money, no gambling, no prizes.
+                    18+.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>

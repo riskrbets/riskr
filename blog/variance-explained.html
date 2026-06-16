@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Variance Explained — Riskr Blog</title>
+        <meta
+            name="description"
+            content="A plain-English guide to variance: how it differs from expected value, why short-run swings can win despite a negative edge, how the law of large numbers takes over, and what high- versus low-variance games feel like."
+        />
+        <link
+            rel="canonical"
+            href="https://riskr.bet/blog/variance-explained"
+        />
+        <link
+            rel="icon"
+            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23d4af37'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%230c0906' font-family='serif' font-weight='bold'%3E%24%3C/text%3E%3C/svg%3E"
+        />
+
+        <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3084591484596901"
+            crossorigin="anonymous"
+        ></script>
+
+        <style>
+            :root {
+                --bg: #0c0906;
+                --panel: #171108;
+                --edge: #3a2c12;
+                --gold: #d4af37;
+                --gold-hi: #f2d57c;
+                --ink: #ece3cf;
+                --muted: #9b8d6d;
+            }
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                background: var(--bg);
+                color: var(--ink);
+                font-family: "Manrope", system-ui, sans-serif;
+                line-height: 1.7;
+                padding: 0 16px 80px;
+            }
+            .wrap {
+                max-width: 720px;
+                margin: 0 auto;
+            }
+            header {
+                padding: 22px 0 18px;
+                border-bottom: 1px solid var(--edge);
+                margin-bottom: 30px;
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            .brand {
+                font-family: "Cinzel", serif;
+                font-weight: 900;
+                font-size: 20px;
+                letter-spacing: 0.14em;
+                color: var(--gold-hi);
+                text-decoration: none;
+            }
+            nav a {
+                color: var(--muted);
+                text-decoration: none;
+                margin-left: 16px;
+                font-size: 14px;
+            }
+            nav a:hover {
+                color: var(--gold-hi);
+            }
+            .eyebrow {
+                color: var(--gold);
+                font-size: 13px;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                margin-bottom: 10px;
+            }
+            h1 {
+                font-family: "Cinzel", serif;
+                color: var(--gold-hi);
+                font-size: 30px;
+                line-height: 1.25;
+                margin-bottom: 10px;
+            }
+            .meta {
+                color: var(--muted);
+                font-size: 14px;
+                margin-bottom: 26px;
+            }
+            h2 {
+                color: var(--gold);
+                font-size: 21px;
+                margin: 30px 0 10px;
+            }
+            p,
+            li {
+                color: var(--ink);
+                margin-bottom: 14px;
+            }
+            ul,
+            ol {
+                padding-left: 22px;
+            }
+            a {
+                color: var(--gold-hi);
+            }
+            strong {
+                color: var(--gold-hi);
+            }
+            .lede {
+                font-size: 18px;
+                color: var(--ink);
+            }
+            .callout {
+                background: var(--panel);
+                border: 1px solid var(--edge);
+                border-left: 3px solid var(--gold);
+                border-radius: 8px;
+                padding: 14px 18px;
+                margin: 22px 0;
+            }
+            .callout p:last-child {
+                margin-bottom: 0;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 18px 0;
+                font-size: 15px;
+            }
+            th,
+            td {
+                border: 1px solid var(--edge);
+                padding: 9px 12px;
+                text-align: left;
+            }
+            th {
+                color: var(--gold);
+                background: var(--panel);
+            }
+            .cta {
+                display: inline-block;
+                margin-top: 8px;
+                background: linear-gradient(
+                    180deg,
+                    var(--gold-hi),
+                    var(--gold)
+                );
+                color: #0c0906;
+                font-weight: 800;
+                text-decoration: none;
+                padding: 12px 26px;
+                border-radius: 10px;
+            }
+            .related {
+                margin-top: 40px;
+                padding-top: 22px;
+                border-top: 1px solid var(--edge);
+            }
+            .related h3 {
+                color: var(--gold);
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+            .related a {
+                display: block;
+                margin-bottom: 6px;
+            }
+            footer {
+                margin-top: 50px;
+                padding-top: 22px;
+                border-top: 1px solid var(--edge);
+                color: var(--muted);
+                font-size: 13px;
+            }
+            footer a {
+                color: var(--muted);
+                margin-right: 14px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrap">
+            <header>
+                <a class="brand" href="/">RISKR</a>
+                <nav>
+                    <a href="/">Play</a>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy</a>
+                    <a href="/terms">Terms</a>
+                    <a href="/contact">Contact</a>
+                </nav>
+            </header>
+
+            <article>
+                <div class="eyebrow">Game Theory</div>
+                <h1>Variance Explained</h1>
+                <p class="meta">By the Riskr team · 7 min read</p>
+
+                <p class="lede">
+                    Two players sit at the same game with the same odds. One walks
+                    away up big; the other busts. Nothing was rigged — that's just
+                    <strong>variance</strong>, the natural scatter of random
+                    outcomes around their average. Variance is why a losing game
+                    can pay you tonight, and also why it will take that money back
+                    if you keep playing. Understanding it is the difference
+                    between reading the short run correctly and fooling yourself.
+                </p>
+
+                <h2>Expected value vs. variance</h2>
+                <p>
+                    <strong>Expected value (EV)</strong> is the average result of
+                    a bet if you could repeat it forever — the center of gravity.
+                    <strong>Variance</strong> (and its square root,
+                    <strong>standard deviation</strong>) measures how far
+                    individual results tend to land <em>from</em> that center. EV
+                    tells you where things settle in the long run; variance tells
+                    you how wild the trip is along the way.
+                </p>
+                <p>
+                    They're independent. Two bets can share the exact same EV while
+                    one barely twitches and the other swings violently. A bet that
+                    pays a little, often, has low variance. A bet that pays a lot,
+                    rarely, has high variance — even if, on average, they're worth
+                    the same.
+                </p>
+
+                <h2>A coin-flip example</h2>
+                <p>
+                    Flip a fair coin 10 times. The expected number of heads is 5.
+                    But you won't always get 5 — that's variance. Here's roughly
+                    how 10 flips scatter:
+                </p>
+
+                <table>
+                    <tr>
+                        <th>Heads in 10 flips</th>
+                        <th>Roughly how likely</th>
+                    </tr>
+                    <tr>
+                        <td>Exactly 5 (the average)</td>
+                        <td>About 25%</td>
+                    </tr>
+                    <tr>
+                        <td>4 to 6</td>
+                        <td>About 66%</td>
+                    </tr>
+                    <tr>
+                        <td>3 or 7</td>
+                        <td>About 23%</td>
+                    </tr>
+                    <tr>
+                        <td>0–2 or 8–10 (extremes)</td>
+                        <td>About 11%</td>
+                    </tr>
+                </table>
+                <p>
+                    The average is 5, but landing exactly on it is the exception,
+                    not the rule. Most sessions miss the mean in one direction or
+                    the other. That spread <em>is</em> variance, and it's why no
+                    short run ever looks like the textbook average.
+                </p>
+
+                <div class="callout">
+                    <p>
+                        <strong>Key idea:</strong> expected value is the
+                        destination; variance is how far you wander off the road
+                        getting there. In the short run, variance is louder than EV
+                        — which is exactly why short runs lie.
+                    </p>
+                </div>
+
+                <h2>The law of large numbers</h2>
+                <p>
+                    Here's the twist that decides everything. Variance dominates a
+                    small number of bets, but the <strong>law of large
+                    numbers</strong> says the more you play, the closer your actual
+                    results crawl toward the expected value. Ten flips might give
+                    you 7 heads. Ten thousand flips will sit almost dead on 50%.
+                    The swings don't disappear — but they shrink relative to the
+                    growing pile of bets, until the average shines through.
+                </p>
+                <p>
+                    For a casino game, this is the house's quiet superpower. The
+                    operator isn't betting once; it's banking millions of rounds,
+                    deep in long-run territory where variance washes out and the
+                    edge is all that's left. You, betting a few dozen times, are
+                    stuck in the noisy short run where anything can happen.
+                </p>
+
+                <h2>High variance vs. low variance</h2>
+                <p>
+                    Games and bets sit on a spectrum. Low-variance bets — even-money
+                    roulette colors, conservative blackjack, cashing out crash at
+                    1.2× — produce small, frequent results that hug the average.
+                    High-variance bets — slots with rare jackpots, a single number
+                    in roulette, holding crash out to 20× — produce long droughts
+                    punctuated by occasional spikes.
+                </p>
+
+                <table>
+                    <tr>
+                        <th>Style</th>
+                        <th>Example</th>
+                        <th>What it feels like</th>
+                    </tr>
+                    <tr>
+                        <td>Low variance</td>
+                        <td>Even-money bet, crash at 1.2×</td>
+                        <td>Steady, gentle drift</td>
+                    </tr>
+                    <tr>
+                        <td>High variance</td>
+                        <td>Slots jackpot, crash at 20×</td>
+                        <td>Dry spells, sudden spikes</td>
+                    </tr>
+                </table>
+
+                <h2>Why variance lets you win — then takes it back</h2>
+                <p>
+                    This is the whole story in one paragraph. A casino game has a
+                    negative edge, so its expected value is below your stake. But
+                    variance scatters real outcomes around that average — and some
+                    of that scatter lands above the line. That's a winning session:
+                    not a beaten system, just variance breaking your way for a
+                    while. The trouble is that the same variance is symmetric, and
+                    the law of large numbers is patient. Keep playing and your
+                    results march back toward the (losing) expected value. High
+                    variance can make the good nights bigger and the wait longer,
+                    but it can't change the direction the average points. It buys
+                    you hope, not an edge.
+                </p>
+
+                <div class="callout">
+                    <p>
+                        On Riskr you can watch variance in the open: stack a pile
+                        of even-money bets and see your balance drift, or chase a
+                        50× crash and feel the long droughts and sudden spikes —
+                        all with fake money, where the only thing variance can win
+                        or lose for you is a spot on the leaderboard.
+                    </p>
+                </div>
+
+                <a class="cta" href="/">Play Riskr — risk-free</a>
+
+                <div class="related">
+                    <h3>Keep reading</h3>
+                    <a href="/blog/bankroll-management"
+                        >Bankroll Management →</a
+                    >
+                    <a href="/blog/why-most-players-go-broke"
+                        >Why Most Players Go Broke →</a
+                    >
+                    <a href="/blog/house-edge-explained">House Edge Explained →</a>
+                </div>
+            </article>
+
+            <footer>
+                <div>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms &amp; Disclaimer</a>
+                    <a href="/contact">Contact</a>
+                </div>
+                <p style="margin-top: 10px">
+                    This article is for education and entertainment only and is
+                    not financial, betting, or investment advice. Riskr is a
+                    free, fake-money game. No real money, no gambling, no prizes.
+                    18+.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>

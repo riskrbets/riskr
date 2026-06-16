@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Risk vs. Reward — Riskr Blog</title>
+        <meta
+            name="description"
+            content="A plain-English look at the risk-reward trade-off: why bigger payouts come with lower odds, why a high multiplier isn't 'good' unless the probability justifies it, and how to think in risk-adjusted terms."
+        />
+        <link
+            rel="canonical"
+            href="https://riskr.bet/blog/risk-vs-reward"
+        />
+        <link
+            rel="icon"
+            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23d4af37'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%230c0906' font-family='serif' font-weight='bold'%3E%24%3C/text%3E%3C/svg%3E"
+        />
+
+        <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3084591484596901"
+            crossorigin="anonymous"
+        ></script>
+
+        <style>
+            :root {
+                --bg: #0c0906;
+                --panel: #171108;
+                --edge: #3a2c12;
+                --gold: #d4af37;
+                --gold-hi: #f2d57c;
+                --ink: #ece3cf;
+                --muted: #9b8d6d;
+            }
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                background: var(--bg);
+                color: var(--ink);
+                font-family: "Manrope", system-ui, sans-serif;
+                line-height: 1.7;
+                padding: 0 16px 80px;
+            }
+            .wrap {
+                max-width: 720px;
+                margin: 0 auto;
+            }
+            header {
+                padding: 22px 0 18px;
+                border-bottom: 1px solid var(--edge);
+                margin-bottom: 30px;
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            .brand {
+                font-family: "Cinzel", serif;
+                font-weight: 900;
+                font-size: 20px;
+                letter-spacing: 0.14em;
+                color: var(--gold-hi);
+                text-decoration: none;
+            }
+            nav a {
+                color: var(--muted);
+                text-decoration: none;
+                margin-left: 16px;
+                font-size: 14px;
+            }
+            nav a:hover {
+                color: var(--gold-hi);
+            }
+            .eyebrow {
+                color: var(--gold);
+                font-size: 13px;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                margin-bottom: 10px;
+            }
+            h1 {
+                font-family: "Cinzel", serif;
+                color: var(--gold-hi);
+                font-size: 30px;
+                line-height: 1.25;
+                margin-bottom: 10px;
+            }
+            .meta {
+                color: var(--muted);
+                font-size: 14px;
+                margin-bottom: 26px;
+            }
+            h2 {
+                color: var(--gold);
+                font-size: 21px;
+                margin: 30px 0 10px;
+            }
+            p,
+            li {
+                color: var(--ink);
+                margin-bottom: 14px;
+            }
+            ul,
+            ol {
+                padding-left: 22px;
+            }
+            a {
+                color: var(--gold-hi);
+            }
+            strong {
+                color: var(--gold-hi);
+            }
+            .lede {
+                font-size: 18px;
+                color: var(--ink);
+            }
+            .callout {
+                background: var(--panel);
+                border: 1px solid var(--edge);
+                border-left: 3px solid var(--gold);
+                border-radius: 8px;
+                padding: 14px 18px;
+                margin: 22px 0;
+            }
+            .callout p:last-child {
+                margin-bottom: 0;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 18px 0;
+                font-size: 15px;
+            }
+            th,
+            td {
+                border: 1px solid var(--edge);
+                padding: 9px 12px;
+                text-align: left;
+            }
+            th {
+                color: var(--gold);
+                background: var(--panel);
+            }
+            .cta {
+                display: inline-block;
+                margin-top: 8px;
+                background: linear-gradient(
+                    180deg,
+                    var(--gold-hi),
+                    var(--gold)
+                );
+                color: #0c0906;
+                font-weight: 800;
+                text-decoration: none;
+                padding: 12px 26px;
+                border-radius: 10px;
+            }
+            .related {
+                margin-top: 40px;
+                padding-top: 22px;
+                border-top: 1px solid var(--edge);
+            }
+            .related h3 {
+                color: var(--gold);
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+            .related a {
+                display: block;
+                margin-bottom: 6px;
+            }
+            footer {
+                margin-top: 50px;
+                padding-top: 22px;
+                border-top: 1px solid var(--edge);
+                color: var(--muted);
+                font-size: 13px;
+            }
+            footer a {
+                color: var(--muted);
+                margin-right: 14px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrap">
+            <header>
+                <a class="brand" href="/">RISKR</a>
+                <nav>
+                    <a href="/">Play</a>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy</a>
+                    <a href="/terms">Terms</a>
+                    <a href="/contact">Contact</a>
+                </nav>
+            </header>
+
+            <article>
+                <div class="eyebrow">Game Theory</div>
+                <h1>Risk vs. Reward</h1>
+                <p class="meta">By the Riskr team · 6 min read</p>
+
+                <p class="lede">
+                    "High risk, high reward" is one of those phrases everyone
+                    repeats and almost nobody examines. It sounds like a deal:
+                    take a bigger chance, get a bigger prize. But the phrase
+                    hides the most important word — <em>probability</em>. A huge
+                    payout isn't generous if the odds of hitting it are tiny
+                    enough to cancel it out. Once you learn to weigh reward
+                    against the chance of getting it, the flashiest bets stop
+                    looking special.
+                </p>
+
+                <h2>The trade-off is the whole game</h2>
+                <p>
+                    In any game of chance, payoff and probability move in
+                    opposite directions, and they're tied together for a reason.
+                    The bigger the prize a bet offers, the less often that bet is
+                    designed to land. This isn't bad luck — it's arithmetic. If a
+                    rare event paid out as if it were common, the operator would
+                    lose money, so the payout is scaled down to match how seldom
+                    it happens. The "reward" you're being offered is almost
+                    always priced to reflect the risk you're taking.
+                </p>
+                <p>
+                    That's why you can't judge a bet by its payout alone.
+                    "Win 36×!" sounds thrilling until you notice the thing that
+                    pays 36× lands about 1 time in 37. The reward looks big
+                    precisely because the chance is small.
+                </p>
+
+                <h2>A high payout isn't "good" by itself</h2>
+                <p>
+                    Compare two bets on a single number versus an even-money
+                    color bet on roulette. One screams a giant number at you; the
+                    other looks dull. But once you fold in probability, they're
+                    nearly identical bargains — both tilted the same small amount
+                    toward the house.
+                </p>
+
+                <table>
+                    <tr>
+                        <th>Roulette bet</th>
+                        <th>Payout</th>
+                        <th>Chance to win</th>
+                        <th>Value of a $1 bet</th>
+                    </tr>
+                    <tr>
+                        <td>Red / Black</td>
+                        <td>2× (even money)</td>
+                        <td>18 in 37</td>
+                        <td>about $0.973</td>
+                    </tr>
+                    <tr>
+                        <td>Single number</td>
+                        <td>36×</td>
+                        <td>1 in 37</td>
+                        <td>about $0.973</td>
+                    </tr>
+                </table>
+                <p>
+                    Same expected value, wildly different feel. The single-number
+                    bet's enormous payout is not a better deal — it's the
+                    <em>same</em> deal wearing a louder costume. The only real
+                    difference is how violently your balance swings while you find
+                    that out.
+                </p>
+
+                <div class="callout">
+                    <p>
+                        <strong>Key idea:</strong> a payout is only "good" if the
+                        probability justifies it. Reward without its odds attached
+                        is just a number. Always read them together.
+                    </p>
+                </div>
+
+                <h2>Risk-adjusted thinking</h2>
+                <p>
+                    Smart risk-takers — investors, poker players, anyone who
+                    survives a long time around variance — don't ask "how much
+                    could I win?" They ask "what's this worth once I weight it by
+                    the chance of winning, and how much pain comes attached?" That
+                    second question is the <strong>risk-adjusted</strong> view. A
+                    bet that could 10× your money but loses 90% of the time might
+                    have the exact same average value as a steady even-money bet,
+                    yet it will throw you through far wilder ups and downs.
+                </p>
+                <p>
+                    The crash game on Riskr makes this visible. Pick a cash-out
+                    target and you're choosing your spot on the risk-reward curve:
+                </p>
+
+                <table>
+                    <tr>
+                        <th>Cash-out target</th>
+                        <th>Roughly how often it hits</th>
+                        <th>What you're really choosing</th>
+                    </tr>
+                    <tr>
+                        <td>1.5×</td>
+                        <td>About 2 in 3 rounds</td>
+                        <td>Frequent small wins, gentle swings</td>
+                    </tr>
+                    <tr>
+                        <td>2×</td>
+                        <td>About 1 in 2 rounds</td>
+                        <td>A balanced middle</td>
+                    </tr>
+                    <tr>
+                        <td>10×</td>
+                        <td>About 1 in 10 rounds</td>
+                        <td>Rare big wins, brutal dry spells</td>
+                    </tr>
+                </table>
+                <p>
+                    Notice that no row is secretly better. Higher targets pay more
+                    but hit less, in almost exact proportion. You're not picking a
+                    smarter bet — you're picking how bumpy you want the ride to be.
+                </p>
+
+                <h2>Volatility is the price of upside</h2>
+                <p>
+                    There's no free lunch in chasing big payouts. The price you
+                    pay for the <em>chance</em> at a 10× win is volatility — long,
+                    morale-sapping stretches where nothing lands. That swinginess
+                    is called variance, and it's not a bug in long-shot bets; it
+                    <em>is</em> the long-shot bet. If you want the occasional
+                    fireworks, you accept the quiet, losing nights in between as
+                    the cost of admission.
+                </p>
+                <p>
+                    And here's the catch that ties it all together: because every
+                    real casino game carries a small house edge, no point on the
+                    risk-reward curve is a winning point. Choosing more risk
+                    doesn't buy you a better expected outcome — it only buys you
+                    bigger swings around a number that already leans against you.
+                </p>
+
+                <div class="callout">
+                    <p>
+                        On Riskr you can feel the trade-off with zero downside: the
+                        money is fake, so chase a 50× crash or grind even-money
+                        bets and watch what variance does to your balance. The only
+                        thing at stake is your place on the leaderboard.
+                    </p>
+                </div>
+
+                <a class="cta" href="/">Play Riskr — risk-free</a>
+
+                <div class="related">
+                    <h3>Keep reading</h3>
+                    <a href="/blog/expected-value-in-crash"
+                        >Expected Value in Crash →</a
+                    >
+                    <a href="/blog/kelly-criterion">The Kelly Criterion →</a>
+                    <a href="/blog/variance-explained">Variance Explained →</a>
+                </div>
+            </article>
+
+            <footer>
+                <div>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms &amp; Disclaimer</a>
+                    <a href="/contact">Contact</a>
+                </div>
+                <p style="margin-top: 10px">
+                    This article is for education and entertainment only and is
+                    not financial, betting, or investment advice. Riskr is a
+                    free, fake-money game. No real money, no gambling, no prizes.
+                    18+.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>

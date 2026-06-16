@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>The Law of Large Numbers — Riskr Blog</title>
+        <meta
+            name="description"
+            content="A plain-English explanation of the law of large numbers: why observed averages converge to expected value over many trials, how it differs from the gambler's fallacy, and why it guarantees the house wins over volume."
+        />
+        <link
+            rel="canonical"
+            href="https://riskr.bet/blog/the-law-of-large-numbers"
+        />
+        <link
+            rel="icon"
+            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23d4af37'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%230c0906' font-family='serif' font-weight='bold'%3E%24%3C/text%3E%3C/svg%3E"
+        />
+
+        <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3084591484596901"
+            crossorigin="anonymous"
+        ></script>
+
+        <style>
+            :root {
+                --bg: #0c0906;
+                --panel: #171108;
+                --edge: #3a2c12;
+                --gold: #d4af37;
+                --gold-hi: #f2d57c;
+                --ink: #ece3cf;
+                --muted: #9b8d6d;
+            }
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                background: var(--bg);
+                color: var(--ink);
+                font-family: "Manrope", system-ui, sans-serif;
+                line-height: 1.7;
+                padding: 0 16px 80px;
+            }
+            .wrap {
+                max-width: 720px;
+                margin: 0 auto;
+            }
+            header {
+                padding: 22px 0 18px;
+                border-bottom: 1px solid var(--edge);
+                margin-bottom: 30px;
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            .brand {
+                font-family: "Cinzel", serif;
+                font-weight: 900;
+                font-size: 20px;
+                letter-spacing: 0.14em;
+                color: var(--gold-hi);
+                text-decoration: none;
+            }
+            nav a {
+                color: var(--muted);
+                text-decoration: none;
+                margin-left: 16px;
+                font-size: 14px;
+            }
+            nav a:hover {
+                color: var(--gold-hi);
+            }
+            .eyebrow {
+                color: var(--gold);
+                font-size: 13px;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                margin-bottom: 10px;
+            }
+            h1 {
+                font-family: "Cinzel", serif;
+                color: var(--gold-hi);
+                font-size: 30px;
+                line-height: 1.25;
+                margin-bottom: 10px;
+            }
+            .meta {
+                color: var(--muted);
+                font-size: 14px;
+                margin-bottom: 26px;
+            }
+            h2 {
+                color: var(--gold);
+                font-size: 21px;
+                margin: 30px 0 10px;
+            }
+            p,
+            li {
+                color: var(--ink);
+                margin-bottom: 14px;
+            }
+            ul,
+            ol {
+                padding-left: 22px;
+            }
+            a {
+                color: var(--gold-hi);
+            }
+            strong {
+                color: var(--gold-hi);
+            }
+            .lede {
+                font-size: 18px;
+                color: var(--ink);
+            }
+            .callout {
+                background: var(--panel);
+                border: 1px solid var(--edge);
+                border-left: 3px solid var(--gold);
+                border-radius: 8px;
+                padding: 14px 18px;
+                margin: 22px 0;
+            }
+            .callout p:last-child {
+                margin-bottom: 0;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 18px 0;
+                font-size: 15px;
+            }
+            th,
+            td {
+                border: 1px solid var(--edge);
+                padding: 9px 12px;
+                text-align: left;
+            }
+            th {
+                color: var(--gold);
+                background: var(--panel);
+            }
+            .cta {
+                display: inline-block;
+                margin-top: 8px;
+                background: linear-gradient(
+                    180deg,
+                    var(--gold-hi),
+                    var(--gold)
+                );
+                color: #0c0906;
+                font-weight: 800;
+                text-decoration: none;
+                padding: 12px 26px;
+                border-radius: 10px;
+            }
+            .related {
+                margin-top: 40px;
+                padding-top: 22px;
+                border-top: 1px solid var(--edge);
+            }
+            .related h3 {
+                color: var(--gold);
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+            .related a {
+                display: block;
+                margin-bottom: 6px;
+            }
+            footer {
+                margin-top: 50px;
+                padding-top: 22px;
+                border-top: 1px solid var(--edge);
+                color: var(--muted);
+                font-size: 13px;
+            }
+            footer a {
+                color: var(--muted);
+                margin-right: 14px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrap">
+            <header>
+                <a class="brand" href="/">RISKR</a>
+                <nav>
+                    <a href="/">Play</a>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy</a>
+                    <a href="/terms">Terms</a>
+                    <a href="/contact">Contact</a>
+                </nav>
+            </header>
+
+            <article>
+                <div class="eyebrow">Probability &amp; Math</div>
+                <h1>The Law of Large Numbers</h1>
+                <p class="meta">By the Riskr team · 7 min read</p>
+
+                <p class="lede">
+                    The law of large numbers is the quiet engine behind every
+                    casino on earth. It's a simple, ironclad piece of mathematics:
+                    the more times you repeat a random trial, the closer the
+                    observed average creeps to the true expected value. It's also
+                    the law that people most often confuse with its evil twin —
+                    the gambler's fallacy. Getting the two straight is the
+                    difference between understanding gambling and being fooled by
+                    it.
+                </p>
+
+                <h2>What the law actually says</h2>
+                <p>
+                    Flip a fair coin once and you get either 0% or 100% heads —
+                    nowhere near the "true" 50%. Flip it ten times and you might
+                    get 7 heads, or 70%. Flip it ten thousand times and you'll
+                    land remarkably close to 50%. The law of large numbers says
+                    that as the number of trials grows, the
+                    <strong>average result converges to the expected value</strong>.
+                    Not eventually balances out — converges. The proportion gets
+                    closer and closer to the true probability, and stays there.
+                </p>
+
+                <table>
+                    <tr>
+                        <th>Coin flips</th>
+                        <th>Heads (typical)</th>
+                        <th>Observed % heads</th>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>7</td>
+                        <td>70%</td>
+                    </tr>
+                    <tr>
+                        <td>100</td>
+                        <td>54</td>
+                        <td>54%</td>
+                    </tr>
+                    <tr>
+                        <td>1,000</td>
+                        <td>517</td>
+                        <td>51.7%</td>
+                    </tr>
+                    <tr>
+                        <td>100,000</td>
+                        <td>50,140</td>
+                        <td>50.14%</td>
+                    </tr>
+                </table>
+                <p>
+                    Look at the last column. The percentage marches steadily
+                    toward 50%. But here's a subtlety most people miss: the
+                    <em>raw count</em> can drift further from "perfectly even" even
+                    as the percentage tightens. After 100,000 flips you might be
+                    140 heads "ahead" — a bigger gap than after 10 flips — yet as
+                    a fraction it's now a rounding error. The average converges;
+                    the running total need not.
+                </p>
+
+                <h2>Why this is NOT the "law of averages"</h2>
+                <p>
+                    The gambler's fallacy — sometimes called the misnamed "law of
+                    averages" — claims that if a coin has come up heads five times
+                    in a row, tails is now "due." This is flatly wrong. The coin
+                    has no memory. The chance of tails on the next flip is still
+                    exactly 50%, regardless of history. Past results do not reach
+                    forward and correct the future.
+                </p>
+                <p>
+                    So how does the average ever converge if the universe never
+                    "evens things out"? The answer is beautiful: it converges by
+                    <strong>dilution, not correction</strong>. That early run of
+                    five heads doesn't get cancelled by a future run of tails — it
+                    just gets swamped by the sheer volume of later flips, each
+                    sitting near 50%. The imbalance isn't erased; it's drowned out.
+                </p>
+
+                <div class="callout">
+                    <p>
+                        <strong>Key idea:</strong> the law of large numbers does
+                        not say a streak will reverse. It says a streak becomes
+                        insignificant once you average it against a flood of
+                        later, independent trials. Nothing is ever "due."
+                    </p>
+                </div>
+
+                <h2>Why the house always wins over volume</h2>
+                <p>
+                    Now apply this to a casino. Every game is built with a small
+                    negative expected value for the player — the house edge.
+                    Suppose a game has a 2% edge, meaning the expected return is
+                    $0.98 per $1 wagered. For a single player on a single night,
+                    that 2% is almost invisible; luck dominates, and plenty of
+                    players go home winners.
+                </p>
+                <p>
+                    But the casino isn't a single player. It books millions of
+                    bets a day across thousands of players. At that scale, the law
+                    of large numbers takes over completely: the casino's actual
+                    return locks onto that 2% edge with near-perfect reliability.
+                    Individual sessions stay wild and unpredictable — that
+                    unpredictability is exactly what keeps the games fun — but the
+                    aggregate is as steady as a utility bill.
+                </p>
+                <p>
+                    This is the deep asymmetry of gambling. The player experiences
+                    the small-sample world, where anything can happen in a night.
+                    The house lives in the large-sample world, where the edge is
+                    destiny. The same math that makes your evening exciting makes
+                    the operator's revenue boring and certain.
+                </p>
+
+                <h2>The takeaway for any player</h2>
+                <p>
+                    No betting system can beat a negative expected value, because
+                    no system can change the law of large numbers. Doubling after
+                    losses, chasing streaks, switching tables — these just
+                    rearrange the order of bets. The more you play, the more
+                    tightly your results hug the house's edge. The only way to
+                    avoid the long-run grind is to not be in it for the long run
+                    at all.
+                </p>
+
+                <div class="callout">
+                    <p>
+                        On Riskr the money is fake, so you can play thousands of
+                        rounds and watch the law of large numbers pull your
+                        results toward the math — without it costing you a thing.
+                        The only stake is your spot on the leaderboard.
+                    </p>
+                </div>
+
+                <a class="cta" href="/">Play Riskr — risk-free</a>
+
+                <div class="related">
+                    <h3>Keep reading</h3>
+                    <a href="/blog/variance-explained">Variance Explained →</a>
+                    <a href="/blog/gamblers-fallacy-explained"
+                        >The Gambler's Fallacy Explained →</a
+                    >
+                    <a href="/blog/why-most-players-go-broke"
+                        >Why Most Players Go Broke →</a
+                    >
+                </div>
+            </article>
+
+            <footer>
+                <div>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms &amp; Disclaimer</a>
+                    <a href="/contact">Contact</a>
+                </div>
+                <p style="margin-top: 10px">
+                    This article is for education and entertainment only and is
+                    not financial, betting, or investment advice. Riskr is a
+                    free, fake-money game. No real money, no gambling, no prizes.
+                    18+.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>

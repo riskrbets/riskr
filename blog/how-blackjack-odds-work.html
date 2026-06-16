@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>How Blackjack Odds Work — Riskr Blog</title>
+        <meta
+            name="description"
+            content="Why blackjack has one of the lowest house edges in the casino: fixed dealer rules, the player's edge from choices, the dealer's edge from acting last, basic strategy, and how rules like 3:2 vs 6:5 shift the odds."
+        />
+        <link
+            rel="canonical"
+            href="https://riskr.bet/blog/how-blackjack-odds-work"
+        />
+        <link
+            rel="icon"
+            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23d4af37'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%230c0906' font-family='serif' font-weight='bold'%3E%24%3C/text%3E%3C/svg%3E"
+        />
+
+        <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3084591484596901"
+            crossorigin="anonymous"
+        ></script>
+
+        <style>
+            :root {
+                --bg: #0c0906;
+                --panel: #171108;
+                --edge: #3a2c12;
+                --gold: #d4af37;
+                --gold-hi: #f2d57c;
+                --ink: #ece3cf;
+                --muted: #9b8d6d;
+            }
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                background: var(--bg);
+                color: var(--ink);
+                font-family: "Manrope", system-ui, sans-serif;
+                line-height: 1.7;
+                padding: 0 16px 80px;
+            }
+            .wrap {
+                max-width: 720px;
+                margin: 0 auto;
+            }
+            header {
+                padding: 22px 0 18px;
+                border-bottom: 1px solid var(--edge);
+                margin-bottom: 30px;
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            .brand {
+                font-family: "Cinzel", serif;
+                font-weight: 900;
+                font-size: 20px;
+                letter-spacing: 0.14em;
+                color: var(--gold-hi);
+                text-decoration: none;
+            }
+            nav a {
+                color: var(--muted);
+                text-decoration: none;
+                margin-left: 16px;
+                font-size: 14px;
+            }
+            nav a:hover {
+                color: var(--gold-hi);
+            }
+            .eyebrow {
+                color: var(--gold);
+                font-size: 13px;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                margin-bottom: 10px;
+            }
+            h1 {
+                font-family: "Cinzel", serif;
+                color: var(--gold-hi);
+                font-size: 30px;
+                line-height: 1.25;
+                margin-bottom: 10px;
+            }
+            .meta {
+                color: var(--muted);
+                font-size: 14px;
+                margin-bottom: 26px;
+            }
+            h2 {
+                color: var(--gold);
+                font-size: 21px;
+                margin: 30px 0 10px;
+            }
+            p,
+            li {
+                color: var(--ink);
+                margin-bottom: 14px;
+            }
+            ul,
+            ol {
+                padding-left: 22px;
+            }
+            a {
+                color: var(--gold-hi);
+            }
+            strong {
+                color: var(--gold-hi);
+            }
+            .lede {
+                font-size: 18px;
+                color: var(--ink);
+            }
+            .callout {
+                background: var(--panel);
+                border: 1px solid var(--edge);
+                border-left: 3px solid var(--gold);
+                border-radius: 8px;
+                padding: 14px 18px;
+                margin: 22px 0;
+            }
+            .callout p:last-child {
+                margin-bottom: 0;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 18px 0;
+                font-size: 15px;
+            }
+            th,
+            td {
+                border: 1px solid var(--edge);
+                padding: 9px 12px;
+                text-align: left;
+            }
+            th {
+                color: var(--gold);
+                background: var(--panel);
+            }
+            .cta {
+                display: inline-block;
+                margin-top: 8px;
+                background: linear-gradient(
+                    180deg,
+                    var(--gold-hi),
+                    var(--gold)
+                );
+                color: #0c0906;
+                font-weight: 800;
+                text-decoration: none;
+                padding: 12px 26px;
+                border-radius: 10px;
+            }
+            .related {
+                margin-top: 40px;
+                padding-top: 22px;
+                border-top: 1px solid var(--edge);
+            }
+            .related h3 {
+                color: var(--gold);
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+            .related a {
+                display: block;
+                margin-bottom: 6px;
+            }
+            footer {
+                margin-top: 50px;
+                padding-top: 22px;
+                border-top: 1px solid var(--edge);
+                color: var(--muted);
+                font-size: 13px;
+            }
+            footer a {
+                color: var(--muted);
+                margin-right: 14px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrap">
+            <header>
+                <a class="brand" href="/">RISKR</a>
+                <nav>
+                    <a href="/">Play</a>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy</a>
+                    <a href="/terms">Terms</a>
+                    <a href="/contact">Contact</a>
+                </nav>
+            </header>
+
+            <article>
+                <div class="eyebrow">Educational</div>
+                <h1>How Blackjack Odds Work</h1>
+                <p class="meta">By the Riskr team · 7 min read</p>
+
+                <p class="lede">
+                    Blackjack is the rare casino game where the house edge can drop
+                    below 1% — a fraction of what roulette or slots take. That
+                    doesn't make it a winning game, but it makes it the
+                    <em>least losing</em> one on the floor, and the reason is
+                    entirely structural. The dealer plays a robot's script, while
+                    you get real choices. Understanding both sides explains exactly
+                    where the edge comes from and how it moves.
+                </p>
+
+                <h2>The dealer plays a fixed script</h2>
+                <p>
+                    Unlike you, the dealer makes no decisions. House rules force a
+                    rigid procedure: <strong>hit on any total of 16 or
+                    below, stand on 17 or above.</strong> No reading the table, no
+                    hunches, no adjusting to your hand. The dealer is a machine
+                    executing the same loop every time.
+                </p>
+                <p>
+                    That predictability is the player's opening. Because you know
+                    exactly what the dealer will do, every one of your decisions can
+                    be optimized against a known opponent. In most casino games the
+                    house's behavior is irrelevant — the wheel doesn't care about
+                    your bet. In blackjack, the dealer's script is public, and you
+                    get to respond to it.
+                </p>
+
+                <h2>Your edge: you get to choose</h2>
+                <p>
+                    The player has options the dealer doesn't, and each one is a
+                    lever for tilting a hand in your favor:
+                </p>
+                <ul>
+                    <li>
+                        <strong>Hit or stand</strong> — take another card or hold,
+                        based on your total versus the dealer's up-card.
+                    </li>
+                    <li>
+                        <strong>Double down</strong> — double your bet for exactly
+                        one more card, used when the odds strongly favor you.
+                    </li>
+                    <li>
+                        <strong>Split</strong> — turn a pair into two separate
+                        hands, each with its own bet and chance to win.
+                    </li>
+                    <li>
+                        <strong>A 3:2 payout on a natural blackjack</strong> — an
+                        ace plus a ten-value card pays you 1.5× your bet, a bonus
+                        the dealer never receives.
+                    </li>
+                </ul>
+                <p>
+                    These choices, used correctly, are worth a great deal. They're
+                    the only reason blackjack's edge is small instead of brutal.
+                </p>
+
+                <h2>The dealer's edge: acting last</h2>
+                <p>
+                    So why does the house still win on average? One quiet, decisive
+                    advantage: <strong>the dealer acts last.</strong> You must
+                    complete your hand first, and if you bust — go over 21 — you
+                    lose <em>immediately</em>, before the dealer draws a single
+                    card. If you both bust on the same round, you still lose. The
+                    dealer's bust never saves you, because yours already happened.
+                </p>
+                <p>
+                    That "player busts first" rule is the entire house edge in
+                    blackjack. Strip it away and the player would actually be
+                    favored. It's why standing on stiff hands against a strong
+                    dealer up-card is so often correct: not because you expect to
+                    win by standing, but because drawing risks the immediate,
+                    fatal bust the dealer doesn't have to fear until your turn is
+                    over.
+                </p>
+
+                <div class="callout">
+                    <p>
+                        <strong>Key idea:</strong> the player's choices push the
+                        edge down; the dealer acting last pushes it back up. Where
+                        those two forces balance is the house edge — and with good
+                        play it lands under 1%.
+                    </p>
+                </div>
+
+                <h2>Basic strategy: the math, memorized</h2>
+                <p>
+                    <strong>Basic strategy</strong> is the single best move for
+                    every combination of your hand and the dealer's up-card,
+                    computed from the probabilities. It's not intuition — it's a
+                    fixed chart that someone solved with math, telling you precisely
+                    when to hit, stand, double, or split.
+                </p>
+                <p>
+                    Following it perfectly is what drives the house edge down toward
+                    that famous sub-1% figure. Deviate — stand when you should hit,
+                    skip a double you should take — and the edge climbs. A typical
+                    player going on feel hands the house several percent. A
+                    basic-strategy player hands over a small fraction of one
+                    percent. Same game, same rules, very different cost, decided
+                    entirely by how the player's choices are made.
+                </p>
+
+                <h2>How the rules move the edge</h2>
+                <p>
+                    Not all blackjack tables are equal. The exact rules shift the
+                    edge meaningfully, and the most expensive one is the blackjack
+                    payout. A table paying <strong>6:5</strong> instead of the
+                    standard <strong>3:2</strong> on a natural looks like a tiny
+                    change but is one of the worst bets on the floor.
+                </p>
+                <table>
+                    <tr>
+                        <th>Rule change</th>
+                        <th>Direction</th>
+                        <th>Rough effect on house edge</th>
+                    </tr>
+                    <tr>
+                        <td>Blackjack pays 6:5 instead of 3:2</td>
+                        <td>Worse for player</td>
+                        <td>+1.4%</td>
+                    </tr>
+                    <tr>
+                        <td>Dealer hits soft 17 (instead of standing)</td>
+                        <td>Worse for player</td>
+                        <td>+0.2%</td>
+                    </tr>
+                    <tr>
+                        <td>More decks (single deck → six or eight)</td>
+                        <td>Worse for player</td>
+                        <td>+0.5%</td>
+                    </tr>
+                    <tr>
+                        <td>Double allowed after splitting</td>
+                        <td>Better for player</td>
+                        <td>−0.15%</td>
+                    </tr>
+                    <tr>
+                        <td>Late surrender offered</td>
+                        <td>Better for player</td>
+                        <td>−0.1%</td>
+                    </tr>
+                </table>
+                <p>
+                    Read across that table and the lesson is clear: a 3:2,
+                    fewer-deck game where the dealer stands on soft 17 might leave
+                    an edge near 0.5%, while a 6:5, eight-deck, hits-soft-17 table
+                    can push it past 2% — four times worse for the identical-looking
+                    game. The cards are the same; the fine print is where the money
+                    quietly changes hands.
+                </p>
+
+                <div class="callout">
+                    <p>
+                        The Blackjack table on Riskr runs the standard dealer rules,
+                        so you can drill basic strategy and watch "player busts
+                        first" play out — with fake chips and a leaderboard spot as
+                        the only stakes. It's a free way to learn the moves before
+                        they'd ever cost anything.
+                    </p>
+                </div>
+
+                <a class="cta" href="/">Try the Blackjack table on Riskr</a>
+
+                <div class="related">
+                    <h3>Keep reading</h3>
+                    <a href="/blog/house-edge-explained">House Edge Explained →</a>
+                    <a href="/blog/understanding-rtp"
+                        >Understanding RTP (Return to Player) →</a
+                    >
+                    <a href="/blog/probability-behind-roulette"
+                        >The Probability Behind Roulette →</a
+                    >
+                </div>
+            </article>
+
+            <footer>
+                <div>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms &amp; Disclaimer</a>
+                    <a href="/contact">Contact</a>
+                </div>
+                <p style="margin-top: 10px">
+                    This article is for education and entertainment only and is
+                    not financial, betting, or investment advice. Riskr is a
+                    free, fake-money game. No real money, no gambling, no prizes.
+                    18+.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>

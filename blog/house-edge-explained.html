@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>House Edge Explained — Riskr Blog</title>
+        <meta
+            name="description"
+            content="The house edge is a small percentage skim on every bet. We define edge and RTP, compare typical edges across casino games, and show how a tiny skim compounds."
+        />
+        <link
+            rel="canonical"
+            href="https://riskr.bet/blog/house-edge-explained"
+        />
+        <link
+            rel="icon"
+            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23d4af37'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%230c0906' font-family='serif' font-weight='bold'%3E%24%3C/text%3E%3C/svg%3E"
+        />
+
+        <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3084591484596901"
+            crossorigin="anonymous"
+        ></script>
+
+        <style>
+            :root {
+                --bg: #0c0906;
+                --panel: #171108;
+                --edge: #3a2c12;
+                --gold: #d4af37;
+                --gold-hi: #f2d57c;
+                --ink: #ece3cf;
+                --muted: #9b8d6d;
+            }
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                background: var(--bg);
+                color: var(--ink);
+                font-family: "Manrope", system-ui, sans-serif;
+                line-height: 1.7;
+                padding: 0 16px 80px;
+            }
+            .wrap {
+                max-width: 720px;
+                margin: 0 auto;
+            }
+            header {
+                padding: 22px 0 18px;
+                border-bottom: 1px solid var(--edge);
+                margin-bottom: 30px;
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            .brand {
+                font-family: "Cinzel", serif;
+                font-weight: 900;
+                font-size: 20px;
+                letter-spacing: 0.14em;
+                color: var(--gold-hi);
+                text-decoration: none;
+            }
+            nav a {
+                color: var(--muted);
+                text-decoration: none;
+                margin-left: 16px;
+                font-size: 14px;
+            }
+            nav a:hover {
+                color: var(--gold-hi);
+            }
+            .eyebrow {
+                color: var(--gold);
+                font-size: 13px;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                margin-bottom: 10px;
+            }
+            h1 {
+                font-family: "Cinzel", serif;
+                color: var(--gold-hi);
+                font-size: 30px;
+                line-height: 1.25;
+                margin-bottom: 10px;
+            }
+            .meta {
+                color: var(--muted);
+                font-size: 14px;
+                margin-bottom: 26px;
+            }
+            h2 {
+                color: var(--gold);
+                font-size: 21px;
+                margin: 30px 0 10px;
+            }
+            p,
+            li {
+                color: var(--ink);
+                margin-bottom: 14px;
+            }
+            ul,
+            ol {
+                padding-left: 22px;
+            }
+            a {
+                color: var(--gold-hi);
+            }
+            strong {
+                color: var(--gold-hi);
+            }
+            .lede {
+                font-size: 18px;
+                color: var(--ink);
+            }
+            .callout {
+                background: var(--panel);
+                border: 1px solid var(--edge);
+                border-left: 3px solid var(--gold);
+                border-radius: 8px;
+                padding: 14px 18px;
+                margin: 22px 0;
+            }
+            .callout p:last-child {
+                margin-bottom: 0;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 18px 0;
+                font-size: 15px;
+            }
+            th,
+            td {
+                border: 1px solid var(--edge);
+                padding: 9px 12px;
+                text-align: left;
+            }
+            th {
+                color: var(--gold);
+                background: var(--panel);
+            }
+            .cta {
+                display: inline-block;
+                margin-top: 8px;
+                background: linear-gradient(
+                    180deg,
+                    var(--gold-hi),
+                    var(--gold)
+                );
+                color: #0c0906;
+                font-weight: 800;
+                text-decoration: none;
+                padding: 12px 26px;
+                border-radius: 10px;
+            }
+            .related {
+                margin-top: 40px;
+                padding-top: 22px;
+                border-top: 1px solid var(--edge);
+            }
+            .related h3 {
+                color: var(--gold);
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+            .related a {
+                display: block;
+                margin-bottom: 6px;
+            }
+            footer {
+                margin-top: 50px;
+                padding-top: 22px;
+                border-top: 1px solid var(--edge);
+                color: var(--muted);
+                font-size: 13px;
+            }
+            footer a {
+                color: var(--muted);
+                margin-right: 14px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrap">
+            <header>
+                <a class="brand" href="/">RISKR</a>
+                <nav>
+                    <a href="/">Play</a>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy</a>
+                    <a href="/terms">Terms</a>
+                    <a href="/contact">Contact</a>
+                </nav>
+            </header>
+
+            <article>
+                <div class="eyebrow">Probability &amp; Math</div>
+                <h1>House Edge Explained</h1>
+                <p class="meta">By the Riskr team · 6 min read</p>
+
+                <p class="lede">
+                    Every casino game has a quiet built-in advantage for the
+                    operator, and it has a name: the <strong>house edge</strong>.
+                    It's not cheating, and it isn't hidden — it's a small,
+                    mathematical skim taken from each bet, on average. Understand
+                    the edge and you understand why, given enough time, the house
+                    always comes out ahead. It's the most important number in
+                    gambling.
+                </p>
+
+                <h2>Edge and RTP: two sides of one coin</h2>
+                <p>
+                    The house edge is the average percentage of each bet the
+                    operator expects to keep over the long run. Its mirror image is
+                    <strong>return to player</strong>, or <strong>RTP</strong> — the
+                    percentage that flows back to players. They always sum to 100%.
+                    A game with a 2% house edge has a 98% RTP: for every $100 wagered
+                    across thousands of plays, about $98 is paid back out and $2 stays
+                    with the house.
+                </p>
+                <p>
+                    Crucially, RTP is measured over the <em>total volume of all
+                    bets</em>, not your session. A 98% RTP doesn't mean you'll end the
+                    night with 98% of your stake. You might double it or lose it all.
+                    The 98% is what emerges across millions of bets pooled together.
+                </p>
+
+                <h2>The edge as a per-bet skim</h2>
+                <p>
+                    The cleanest way to picture the edge is as a small toll charged
+                    each time you bet. Wager $1 on a game with a 2% edge and, on
+                    average, you hand over 2 cents and get 98 cents of expected value
+                    back. Any single bet returns much more or much less than that —
+                    but average enough bets together and the 2-cent toll is exactly
+                    what's left on the table.
+                </p>
+
+                <div class="callout">
+                    <p>
+                        <strong>Key idea:</strong> the house edge is an average per
+                        bet, not a fee you can feel on any one play. You won't notice
+                        2 cents vanishing. You'll notice it after ten thousand bets,
+                        when it's added up to a fortune.
+                    </p>
+                </div>
+
+                <h2>How the games compare</h2>
+                <p>
+                    Not all games skim equally. The edge depends entirely on the rules
+                    and payouts. Here's roughly where the common ones land:
+                </p>
+
+                <table>
+                    <tr>
+                        <th>Game</th>
+                        <th>Typical house edge</th>
+                        <th>RTP</th>
+                    </tr>
+                    <tr>
+                        <td>Blackjack (good play)</td>
+                        <td>Under 1%</td>
+                        <td>Over 99%</td>
+                    </tr>
+                    <tr>
+                        <td>Crash</td>
+                        <td>~1%</td>
+                        <td>~99%</td>
+                    </tr>
+                    <tr>
+                        <td>Roulette (single-zero)</td>
+                        <td>~2.70%</td>
+                        <td>~97.3%</td>
+                    </tr>
+                    <tr>
+                        <td>Roulette (double-zero)</td>
+                        <td>~5.26%</td>
+                        <td>~94.7%</td>
+                    </tr>
+                    <tr>
+                        <td>Slots</td>
+                        <td>2% to 10%+</td>
+                        <td>~90% to 98%</td>
+                    </tr>
+                </table>
+                <p>
+                    Blackjack with solid strategy is the leanest skim on the floor —
+                    which is exactly why casinos use shuffling, rule tweaks, and
+                    table limits to protect it. Slots sit at the other end: flashy,
+                    fast, and often carrying the steepest edge in the building. Two
+                    machines side by side can have wildly different RTPs, and it's
+                    rarely posted.
+                </p>
+
+                <h2>Why a tiny edge is so powerful</h2>
+                <p>
+                    A 1% edge sounds harmless. The danger is in repetition. The edge
+                    applies to <strong>every bet</strong>, and bets stack up fast.
+                    Say you play a 5% edge game, betting $1 a round, 500 rounds an
+                    hour. You're not risking $1 — you're cycling money through the
+                    machine. Your expected loss is 5% of total wagered: 5% × $500 =
+                    <strong>$25 every hour</strong>, regardless of how lucky any one
+                    spin feels.
+                </p>
+                <p>
+                    Now compare that to crash at a 1% edge: same 500 bets, expected
+                    loss around $5 an hour. Same money in motion, five times less
+                    bled — purely because the edge is smaller. The lesson isn't that
+                    a low edge is "winnable." It's that the edge sets the speed at
+                    which a bankroll drains, and more betting always means more total
+                    skim.
+                </p>
+
+                <div class="callout">
+                    <p>
+                        On Riskr, every table carries a built-in edge just like the
+                        real thing — but the chips are fake. You can feel exactly how
+                        the skim grinds a balance down over a long session without
+                        losing a cent. It's the math, served risk-free.
+                    </p>
+                </div>
+
+                <a class="cta" href="/">Play Riskr — risk-free</a>
+
+                <div class="related">
+                    <h3>Keep reading</h3>
+                    <a href="/blog/expected-value-in-crash"
+                        >Expected Value in Crash →</a
+                    >
+                    <a href="/blog/probability-behind-roulette"
+                        >The Probability Behind Roulette →</a
+                    >
+                    <a href="/blog/why-most-players-go-broke"
+                        >Why Most Players Go Broke →</a
+                    >
+                </div>
+            </article>
+
+            <footer>
+                <div>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms &amp; Disclaimer</a>
+                    <a href="/contact">Contact</a>
+                </div>
+                <p style="margin-top: 10px">
+                    This article is for education and entertainment only and is
+                    not financial, betting, or investment advice. Riskr is a
+                    free, fake-money game. No real money, no gambling, no prizes.
+                    18+.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>

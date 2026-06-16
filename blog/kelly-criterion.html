@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>The Kelly Criterion — Riskr Blog</title>
+        <meta
+            name="description"
+            content="A plain-English guide to the Kelly criterion for bet sizing: the formula f* = (bp − q)/b, a worked example, why it demands a positive edge, why casino games make Kelly say bet zero, and the case for fractional Kelly."
+        />
+        <link
+            rel="canonical"
+            href="https://riskr.bet/blog/kelly-criterion"
+        />
+        <link
+            rel="icon"
+            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23d4af37'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%230c0906' font-family='serif' font-weight='bold'%3E%24%3C/text%3E%3C/svg%3E"
+        />
+
+        <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3084591484596901"
+            crossorigin="anonymous"
+        ></script>
+
+        <style>
+            :root {
+                --bg: #0c0906;
+                --panel: #171108;
+                --edge: #3a2c12;
+                --gold: #d4af37;
+                --gold-hi: #f2d57c;
+                --ink: #ece3cf;
+                --muted: #9b8d6d;
+            }
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                background: var(--bg);
+                color: var(--ink);
+                font-family: "Manrope", system-ui, sans-serif;
+                line-height: 1.7;
+                padding: 0 16px 80px;
+            }
+            .wrap {
+                max-width: 720px;
+                margin: 0 auto;
+            }
+            header {
+                padding: 22px 0 18px;
+                border-bottom: 1px solid var(--edge);
+                margin-bottom: 30px;
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            .brand {
+                font-family: "Cinzel", serif;
+                font-weight: 900;
+                font-size: 20px;
+                letter-spacing: 0.14em;
+                color: var(--gold-hi);
+                text-decoration: none;
+            }
+            nav a {
+                color: var(--muted);
+                text-decoration: none;
+                margin-left: 16px;
+                font-size: 14px;
+            }
+            nav a:hover {
+                color: var(--gold-hi);
+            }
+            .eyebrow {
+                color: var(--gold);
+                font-size: 13px;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                margin-bottom: 10px;
+            }
+            h1 {
+                font-family: "Cinzel", serif;
+                color: var(--gold-hi);
+                font-size: 30px;
+                line-height: 1.25;
+                margin-bottom: 10px;
+            }
+            .meta {
+                color: var(--muted);
+                font-size: 14px;
+                margin-bottom: 26px;
+            }
+            h2 {
+                color: var(--gold);
+                font-size: 21px;
+                margin: 30px 0 10px;
+            }
+            p,
+            li {
+                color: var(--ink);
+                margin-bottom: 14px;
+            }
+            ul,
+            ol {
+                padding-left: 22px;
+            }
+            a {
+                color: var(--gold-hi);
+            }
+            strong {
+                color: var(--gold-hi);
+            }
+            .lede {
+                font-size: 18px;
+                color: var(--ink);
+            }
+            .callout {
+                background: var(--panel);
+                border: 1px solid var(--edge);
+                border-left: 3px solid var(--gold);
+                border-radius: 8px;
+                padding: 14px 18px;
+                margin: 22px 0;
+            }
+            .callout p:last-child {
+                margin-bottom: 0;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 18px 0;
+                font-size: 15px;
+            }
+            th,
+            td {
+                border: 1px solid var(--edge);
+                padding: 9px 12px;
+                text-align: left;
+            }
+            th {
+                color: var(--gold);
+                background: var(--panel);
+            }
+            .cta {
+                display: inline-block;
+                margin-top: 8px;
+                background: linear-gradient(
+                    180deg,
+                    var(--gold-hi),
+                    var(--gold)
+                );
+                color: #0c0906;
+                font-weight: 800;
+                text-decoration: none;
+                padding: 12px 26px;
+                border-radius: 10px;
+            }
+            .related {
+                margin-top: 40px;
+                padding-top: 22px;
+                border-top: 1px solid var(--edge);
+            }
+            .related h3 {
+                color: var(--gold);
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+            .related a {
+                display: block;
+                margin-bottom: 6px;
+            }
+            footer {
+                margin-top: 50px;
+                padding-top: 22px;
+                border-top: 1px solid var(--edge);
+                color: var(--muted);
+                font-size: 13px;
+            }
+            footer a {
+                color: var(--muted);
+                margin-right: 14px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrap">
+            <header>
+                <a class="brand" href="/">RISKR</a>
+                <nav>
+                    <a href="/">Play</a>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy</a>
+                    <a href="/terms">Terms</a>
+                    <a href="/contact">Contact</a>
+                </nav>
+            </header>
+
+            <article>
+                <div class="eyebrow">Game Theory</div>
+                <h1>The Kelly Criterion</h1>
+                <p class="meta">By the Riskr team · 7 min read</p>
+
+                <p class="lede">
+                    The Kelly criterion is a famous formula for answering one
+                    question: when you have a genuine edge, how much of your money
+                    should you put on the line each time? It's used by serious
+                    investors and professional bettors to size positions for the
+                    fastest long-run growth without blowing up. But its single
+                    most important lesson is also the one most people miss — Kelly
+                    only works when the odds are in your favor, and in a casino
+                    they never are.
+                </p>
+
+                <h2>The formula</h2>
+                <p>
+                    Kelly tells you what fraction of your bankroll to wager:
+                </p>
+                <p style="text-align: center; font-size: 19px">
+                    <strong>f* = (bp − q) / b</strong>
+                </p>
+                <ul>
+                    <li><strong>f*</strong> — the fraction of your bankroll to bet</li>
+                    <li><strong>b</strong> — the net odds (profit per $1 staked if you win)</li>
+                    <li><strong>p</strong> — your probability of winning</li>
+                    <li><strong>q</strong> — your probability of losing, which is 1 − p</li>
+                </ul>
+                <p>
+                    Read the top of the fraction carefully: <strong>bp − q</strong>
+                    is your <em>edge</em>. It's how much your weighted winnings
+                    beat your weighted losses. If that number is positive, you
+                    have an advantage and Kelly tells you how hard to press it. If
+                    it's zero or negative, the whole formula collapses to a single
+                    instruction: bet nothing.
+                </p>
+
+                <h2>A worked example</h2>
+                <p>
+                    Suppose a coin is biased in your favor: it lands heads 60% of
+                    the time, and a friend foolishly pays you even money — win $1
+                    for every $1 you stake. Here b = 1, p = 0.6, q = 0.4.
+                </p>
+                <p style="text-align: center; font-size: 19px">
+                    f* = (1 × 0.6 − 0.4) / 1 = 0.20
+                </p>
+                <p>
+                    Kelly says bet <strong>20%</strong> of your bankroll on each
+                    flip. With a $1,000 bankroll, that's $200 on the first toss,
+                    then 20% of whatever you have next, and so on. Betting this
+                    fraction maximizes how fast your money compounds over many
+                    repetitions. Bet much less and you grow slower than you could;
+                    bet much more and you court disaster.
+                </p>
+
+                <div class="callout">
+                    <p>
+                        <strong>Key idea:</strong> the numerator <em>bp − q</em> is
+                        your edge. No positive edge, no Kelly bet. The formula
+                        can't conjure an advantage that isn't there — it can only
+                        size one that already exists.
+                    </p>
+                </div>
+
+                <h2>Why casino games make Kelly say zero</h2>
+                <p>
+                    Now run the same math on a real casino bet. Take an even-money
+                    color bet on a 37-pocket roulette wheel. You win 18 times out
+                    of 37, so p ≈ 0.486 and q ≈ 0.514, with b = 1.
+                </p>
+                <p style="text-align: center; font-size: 19px">
+                    f* = (1 × 0.486 − 0.514) / 1 = −0.028
+                </p>
+                <p>
+                    The answer is <strong>negative</strong>. A negative Kelly
+                    fraction means the only edge belongs to the other side of the
+                    table — the right "bet" for you is zero, or, if you could, to
+                    take the house's seat. Every game in a casino, including Crash,
+                    Plinko, Slots, Blackjack and Roulette, carries a built-in house
+                    edge, so a Kelly calculation on any of them lands on the same
+                    verdict: there is no stake size that turns a losing game into a
+                    growth machine.
+                </p>
+
+                <table>
+                    <tr>
+                        <th>Situation</th>
+                        <th>Edge (bp − q)</th>
+                        <th>Kelly says</th>
+                    </tr>
+                    <tr>
+                        <td>Biased coin in your favor</td>
+                        <td>Positive (+0.20)</td>
+                        <td>Bet 20% of bankroll</td>
+                    </tr>
+                    <tr>
+                        <td>Fair 50/50 bet, even money</td>
+                        <td>Zero</td>
+                        <td>Bet nothing</td>
+                    </tr>
+                    <tr>
+                        <td>Any casino game</td>
+                        <td>Negative</td>
+                        <td>Bet nothing</td>
+                    </tr>
+                </table>
+
+                <h2>Over-betting and the road to ruin</h2>
+                <p>
+                    Even when you <em>do</em> have an edge, betting more than
+                    Kelly — called over-betting or going "over-Kelly" — is
+                    dangerous. Push past the optimal fraction and your long-run
+                    growth doesn't just flatten, it reverses: the swings get so
+                    violent that a bad streak can wipe you out before the edge
+                    pays off. Double the Kelly fraction in the coin example and
+                    your expected growth rate falls all the way back to zero
+                    despite the genuine advantage. Bet more than that and you're
+                    statistically marching toward ruin even though every
+                    individual bet is in your favor.
+                </p>
+
+                <h2>Fractional Kelly</h2>
+                <p>
+                    Because full Kelly is volatile and real-world edges are
+                    usually estimates rather than certainties, most practitioners
+                    use <strong>fractional Kelly</strong> — betting half or a
+                    quarter of what the formula recommends. Half-Kelly gives up
+                    only about a quarter of the growth rate while cutting the
+                    wild swings roughly in half. It's the cautious version: it
+                    accepts slightly slower compounding in exchange for a far
+                    smoother, safer ride and a buffer against having overestimated
+                    your edge.
+                </p>
+
+                <div class="callout">
+                    <p>
+                        The reason disciplined investors size positions with Kelly
+                        is the same reason it's useless as a casino trick: it's a
+                        tool for <em>pressing a real advantage</em>, not for
+                        inventing one. On Riskr the money is fake, so you can test
+                        any sizing scheme you like — and watch why no fraction
+                        beats a negative-edge game over the long run.
+                    </p>
+                </div>
+
+                <a class="cta" href="/">Play Riskr — risk-free</a>
+
+                <div class="related">
+                    <h3>Keep reading</h3>
+                    <a href="/blog/bankroll-management"
+                        >Bankroll Management →</a
+                    >
+                    <a href="/blog/risk-vs-reward">Risk vs. Reward →</a>
+                    <a href="/blog/expected-value-in-crash"
+                        >Expected Value in Crash →</a
+                    >
+                </div>
+            </article>
+
+            <footer>
+                <div>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms &amp; Disclaimer</a>
+                    <a href="/contact">Contact</a>
+                </div>
+                <p style="margin-top: 10px">
+                    This article is for education and entertainment only and is
+                    not financial, betting, or investment advice. Riskr is a
+                    free, fake-money game. No real money, no gambling, no prizes.
+                    18+.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>

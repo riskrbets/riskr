@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>The Near-Miss Effect — Riskr Blog</title>
+        <meta
+            name="description"
+            content="Why &quot;almost winning&quot; feels like winning: how the near-miss effect hijacks the brain's reward system, why slot reels are engineered to over-produce near-misses, and why it's mathematically meaningless."
+        />
+        <link
+            rel="canonical"
+            href="https://riskr.bet/blog/the-near-miss-effect"
+        />
+        <link
+            rel="icon"
+            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23d4af37'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%230c0906' font-family='serif' font-weight='bold'%3E%24%3C/text%3E%3C/svg%3E"
+        />
+
+        <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3084591484596901"
+            crossorigin="anonymous"
+        ></script>
+
+        <style>
+            :root {
+                --bg: #0c0906;
+                --panel: #171108;
+                --edge: #3a2c12;
+                --gold: #d4af37;
+                --gold-hi: #f2d57c;
+                --ink: #ece3cf;
+                --muted: #9b8d6d;
+            }
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                background: var(--bg);
+                color: var(--ink);
+                font-family: "Manrope", system-ui, sans-serif;
+                line-height: 1.7;
+                padding: 0 16px 80px;
+            }
+            .wrap {
+                max-width: 720px;
+                margin: 0 auto;
+            }
+            header {
+                padding: 22px 0 18px;
+                border-bottom: 1px solid var(--edge);
+                margin-bottom: 30px;
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            .brand {
+                font-family: "Cinzel", serif;
+                font-weight: 900;
+                font-size: 20px;
+                letter-spacing: 0.14em;
+                color: var(--gold-hi);
+                text-decoration: none;
+            }
+            nav a {
+                color: var(--muted);
+                text-decoration: none;
+                margin-left: 16px;
+                font-size: 14px;
+            }
+            nav a:hover {
+                color: var(--gold-hi);
+            }
+            .eyebrow {
+                color: var(--gold);
+                font-size: 13px;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                margin-bottom: 10px;
+            }
+            h1 {
+                font-family: "Cinzel", serif;
+                color: var(--gold-hi);
+                font-size: 30px;
+                line-height: 1.25;
+                margin-bottom: 10px;
+            }
+            .meta {
+                color: var(--muted);
+                font-size: 14px;
+                margin-bottom: 26px;
+            }
+            h2 {
+                color: var(--gold);
+                font-size: 21px;
+                margin: 30px 0 10px;
+            }
+            p,
+            li {
+                color: var(--ink);
+                margin-bottom: 14px;
+            }
+            ul,
+            ol {
+                padding-left: 22px;
+            }
+            a {
+                color: var(--gold-hi);
+            }
+            strong {
+                color: var(--gold-hi);
+            }
+            .lede {
+                font-size: 18px;
+                color: var(--ink);
+            }
+            .callout {
+                background: var(--panel);
+                border: 1px solid var(--edge);
+                border-left: 3px solid var(--gold);
+                border-radius: 8px;
+                padding: 14px 18px;
+                margin: 22px 0;
+            }
+            .callout p:last-child {
+                margin-bottom: 0;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 18px 0;
+                font-size: 15px;
+            }
+            th,
+            td {
+                border: 1px solid var(--edge);
+                padding: 9px 12px;
+                text-align: left;
+            }
+            th {
+                color: var(--gold);
+                background: var(--panel);
+            }
+            .cta {
+                display: inline-block;
+                margin-top: 8px;
+                background: linear-gradient(
+                    180deg,
+                    var(--gold-hi),
+                    var(--gold)
+                );
+                color: #0c0906;
+                font-weight: 800;
+                text-decoration: none;
+                padding: 12px 26px;
+                border-radius: 10px;
+            }
+            .related {
+                margin-top: 40px;
+                padding-top: 22px;
+                border-top: 1px solid var(--edge);
+            }
+            .related h3 {
+                color: var(--gold);
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+            .related a {
+                display: block;
+                margin-bottom: 6px;
+            }
+            footer {
+                margin-top: 50px;
+                padding-top: 22px;
+                border-top: 1px solid var(--edge);
+                color: var(--muted);
+                font-size: 13px;
+            }
+            footer a {
+                color: var(--muted);
+                margin-right: 14px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrap">
+            <header>
+                <a class="brand" href="/">RISKR</a>
+                <nav>
+                    <a href="/">Play</a>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy</a>
+                    <a href="/terms">Terms</a>
+                    <a href="/contact">Contact</a>
+                </nav>
+            </header>
+
+            <article>
+                <div class="eyebrow">Psychology</div>
+                <h1>The Near-Miss Effect</h1>
+                <p class="meta">By the Riskr team · 6 min read</p>
+
+                <p class="lede">
+                    Two jackpot symbols land on the payline, and the third stops
+                    just one position short — agonizingly close. You didn't win
+                    anything. But your stomach flips, your pulse jumps, and the
+                    very next thing you want to do is spin again. That reaction
+                    has a name: the <strong>near-miss effect</strong>, and it's
+                    one of the most studied and most exploited quirks in all of
+                    gambling.
+                </p>
+
+                <h2>What a near-miss actually is</h2>
+                <p>
+                    A near-miss is an outcome that falls just short of a win —
+                    two cherries and a third that lands one stop away, three of
+                    four numbers in a lottery, a blackjack hand that busts on the
+                    final card. Emotionally, it registers as "I almost had it."
+                    Mathematically, it is something far more boring: a complete
+                    loss. You walked away with exactly the same amount of money
+                    as if all three reels had shown blanks. There is no "almost"
+                    in the payout. You either won or you didn't.
+                </p>
+                <p>
+                    Yet the feeling of a near-miss is nothing like the feeling of
+                    a plain loss. And that gap — between what happened to your
+                    wallet and what happened to your brain — is exactly where the
+                    effect lives.
+                </p>
+
+                <h2>Why your brain treats it like a win</h2>
+                <p>
+                    Our reward system runs on something psychologists call a
+                    <strong>reward prediction error</strong> — the difference
+                    between what we expected and what we got. A near-miss sits in
+                    a strange spot: it looks almost identical to a win, so the
+                    brain partly responds <em>as if</em> a reward arrived, even
+                    though none did. Brain-imaging studies back this up. When
+                    researchers scanned players experiencing near-misses, the
+                    same reward-related regions that light up for actual wins —
+                    including dopamine-rich circuits in the striatum and the
+                    insula — also lit up, far more than they did for clear
+                    losses.
+                </p>
+                <p>
+                    The practical result is that a near-miss doesn't discourage
+                    you. It does the opposite. It increases the urge to keep
+                    playing and reinforces the sense that a real win is right
+                    around the corner. It's a loss that feels like progress.
+                </p>
+
+                <div class="callout">
+                    <p>
+                        <strong>Key idea:</strong> a near-miss pays nothing, but
+                        your brain processes it partly like a win. That mismatch
+                        is what keeps you reaching for the next spin.
+                    </p>
+                </div>
+
+                <h2>The reels are built to produce them</h2>
+                <p>
+                    Here's the part that should make you raise an eyebrow.
+                    Near-misses on modern slot machines are not an accident of
+                    chance — they are
+                    <strong>engineered to appear more often than random</strong>.
+                    The symbols you see on the screen are not laid out evenly.
+                    Behind the visible reel sits a "virtual reel" with its own
+                    weighting, and designers can stack the blanks directly above
+                    and below the jackpot symbol. That makes the jackpot symbol
+                    land just-off-the-payline far more frequently than it would
+                    if every stop were equally likely.
+                </p>
+                <p>
+                    In other words, the machine is tuned to show you the jackpot
+                    symbol slipping past the line — to manufacture that
+                    "so close" moment over and over. You're not getting unlucky.
+                    You're being shown a designed result.
+                </p>
+
+                <table>
+                    <tr>
+                        <th>What you see</th>
+                        <th>What it pays</th>
+                        <th>How your brain reacts</th>
+                    </tr>
+                    <tr>
+                        <td>Three jackpot symbols</td>
+                        <td>Full win</td>
+                        <td>Reward fires — celebration</td>
+                    </tr>
+                    <tr>
+                        <td>Two jackpots, third just off</td>
+                        <td>Nothing</td>
+                        <td>Reward partly fires — "almost!"</td>
+                    </tr>
+                    <tr>
+                        <td>Three random blanks</td>
+                        <td>Nothing</td>
+                        <td>Flat — clear loss</td>
+                    </tr>
+                </table>
+
+                <h2>Why it's irrational</h2>
+                <p>
+                    The near-miss feels meaningful because it borrows the logic
+                    of skill-based activities. In darts or basketball, getting
+                    close genuinely signals you're improving and the next attempt
+                    is more likely to land. But a slot spin is not a skill. Each
+                    spin is <strong>independent</strong> — the result of one
+                    has zero influence on the next. Landing two jackpots and a
+                    near-miss does not move you closer to three jackpots on the
+                    following spin. The odds reset completely every time.
+                </p>
+                <p>
+                    So the "almost" is an illusion imported from a world where
+                    almost matters. In a game of pure chance, it doesn't. A
+                    near-miss is just a loss wearing a costume.
+                </p>
+
+                <div class="callout">
+                    <p>
+                        Once you can name the near-miss effect, you can feel it
+                        happening and discount it. On Riskr the money is fake, so
+                        you can watch your own "so close!" reaction fire in real
+                        time — and learn to see it for the design trick it is.
+                    </p>
+                </div>
+
+                <a class="cta" href="/">Play Riskr — risk-free</a>
+
+                <div class="related">
+                    <h3>Keep reading</h3>
+                    <a href="/blog/why-slot-machines-feel-rewarding"
+                        >Why Slot Machines Feel So Rewarding →</a
+                    >
+                    <a href="/blog/cognitive-biases-in-gambling"
+                        >Cognitive Biases in Gambling →</a
+                    >
+                    <a href="/blog/why-people-chase-losses"
+                        >Why People Chase Losses →</a
+                    >
+                </div>
+            </article>
+
+            <footer>
+                <div>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms &amp; Disclaimer</a>
+                    <a href="/contact">Contact</a>
+                </div>
+                <p style="margin-top: 10px">
+                    This article is for education and entertainment only and is
+                    not financial, betting, or investment advice. Riskr is a
+                    free, fake-money game. No real money, no gambling, no prizes.
+                    18+.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>

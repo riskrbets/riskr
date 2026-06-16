@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>How Slot Machines Really Work — Riskr Blog</title>
+        <meta
+            name="description"
+            content="A plain-English look at how modern slot machines really work: RNG-driven results, virtual reels and symbol weighting, RTP and volatility, paylines, why every spin is independent, and why &quot;hot&quot; or &quot;due&quot; machines are a myth."
+        />
+        <link
+            rel="canonical"
+            href="https://riskr.bet/blog/how-slot-machines-work"
+        />
+        <link
+            rel="icon"
+            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23d4af37'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%230c0906' font-family='serif' font-weight='bold'%3E%24%3C/text%3E%3C/svg%3E"
+        />
+
+        <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3084591484596901"
+            crossorigin="anonymous"
+        ></script>
+
+        <style>
+            :root {
+                --bg: #0c0906;
+                --panel: #171108;
+                --edge: #3a2c12;
+                --gold: #d4af37;
+                --gold-hi: #f2d57c;
+                --ink: #ece3cf;
+                --muted: #9b8d6d;
+            }
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                background: var(--bg);
+                color: var(--ink);
+                font-family: "Manrope", system-ui, sans-serif;
+                line-height: 1.7;
+                padding: 0 16px 80px;
+            }
+            .wrap {
+                max-width: 720px;
+                margin: 0 auto;
+            }
+            header {
+                padding: 22px 0 18px;
+                border-bottom: 1px solid var(--edge);
+                margin-bottom: 30px;
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            .brand {
+                font-family: "Cinzel", serif;
+                font-weight: 900;
+                font-size: 20px;
+                letter-spacing: 0.14em;
+                color: var(--gold-hi);
+                text-decoration: none;
+            }
+            nav a {
+                color: var(--muted);
+                text-decoration: none;
+                margin-left: 16px;
+                font-size: 14px;
+            }
+            nav a:hover {
+                color: var(--gold-hi);
+            }
+            .eyebrow {
+                color: var(--gold);
+                font-size: 13px;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                margin-bottom: 10px;
+            }
+            h1 {
+                font-family: "Cinzel", serif;
+                color: var(--gold-hi);
+                font-size: 30px;
+                line-height: 1.25;
+                margin-bottom: 10px;
+            }
+            .meta {
+                color: var(--muted);
+                font-size: 14px;
+                margin-bottom: 26px;
+            }
+            h2 {
+                color: var(--gold);
+                font-size: 21px;
+                margin: 30px 0 10px;
+            }
+            p,
+            li {
+                color: var(--ink);
+                margin-bottom: 14px;
+            }
+            ul,
+            ol {
+                padding-left: 22px;
+            }
+            a {
+                color: var(--gold-hi);
+            }
+            strong {
+                color: var(--gold-hi);
+            }
+            .lede {
+                font-size: 18px;
+                color: var(--ink);
+            }
+            .callout {
+                background: var(--panel);
+                border: 1px solid var(--edge);
+                border-left: 3px solid var(--gold);
+                border-radius: 8px;
+                padding: 14px 18px;
+                margin: 22px 0;
+            }
+            .callout p:last-child {
+                margin-bottom: 0;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 18px 0;
+                font-size: 15px;
+            }
+            th,
+            td {
+                border: 1px solid var(--edge);
+                padding: 9px 12px;
+                text-align: left;
+            }
+            th {
+                color: var(--gold);
+                background: var(--panel);
+            }
+            .cta {
+                display: inline-block;
+                margin-top: 8px;
+                background: linear-gradient(
+                    180deg,
+                    var(--gold-hi),
+                    var(--gold)
+                );
+                color: #0c0906;
+                font-weight: 800;
+                text-decoration: none;
+                padding: 12px 26px;
+                border-radius: 10px;
+            }
+            .related {
+                margin-top: 40px;
+                padding-top: 22px;
+                border-top: 1px solid var(--edge);
+            }
+            .related h3 {
+                color: var(--gold);
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+            .related a {
+                display: block;
+                margin-bottom: 6px;
+            }
+            footer {
+                margin-top: 50px;
+                padding-top: 22px;
+                border-top: 1px solid var(--edge);
+                color: var(--muted);
+                font-size: 13px;
+            }
+            footer a {
+                color: var(--muted);
+                margin-right: 14px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrap">
+            <header>
+                <a class="brand" href="/">RISKR</a>
+                <nav>
+                    <a href="/">Play</a>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy</a>
+                    <a href="/terms">Terms</a>
+                    <a href="/contact">Contact</a>
+                </nav>
+            </header>
+
+            <article>
+                <div class="eyebrow">Educational</div>
+                <h1>How Slot Machines Really Work</h1>
+                <p class="meta">By the Riskr team · 7 min read</p>
+
+                <p class="lede">
+                    A slot machine looks like spinning physical wheels deciding
+                    your fate by gravity and luck. That picture is decades out of
+                    date. Inside every modern slot — the cabinet on a casino floor
+                    or the game on your phone — is a small computer running a
+                    <strong>random number generator</strong>, and the spinning
+                    reels are just an animation playing back a result that was
+                    already chosen. Here's what's actually happening.
+                </p>
+
+                <h2>The RNG decides, not the reels</h2>
+                <p>
+                    At the heart of every modern slot is a random number
+                    generator: software that produces a constant stream of
+                    numbers, thousands per second, with no memory and no pattern.
+                    The instant you press spin, the machine grabs the number
+                    sitting in that stream at that exact microsecond. That number
+                    determines where each reel "lands." The reels then spin on
+                    screen purely for show — the outcome was locked in before the
+                    animation even started.
+                </p>
+                <p>
+                    This is why the physical reels you see are not the real game.
+                    They're a display. The genuine machinery is a number, chosen
+                    in an instant, mapped to a result.
+                </p>
+
+                <h2>Virtual reels and symbol weighting</h2>
+                <p>
+                    Here's the piece most players never learn. The reel you see
+                    might show, say, 20 symbols. But the machine doesn't pick
+                    evenly from those 20 visible stops. Behind the scenes sits a
+                    much longer <strong>virtual reel</strong> — a list that can
+                    contain dozens or hundreds of entries — and the RNG picks from
+                    that. Multiple entries on the virtual reel can map to the same
+                    visible symbol. This is called
+                    <strong>symbol weighting</strong>, and it lets designers make
+                    some symbols land far more often than others without changing
+                    what you see.
+                </p>
+                <p>
+                    Imagine a reel with a cherry and a jackpot symbol. On the
+                    visible reel they look equally present. But on the virtual
+                    reel:
+                </p>
+
+                <table>
+                    <tr>
+                        <th>Symbol</th>
+                        <th>Virtual-reel entries</th>
+                        <th>Real chance of landing</th>
+                    </tr>
+                    <tr>
+                        <td>Blank / low symbol</td>
+                        <td>40 of 64</td>
+                        <td>Very common</td>
+                    </tr>
+                    <tr>
+                        <td>Cherry</td>
+                        <td>20 of 64</td>
+                        <td>Fairly common</td>
+                    </tr>
+                    <tr>
+                        <td>Jackpot symbol</td>
+                        <td>4 of 64</td>
+                        <td>Rare</td>
+                    </tr>
+                </table>
+
+                <p>
+                    The jackpot symbol takes up the same space on the visible reel
+                    as everything else, so it <em>feels</em> like a one-in-twenty
+                    shot. In reality it's weighted to appear far less often. The
+                    visible reel hides the true probabilities by design.
+                </p>
+
+                <div class="callout">
+                    <p>
+                        <strong>Key idea:</strong> what you see on the reels is not
+                        what you get. The real odds live on a hidden virtual reel,
+                        and the symbols are weighted so the screen looks more
+                        winnable than the math allows.
+                    </p>
+                </div>
+
+                <h2>RTP and volatility</h2>
+                <p>
+                    Two settings shape how a slot pays out over its lifetime.
+                    <strong>RTP</strong> — return to player — is the percentage of
+                    all money wagered that the game is built to pay back over the
+                    very long run. A 96% RTP means the game keeps about 4 cents of
+                    every dollar wagered, on average, across millions of spins.
+                    That 4% is the house edge, and it's baked in.
+                </p>
+                <p>
+                    <strong>Volatility</strong> (or variance) describes the
+                    <em>shape</em> of those returns. A low-volatility slot pays
+                    small wins frequently — a smoother, longer ride. A
+                    high-volatility slot pays rarely but can pay big, so you'll sit
+                    through long dry stretches hunting a large hit. Two games can
+                    share the same 96% RTP and feel completely different to play.
+                    Neither setting can be beaten; they only change the texture of
+                    the losing-over-time experience.
+                </p>
+
+                <h2>Paylines and ways to win</h2>
+                <p>
+                    A <strong>payline</strong> is a pattern across the reels that
+                    pays if the right symbols line up on it. Old machines had a
+                    single line across the middle. Modern slots offer dozens or
+                    hundreds of lines, or use a "ways to win" system where any
+                    matching symbols on adjacent reels pay regardless of position.
+                    More lines means more frequent small hits — but you're
+                    typically betting on every line at once, so a "win" can pay
+                    back less than the spin cost. It still triggers lights and
+                    sounds, which is the point.
+                </p>
+
+                <h2>Every spin is independent — the big myth</h2>
+                <p>
+                    Because the RNG has no memory, <strong>every spin is fully
+                    independent</strong>. The machine does not know or care what
+                    happened on the last spin, the last hour, or since the last
+                    jackpot. This kills two of gambling's most persistent beliefs:
+                </p>
+                <ul>
+                    <li>
+                        A machine that hasn't paid is <strong>not "due."</strong>
+                        Its odds on the next spin are identical to every other
+                        spin.
+                    </li>
+                    <li>
+                        There are no <strong>"hot" or "cold"</strong> machines.
+                        A streak is just what randomness looks like in
+                        hindsight; it predicts nothing about what comes next.
+                    </li>
+                </ul>
+                <p>
+                    A machine that just paid a jackpot is exactly as likely to pay
+                    again on the next spin as one that's been dry all day. The
+                    coin has no memory, and neither does the RNG.
+                </p>
+
+                <div class="callout">
+                    <p>
+                        The Slots table on Riskr runs on these same principles —
+                        RNG-driven, weighted, every spin independent — but with
+                        fake money, so you can watch the mechanics work without a
+                        cent on the line. The only thing you can win is a higher
+                        spot on the leaderboard. 18+.
+                    </p>
+                </div>
+
+                <a class="cta" href="/">Try the Slots table on Riskr</a>
+
+                <div class="related">
+                    <h3>Keep reading</h3>
+                    <a href="/blog/why-slot-machines-feel-rewarding"
+                        >Why Slot Machines Feel So Rewarding →</a
+                    >
+                    <a href="/blog/understanding-random-number-generators"
+                        >Understanding Random Number Generators →</a
+                    >
+                    <a href="/blog/understanding-rtp"
+                        >Understanding RTP (Return to Player) →</a
+                    >
+                </div>
+            </article>
+
+            <footer>
+                <div>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms &amp; Disclaimer</a>
+                    <a href="/contact">Contact</a>
+                </div>
+                <p style="margin-top: 10px">
+                    This article is for education and entertainment only and is
+                    not financial, betting, or investment advice. Riskr is a
+                    free, fake-money game. No real money, no gambling, no prizes.
+                    18+.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>

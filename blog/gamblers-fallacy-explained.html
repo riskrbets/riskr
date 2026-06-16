@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>The Gambler's Fallacy Explained — Riskr Blog</title>
+        <meta
+            name="description"
+            content="Red isn't 'due' after seven blacks. We explain independent events, the gambler's fallacy and hot-hand fallacy, and why the law of large numbers isn't a law of averages."
+        />
+        <link
+            rel="canonical"
+            href="https://riskr.bet/blog/gamblers-fallacy-explained"
+        />
+        <link
+            rel="icon"
+            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23d4af37'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%230c0906' font-family='serif' font-weight='bold'%3E%24%3C/text%3E%3C/svg%3E"
+        />
+
+        <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3084591484596901"
+            crossorigin="anonymous"
+        ></script>
+
+        <style>
+            :root {
+                --bg: #0c0906;
+                --panel: #171108;
+                --edge: #3a2c12;
+                --gold: #d4af37;
+                --gold-hi: #f2d57c;
+                --ink: #ece3cf;
+                --muted: #9b8d6d;
+            }
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                background: var(--bg);
+                color: var(--ink);
+                font-family: "Manrope", system-ui, sans-serif;
+                line-height: 1.7;
+                padding: 0 16px 80px;
+            }
+            .wrap {
+                max-width: 720px;
+                margin: 0 auto;
+            }
+            header {
+                padding: 22px 0 18px;
+                border-bottom: 1px solid var(--edge);
+                margin-bottom: 30px;
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            .brand {
+                font-family: "Cinzel", serif;
+                font-weight: 900;
+                font-size: 20px;
+                letter-spacing: 0.14em;
+                color: var(--gold-hi);
+                text-decoration: none;
+            }
+            nav a {
+                color: var(--muted);
+                text-decoration: none;
+                margin-left: 16px;
+                font-size: 14px;
+            }
+            nav a:hover {
+                color: var(--gold-hi);
+            }
+            .eyebrow {
+                color: var(--gold);
+                font-size: 13px;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                margin-bottom: 10px;
+            }
+            h1 {
+                font-family: "Cinzel", serif;
+                color: var(--gold-hi);
+                font-size: 30px;
+                line-height: 1.25;
+                margin-bottom: 10px;
+            }
+            .meta {
+                color: var(--muted);
+                font-size: 14px;
+                margin-bottom: 26px;
+            }
+            h2 {
+                color: var(--gold);
+                font-size: 21px;
+                margin: 30px 0 10px;
+            }
+            p,
+            li {
+                color: var(--ink);
+                margin-bottom: 14px;
+            }
+            ul,
+            ol {
+                padding-left: 22px;
+            }
+            a {
+                color: var(--gold-hi);
+            }
+            strong {
+                color: var(--gold-hi);
+            }
+            .lede {
+                font-size: 18px;
+                color: var(--ink);
+            }
+            .callout {
+                background: var(--panel);
+                border: 1px solid var(--edge);
+                border-left: 3px solid var(--gold);
+                border-radius: 8px;
+                padding: 14px 18px;
+                margin: 22px 0;
+            }
+            .callout p:last-child {
+                margin-bottom: 0;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 18px 0;
+                font-size: 15px;
+            }
+            th,
+            td {
+                border: 1px solid var(--edge);
+                padding: 9px 12px;
+                text-align: left;
+            }
+            th {
+                color: var(--gold);
+                background: var(--panel);
+            }
+            .cta {
+                display: inline-block;
+                margin-top: 8px;
+                background: linear-gradient(
+                    180deg,
+                    var(--gold-hi),
+                    var(--gold)
+                );
+                color: #0c0906;
+                font-weight: 800;
+                text-decoration: none;
+                padding: 12px 26px;
+                border-radius: 10px;
+            }
+            .related {
+                margin-top: 40px;
+                padding-top: 22px;
+                border-top: 1px solid var(--edge);
+            }
+            .related h3 {
+                color: var(--gold);
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+            .related a {
+                display: block;
+                margin-bottom: 6px;
+            }
+            footer {
+                margin-top: 50px;
+                padding-top: 22px;
+                border-top: 1px solid var(--edge);
+                color: var(--muted);
+                font-size: 13px;
+            }
+            footer a {
+                color: var(--muted);
+                margin-right: 14px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrap">
+            <header>
+                <a class="brand" href="/">RISKR</a>
+                <nav>
+                    <a href="/">Play</a>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy</a>
+                    <a href="/terms">Terms</a>
+                    <a href="/contact">Contact</a>
+                </nav>
+            </header>
+
+            <article>
+                <div class="eyebrow">Probability &amp; Math</div>
+                <h1>The Gambler's Fallacy Explained</h1>
+                <p class="meta">By the Riskr team · 6 min read</p>
+
+                <p class="lede">
+                    Black has come up seven times in a row. Surely red is "due"? It's
+                    one of the most natural thoughts in the world — and it's wrong, in
+                    a way that has cost players for as long as wheels have spun. The
+                    <strong>gambler's fallacy</strong> is the belief that past random
+                    results change the odds of the next one. They don't. Here's why.
+                </p>
+
+                <h2>Independent events have no memory</h2>
+                <p>
+                    Two events are <strong>independent</strong> when the outcome of
+                    one tells you nothing about the other. A roulette wheel, a fair
+                    coin, a crash round, a slot spin — each result is independent of
+                    every result before it. The wheel does not know it just landed on
+                    black seven times. It has no mechanism to "remember," no ledger it
+                    feels pressure to balance.
+                </p>
+                <p>
+                    On a European wheel, the chance of black on any single spin is
+                    18 in 37, about 48.6%. After seven blacks, the chance of black on
+                    the eighth spin is still 18 in 37 — about 48.6%. The streak is
+                    already in the past. The next spin starts from scratch, every time.
+                </p>
+
+                <h2>The trick your brain plays</h2>
+                <p>
+                    The confusion comes from blending two different questions. It's
+                    true that a run of eight blacks <em>in advance</em> is unlikely:
+                    roughly 0.486 multiplied by itself eight times, under 0.4%. But
+                    once seven blacks have already landed, those seven are locked in —
+                    probability 1, they happened. The only open question is the eighth
+                    spin, and it's just one fresh spin: 48.6%.
+                </p>
+
+                <table>
+                    <tr>
+                        <th>Question</th>
+                        <th>Probability</th>
+                    </tr>
+                    <tr>
+                        <td>8 blacks in a row, predicted up front</td>
+                        <td>~0.4%</td>
+                    </tr>
+                    <tr>
+                        <td>Black on spin 8, given 7 blacks already landed</td>
+                        <td>~48.6%</td>
+                    </tr>
+                    <tr>
+                        <td>Red on spin 8, given 7 blacks already landed</td>
+                        <td>~48.6%</td>
+                    </tr>
+                </table>
+                <p>
+                    The rare-streak intuition is real, but it only applies
+                    <em>before</em> the spins happen. Plucking the last spin out of a
+                    finished streak and treating it as if it's still part of the
+                    unlikely run is the whole error.
+                </p>
+
+                <div class="callout">
+                    <p>
+                        <strong>Key idea:</strong> a fair coin has no memory. After
+                        ten heads, the next flip is still 50/50. Nothing is ever "due."
+                        The odds reset completely on every independent trial.
+                    </p>
+                </div>
+
+                <h2>The hot-hand fallacy: the same error, flipped</h2>
+                <p>
+                    There's a mirror-image mistake. The gambler's fallacy says a
+                    streak must <em>break</em> ("red is due"). The
+                    <strong>hot-hand fallacy</strong> says a streak must
+                    <em>continue</em> ("black is on a roll, ride it"). Both assume past
+                    independent results predict the next one. For a roulette wheel or a
+                    crash curve, both are equally baseless — the streak is just a
+                    pattern your brain found in noise after the fact.
+                </p>
+                <p>
+                    (In genuine skill activities, a real hot hand can exist, because
+                    confidence and form aren't independent. But a slot machine has no
+                    form, and a wheel has no confidence.)
+                </p>
+
+                <h2>Large numbers, not the "law of averages"</h2>
+                <p>
+                    People defend the fallacy with the "law of averages" — the sense
+                    that things must even out. There is a real theorem nearby, the
+                    <strong>law of large numbers</strong>, but it says something
+                    subtler. As you flip a fair coin more and more, the
+                    <em>proportion</em> of heads converges toward 50%. It never
+                    promises the running <em>count</em> of heads and tails will
+                    balance — in fact the raw gap between them typically grows.
+                </p>
+                <p>
+                    Averaging happens not through a corrective force that "owes" you
+                    red, but through <strong>dilution</strong>: a streak of seven
+                    blacks becomes a smaller and smaller fraction of the total as
+                    thousands more spins pile up around it. The universe doesn't fix
+                    the imbalance; it simply drowns it out. No spin is ever paying back
+                    a debt from a previous one.
+                </p>
+
+                <div class="callout">
+                    <p>
+                        On Riskr you can chase "due" numbers and ride "hot" streaks all
+                        night and watch independence shrug it all off — with fake chips
+                        and a leaderboard as the only thing on the line. It's a
+                        risk-free place to feel the fallacy fail in real time.
+                    </p>
+                </div>
+
+                <a class="cta" href="/">Play Riskr — risk-free</a>
+
+                <div class="related">
+                    <h3>Keep reading</h3>
+                    <a href="/blog/cognitive-biases-in-gambling"
+                        >Cognitive Biases in Gambling →</a
+                    >
+                    <a href="/blog/understanding-random-number-generators"
+                        >Understanding Random Number Generators →</a
+                    >
+                    <a href="/blog/variance-explained"
+                        >Variance Explained →</a
+                    >
+                </div>
+            </article>
+
+            <footer>
+                <div>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms &amp; Disclaimer</a>
+                    <a href="/contact">Contact</a>
+                </div>
+                <p style="margin-top: 10px">
+                    This article is for education and entertainment only and is
+                    not financial, betting, or investment advice. Riskr is a
+                    free, fake-money game. No real money, no gambling, no prizes.
+                    18+.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>

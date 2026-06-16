@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://riskr.bet/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>
+  <url><loc>https://riskr.bet/blog</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://riskr.bet/blog/how-crash-games-work</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://riskr.bet/blog/expected-value-in-crash</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://riskr.bet/blog/house-edge-explained</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://riskr.bet/blog/probability-behind-roulette</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://riskr.bet/blog/why-most-players-go-broke</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://riskr.bet/blog/gamblers-fallacy-explained</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://riskr.bet/blog/risk-vs-reward</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://riskr.bet/blog/kelly-criterion</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://riskr.bet/blog/bankroll-management</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://riskr.bet/blog/variance-explained</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://riskr.bet/blog/why-people-chase-losses</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://riskr.bet/blog/why-slot-machines-feel-rewarding</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://riskr.bet/blog/cognitive-biases-in-gambling</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://riskr.bet/blog/difference-between-gambling-and-investing</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://riskr.bet/blog/risk-management-basics</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://riskr.bet/blog/understanding-random-number-generators</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://riskr.bet/blog/how-plinko-works</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://riskr.bet/blog/understanding-rtp</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://riskr.bet/blog/the-law-of-large-numbers</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://riskr.bet/blog/volatility-explained</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://riskr.bet/blog/the-martingale-system</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://riskr.bet/blog/positive-vs-negative-expectation</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://riskr.bet/blog/when-to-walk-away</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://riskr.bet/blog/how-blackjack-odds-work</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://riskr.bet/blog/the-near-miss-effect</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://riskr.bet/blog/the-illusion-of-control</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://riskr.bet/blog/responsible-play</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://riskr.bet/blog/how-slot-machines-work</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://riskr.bet/about</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://riskr.bet/privacy</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://riskr.bet/terms</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>

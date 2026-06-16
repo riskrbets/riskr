@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Positive vs. Negative Expectation — Riskr Blog</title>
+        <meta
+            name="description"
+            content="What +EV and −EV bets really mean, why every casino game is negative expectation by design, what a genuine positive-expectation edge looks like, and why time is the enemy in a −EV game."
+        />
+        <link
+            rel="canonical"
+            href="https://riskr.bet/blog/positive-vs-negative-expectation"
+        />
+        <link
+            rel="icon"
+            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23d4af37'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%230c0906' font-family='serif' font-weight='bold'%3E%24%3C/text%3E%3C/svg%3E"
+        />
+
+        <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3084591484596901"
+            crossorigin="anonymous"
+        ></script>
+
+        <style>
+            :root {
+                --bg: #0c0906;
+                --panel: #171108;
+                --edge: #3a2c12;
+                --gold: #d4af37;
+                --gold-hi: #f2d57c;
+                --ink: #ece3cf;
+                --muted: #9b8d6d;
+            }
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                background: var(--bg);
+                color: var(--ink);
+                font-family: "Manrope", system-ui, sans-serif;
+                line-height: 1.7;
+                padding: 0 16px 80px;
+            }
+            .wrap {
+                max-width: 720px;
+                margin: 0 auto;
+            }
+            header {
+                padding: 22px 0 18px;
+                border-bottom: 1px solid var(--edge);
+                margin-bottom: 30px;
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            .brand {
+                font-family: "Cinzel", serif;
+                font-weight: 900;
+                font-size: 20px;
+                letter-spacing: 0.14em;
+                color: var(--gold-hi);
+                text-decoration: none;
+            }
+            nav a {
+                color: var(--muted);
+                text-decoration: none;
+                margin-left: 16px;
+                font-size: 14px;
+            }
+            nav a:hover {
+                color: var(--gold-hi);
+            }
+            .eyebrow {
+                color: var(--gold);
+                font-size: 13px;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                margin-bottom: 10px;
+            }
+            h1 {
+                font-family: "Cinzel", serif;
+                color: var(--gold-hi);
+                font-size: 30px;
+                line-height: 1.25;
+                margin-bottom: 10px;
+            }
+            .meta {
+                color: var(--muted);
+                font-size: 14px;
+                margin-bottom: 26px;
+            }
+            h2 {
+                color: var(--gold);
+                font-size: 21px;
+                margin: 30px 0 10px;
+            }
+            p,
+            li {
+                color: var(--ink);
+                margin-bottom: 14px;
+            }
+            ul,
+            ol {
+                padding-left: 22px;
+            }
+            a {
+                color: var(--gold-hi);
+            }
+            strong {
+                color: var(--gold-hi);
+            }
+            .lede {
+                font-size: 18px;
+                color: var(--ink);
+            }
+            .callout {
+                background: var(--panel);
+                border: 1px solid var(--edge);
+                border-left: 3px solid var(--gold);
+                border-radius: 8px;
+                padding: 14px 18px;
+                margin: 22px 0;
+            }
+            .callout p:last-child {
+                margin-bottom: 0;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 18px 0;
+                font-size: 15px;
+            }
+            th,
+            td {
+                border: 1px solid var(--edge);
+                padding: 9px 12px;
+                text-align: left;
+            }
+            th {
+                color: var(--gold);
+                background: var(--panel);
+            }
+            .cta {
+                display: inline-block;
+                margin-top: 8px;
+                background: linear-gradient(
+                    180deg,
+                    var(--gold-hi),
+                    var(--gold)
+                );
+                color: #0c0906;
+                font-weight: 800;
+                text-decoration: none;
+                padding: 12px 26px;
+                border-radius: 10px;
+            }
+            .related {
+                margin-top: 40px;
+                padding-top: 22px;
+                border-top: 1px solid var(--edge);
+            }
+            .related h3 {
+                color: var(--gold);
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+            .related a {
+                display: block;
+                margin-bottom: 6px;
+            }
+            footer {
+                margin-top: 50px;
+                padding-top: 22px;
+                border-top: 1px solid var(--edge);
+                color: var(--muted);
+                font-size: 13px;
+            }
+            footer a {
+                color: var(--muted);
+                margin-right: 14px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrap">
+            <header>
+                <a class="brand" href="/">RISKR</a>
+                <nav>
+                    <a href="/">Play</a>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy</a>
+                    <a href="/terms">Terms</a>
+                    <a href="/contact">Contact</a>
+                </nav>
+            </header>
+
+            <article>
+                <div class="eyebrow">Game Theory</div>
+                <h1>Positive vs. Negative Expectation</h1>
+                <p class="meta">By the Riskr team · 6 min read</p>
+
+                <p class="lede">
+                    Strip away the lights and the lingo and every bet comes down
+                    to one number: its <strong>expected value</strong>, or EV — the
+                    average amount you'd win or lose per bet if you could repeat it
+                    forever. A bet is either positive expectation, where the math
+                    is on your side, or negative expectation, where it isn't. Casino
+                    games live entirely on the negative side, and understanding why
+                    is the single most useful idea in gambling.
+                </p>
+
+                <h2>What expected value actually is</h2>
+                <p>
+                    Expected value is just a weighted average. List every outcome,
+                    multiply each by its probability, add them up. If the total is
+                    above zero, the bet is <strong>+EV</strong>. If it's below
+                    zero, it's <strong>−EV</strong>. The number doesn't predict any
+                    single result — it predicts the long-run average, which is the
+                    only thing that survives lots of repetition.
+                </p>
+                <p>
+                    Take a clean coin flip where you win $1 on heads and lose $1 on
+                    tails. EV = (0.5 × +$1) + (0.5 × −$1) = $0. That's a
+                    <strong>fair</strong> bet — break-even forever. Now shift it so
+                    you win $0.95 on heads but still lose $1 on tails. EV = (0.5 ×
+                    +$0.95) + (0.5 × −$1) = −$0.025 per dollar. You'll win about
+                    half your flips and still bleed two and a half cents on average
+                    every time. That tiny gap is what a casino sells.
+                </p>
+
+                <h2>Casino games are −EV by design</h2>
+                <p>
+                    Every game on a casino floor is built with a payout structure
+                    slightly worse than the true odds. American roulette is the
+                    cleanest example. A single-number bet pays 35:1, which would be
+                    a fair price if the wheel had 36 slots. But the wheel has 38 —
+                    the 0 and 00 are the house's margin.
+                </p>
+                <table>
+                    <tr>
+                        <th>Outcome</th>
+                        <th>Probability</th>
+                        <th>Net result on $1</th>
+                        <th>Contribution to EV</th>
+                    </tr>
+                    <tr>
+                        <td>Your number hits</td>
+                        <td>1 / 38</td>
+                        <td>+$35</td>
+                        <td>+$0.921</td>
+                    </tr>
+                    <tr>
+                        <td>Any other number</td>
+                        <td>37 / 38</td>
+                        <td>−$1</td>
+                        <td>−$0.974</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Total EV</strong></td>
+                        <td></td>
+                        <td></td>
+                        <td><strong>−$0.053</strong></td>
+                    </tr>
+                </table>
+                <p>
+                    Every $1 spun on that bet is worth about 94.7 cents the moment
+                    it leaves your hand. The 5.3-cent gap is the
+                    <strong>house edge</strong>, and it's baked into the rules, not
+                    the luck. No spin, hot streak, or lucky number changes it.
+                </p>
+
+                <div class="callout">
+                    <p>
+                        <strong>Key idea:</strong> a −EV bet can win plenty of
+                        individual rounds. What it can't do is win on average. The
+                        edge is a fixed tax on every wager, collected slowly and
+                        relentlessly.
+                    </p>
+                </div>
+
+                <h2>What a +EV opportunity really looks like</h2>
+                <p>
+                    Positive expectation does exist — but almost never at the games
+                    the house controls. It shows up where the player can find a
+                    price that's wrong:
+                </p>
+                <ul>
+                    <li>
+                        <strong>Card counting in blackjack.</strong> When a lot of
+                        high cards remain in the shoe, the odds briefly tilt toward
+                        the player, and a counter raises bets only during those
+                        windows. The edge is real but thin — often under 1.5% — and
+                        casinos shuffle, limit bets, or eject counters to kill it.
+                    </li>
+                    <li>
+                        <strong>Advantage play.</strong> Exploiting a biased wheel,
+                        a poorly designed promotion, or a video poker pay table that
+                        actually returns over 100% with perfect play. These edges
+                        are rare, get patched fast, and demand flawless execution.
+                    </li>
+                    <li>
+                        <strong>Mispriced markets.</strong> In poker you profit from
+                        opponents' mistakes, not the house. In a betting market a
+                        sharp bettor wins only when the posted odds are wrong more
+                        often than the bookmaker's margin costs them — a razor-thin
+                        proposition that almost everyone gets wrong.
+                    </li>
+                </ul>
+                <p>
+                    The pattern is consistent: +EV requires either a skill the
+                    operator hasn't priced in or an error someone hasn't fixed yet.
+                    It's scarce, fragile, and actively hunted down. If an edge were
+                    easy and durable, it wouldn't survive.
+                </p>
+
+                <h2>Why time is the enemy of a −EV bet</h2>
+                <p>
+                    Here's the cruel mechanic. In a −EV game, the more you play, the
+                    more certain your loss becomes. Over a handful of bets, variance
+                    dominates and you might be well ahead. But as the number of bets
+                    grows, the law of large numbers drags your actual results toward
+                    the expected average — which is negative. Volume is the house's
+                    best friend.
+                </p>
+                <p>
+                    Play roulette for ten spins and anything can happen. Play it for
+                    ten thousand and you'll have donated almost exactly 5.3% of
+                    everything you wagered. The only winning move in a −EV game,
+                    mathematically, is to play less of it. That's the opposite of how
+                    the room is designed to make you feel.
+                </p>
+
+                <div class="callout">
+                    <p>
+                        Every table on Riskr carries a built-in edge, just like the
+                        real thing — but the chips are fake and the only score that
+                        moves is the leaderboard. It's a free place to watch −EV
+                        grind a balance down with nothing actually at stake.
+                    </p>
+                </div>
+
+                <a class="cta" href="/">Play Riskr — risk-free</a>
+
+                <div class="related">
+                    <h3>Keep reading</h3>
+                    <a href="/blog/expected-value-in-crash"
+                        >Expected Value in Crash →</a
+                    >
+                    <a href="/blog/house-edge-explained">House Edge Explained →</a>
+                    <a href="/blog/difference-between-gambling-and-investing"
+                        >The Difference Between Gambling and Investing →</a
+                    >
+                </div>
+            </article>
+
+            <footer>
+                <div>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms &amp; Disclaimer</a>
+                    <a href="/contact">Contact</a>
+                </div>
+                <p style="margin-top: 10px">
+                    This article is for education and entertainment only and is
+                    not financial, betting, or investment advice. Riskr is a
+                    free, fake-money game. No real money, no gambling, no prizes.
+                    18+.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>

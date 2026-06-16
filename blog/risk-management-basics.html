@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Risk Management Basics — Riskr Blog</title>
+        <meta
+            name="description"
+            content="A plain-English guide to thinking about risk: know what you can lose, size your exposure, separate probability from impact, and set limits before emotions take over. Useful for games and life."
+        />
+        <link
+            rel="canonical"
+            href="https://riskr.bet/blog/risk-management-basics"
+        />
+        <link
+            rel="icon"
+            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23d4af37'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%230c0906' font-family='serif' font-weight='bold'%3E%24%3C/text%3E%3C/svg%3E"
+        />
+
+        <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3084591484596901"
+            crossorigin="anonymous"
+        ></script>
+
+        <style>
+            :root {
+                --bg: #0c0906;
+                --panel: #171108;
+                --edge: #3a2c12;
+                --gold: #d4af37;
+                --gold-hi: #f2d57c;
+                --ink: #ece3cf;
+                --muted: #9b8d6d;
+            }
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                background: var(--bg);
+                color: var(--ink);
+                font-family: "Manrope", system-ui, sans-serif;
+                line-height: 1.7;
+                padding: 0 16px 80px;
+            }
+            .wrap {
+                max-width: 720px;
+                margin: 0 auto;
+            }
+            header {
+                padding: 22px 0 18px;
+                border-bottom: 1px solid var(--edge);
+                margin-bottom: 30px;
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            .brand {
+                font-family: "Cinzel", serif;
+                font-weight: 900;
+                font-size: 20px;
+                letter-spacing: 0.14em;
+                color: var(--gold-hi);
+                text-decoration: none;
+            }
+            nav a {
+                color: var(--muted);
+                text-decoration: none;
+                margin-left: 16px;
+                font-size: 14px;
+            }
+            nav a:hover {
+                color: var(--gold-hi);
+            }
+            .eyebrow {
+                color: var(--gold);
+                font-size: 13px;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                margin-bottom: 10px;
+            }
+            h1 {
+                font-family: "Cinzel", serif;
+                color: var(--gold-hi);
+                font-size: 30px;
+                line-height: 1.25;
+                margin-bottom: 10px;
+            }
+            .meta {
+                color: var(--muted);
+                font-size: 14px;
+                margin-bottom: 26px;
+            }
+            h2 {
+                color: var(--gold);
+                font-size: 21px;
+                margin: 30px 0 10px;
+            }
+            p,
+            li {
+                color: var(--ink);
+                margin-bottom: 14px;
+            }
+            ul,
+            ol {
+                padding-left: 22px;
+            }
+            a {
+                color: var(--gold-hi);
+            }
+            strong {
+                color: var(--gold-hi);
+            }
+            .lede {
+                font-size: 18px;
+                color: var(--ink);
+            }
+            .callout {
+                background: var(--panel);
+                border: 1px solid var(--edge);
+                border-left: 3px solid var(--gold);
+                border-radius: 8px;
+                padding: 14px 18px;
+                margin: 22px 0;
+            }
+            .callout p:last-child {
+                margin-bottom: 0;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 18px 0;
+                font-size: 15px;
+            }
+            th,
+            td {
+                border: 1px solid var(--edge);
+                padding: 9px 12px;
+                text-align: left;
+            }
+            th {
+                color: var(--gold);
+                background: var(--panel);
+            }
+            .cta {
+                display: inline-block;
+                margin-top: 8px;
+                background: linear-gradient(
+                    180deg,
+                    var(--gold-hi),
+                    var(--gold)
+                );
+                color: #0c0906;
+                font-weight: 800;
+                text-decoration: none;
+                padding: 12px 26px;
+                border-radius: 10px;
+            }
+            .related {
+                margin-top: 40px;
+                padding-top: 22px;
+                border-top: 1px solid var(--edge);
+            }
+            .related h3 {
+                color: var(--gold);
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+            .related a {
+                display: block;
+                margin-bottom: 6px;
+            }
+            footer {
+                margin-top: 50px;
+                padding-top: 22px;
+                border-top: 1px solid var(--edge);
+                color: var(--muted);
+                font-size: 13px;
+            }
+            footer a {
+                color: var(--muted);
+                margin-right: 14px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrap">
+            <header>
+                <a class="brand" href="/">RISKR</a>
+                <nav>
+                    <a href="/">Play</a>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy</a>
+                    <a href="/terms">Terms</a>
+                    <a href="/contact">Contact</a>
+                </nav>
+            </header>
+
+            <article>
+                <div class="eyebrow">Educational</div>
+                <h1>Risk Management Basics</h1>
+                <p class="meta">By the Riskr team · 6 min read</p>
+
+                <p class="lede">
+                    "Risk management" sounds like a phrase for hedge funds and
+                    insurance actuaries, but at its core it's a simple, everyday
+                    skill: deciding how much you're willing to lose before you find
+                    out whether you will. The same handful of ideas apply whether
+                    you're sizing a bet in a game, deciding how much of a paycheck
+                    to set aside, or choosing whether to drive in a storm.
+                </p>
+
+                <h2>Start with the worst case, not the best</h2>
+                <p>
+                    Most people daydream about the upside — the jackpot, the
+                    perfect outcome. Risk management flips that around and asks the
+                    blunt question first: <strong>what can I lose, and can I
+                    survive it?</strong> Before any decision involving uncertainty,
+                    name the downside in concrete terms. Not "it probably won't
+                    happen," but "if it does happen, here is exactly what I'm out."
+                    A loss you can absorb and shrug off is in a completely different
+                    category from one that wrecks you.
+                </p>
+                <p>
+                    This leads to the oldest rule in the book:
+                    <strong>never risk more than you can afford to lose.</strong>
+                    It's a cliché because it's true. The goal of staying in any
+                    game — financial or otherwise — is to not get knocked out. You
+                    can't recover from a bet that takes everything.
+                </p>
+
+                <h2>Probability and impact are two different things</h2>
+                <p>
+                    A common mistake is collapsing "how likely" and "how bad" into a
+                    single vague sense of "risky." They're separate axes, and the
+                    most dangerous situations live in different corners than people
+                    expect. A high-probability, low-impact event (a small loss that
+                    happens often) is just a cost of doing business. A
+                    low-probability, high-impact event (a rare loss that's
+                    catastrophic) is the one that actually ends people — and it's
+                    the one our intuition tends to ignore precisely because it
+                    "hardly ever happens."
+                </p>
+
+                <table>
+                    <tr>
+                        <th>&nbsp;</th>
+                        <th>Low impact</th>
+                        <th>High impact</th>
+                    </tr>
+                    <tr>
+                        <td>Likely</td>
+                        <td>Routine cost — budget for it</td>
+                        <td>Avoid or fix at the source</td>
+                    </tr>
+                    <tr>
+                        <td>Unlikely</td>
+                        <td>Usually fine to accept</td>
+                        <td>The quiet killer — cap your exposure</td>
+                    </tr>
+                </table>
+
+                <p>
+                    The takeaway: judge a risk by both numbers, and pay special
+                    attention to anything in the bottom-right cell, where a rare
+                    event could do permanent damage.
+                </p>
+
+                <div class="callout">
+                    <p>
+                        <strong>Key idea:</strong> "It probably won't happen" is not
+                        a plan. If the impact is severe enough, even a small
+                        probability deserves a hard limit. Survival beats
+                        optimization.
+                    </p>
+                </div>
+
+                <h2>Position sizing: the lever you actually control</h2>
+                <p>
+                    You usually can't change the odds of an uncertain event, but you
+                    can almost always change <strong>how much you put on it.</strong>
+                    That's position sizing, and it's the single most powerful tool
+                    in risk management. Risking 1% of what you have on any one
+                    outcome means a string of bad luck stings but doesn't end you.
+                    Risking 50% means two bad calls in a row and you're done. Same
+                    odds, wildly different survival.
+                </p>
+                <p>
+                    The principle generalizes: keep any single exposure small
+                    relative to the whole, so no one event — however unlucky — can
+                    take you out of the game entirely.
+                </p>
+
+                <h2>Diversify what you can</h2>
+                <p>
+                    Putting everything into one outcome ties your fate to that one
+                    thing. Spreading exposure across many independent outcomes
+                    smooths the ride: the good and the bad partially cancel, and
+                    you're far less likely to be ruined by a single bad draw.
+                    Diversification doesn't turn a losing proposition into a winning
+                    one — if every option has a negative edge, spreading across them
+                    just gives you a more reliable loss. But when outcomes are
+                    genuinely independent, it's one of the few "free" reductions in
+                    risk available.
+                </p>
+
+                <h2>Set your limits before you're emotional</h2>
+                <p>
+                    The cruelest part of risk is that the worst decisions get made in
+                    the worst moments — chasing a loss, doubling down on a streak,
+                    refusing to walk away. The fix is to decide the rules
+                    <strong>in advance</strong>, while you're calm: a maximum you'll
+                    risk, a point where you stop, a cooling-off rule. A limit set
+                    ahead of time is a promise from your rational self to your
+                    future, tilted-up-or-tilted-down self. Limits set in the heat of
+                    the moment tend to move exactly when you need them not to.
+                </p>
+
+                <div class="callout">
+                    <p>
+                        Riskr is a useful sandbox for all of this. Because the money
+                        is fake, you can practice setting a limit, sizing your
+                        "bets," and walking away — building the habits — without any
+                        real downside. The leaderboard is the only thing at stake.
+                    </p>
+                </div>
+
+                <a class="cta" href="/">Play Riskr — risk-free</a>
+
+                <div class="related">
+                    <h3>Keep reading</h3>
+                    <a href="/blog/bankroll-management"
+                        >Bankroll Management →</a
+                    >
+                    <a href="/blog/risk-vs-reward">Risk vs. Reward →</a>
+                    <a href="/blog/difference-between-gambling-and-investing"
+                        >The Difference Between Gambling and Investing →</a
+                    >
+                </div>
+            </article>
+
+            <footer>
+                <div>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms &amp; Disclaimer</a>
+                    <a href="/contact">Contact</a>
+                </div>
+                <p style="margin-top: 10px">
+                    This article is for education and entertainment only and is
+                    not financial, betting, or investment advice. Riskr is a
+                    free, fake-money game. No real money, no gambling, no prizes.
+                    18+.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>How Crash Games Work — Riskr Blog</title>
+        <meta
+            name="description"
+            content="A plain-English look at how crash games work: the rising multiplier, the random crash point, provably fair seeds, and the simple math that decides when to cash out."
+        />
+        <link
+            rel="canonical"
+            href="https://riskr.bet/blog/how-crash-games-work"
+        />
+        <link
+            rel="icon"
+            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23d4af37'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%230c0906' font-family='serif' font-weight='bold'%3E%24%3C/text%3E%3C/svg%3E"
+        />
+
+        <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3084591484596901"
+            crossorigin="anonymous"
+        ></script>
+
+        <style>
+            :root {
+                --bg: #0c0906;
+                --panel: #171108;
+                --edge: #3a2c12;
+                --gold: #d4af37;
+                --gold-hi: #f2d57c;
+                --ink: #ece3cf;
+                --muted: #9b8d6d;
+            }
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                background: var(--bg);
+                color: var(--ink);
+                font-family: "Manrope", system-ui, sans-serif;
+                line-height: 1.7;
+                padding: 0 16px 80px;
+            }
+            .wrap {
+                max-width: 720px;
+                margin: 0 auto;
+            }
+            header {
+                padding: 22px 0 18px;
+                border-bottom: 1px solid var(--edge);
+                margin-bottom: 30px;
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            .brand {
+                font-family: "Cinzel", serif;
+                font-weight: 900;
+                font-size: 20px;
+                letter-spacing: 0.14em;
+                color: var(--gold-hi);
+                text-decoration: none;
+            }
+            nav a {
+                color: var(--muted);
+                text-decoration: none;
+                margin-left: 16px;
+                font-size: 14px;
+            }
+            nav a:hover {
+                color: var(--gold-hi);
+            }
+            .eyebrow {
+                color: var(--gold);
+                font-size: 13px;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                margin-bottom: 10px;
+            }
+            h1 {
+                font-family: "Cinzel", serif;
+                color: var(--gold-hi);
+                font-size: 30px;
+                line-height: 1.25;
+                margin-bottom: 10px;
+            }
+            .meta {
+                color: var(--muted);
+                font-size: 14px;
+                margin-bottom: 26px;
+            }
+            h2 {
+                color: var(--gold);
+                font-size: 21px;
+                margin: 30px 0 10px;
+            }
+            p,
+            li {
+                color: var(--ink);
+                margin-bottom: 14px;
+            }
+            ul,
+            ol {
+                padding-left: 22px;
+            }
+            a {
+                color: var(--gold-hi);
+            }
+            strong {
+                color: var(--gold-hi);
+            }
+            .lede {
+                font-size: 18px;
+                color: var(--ink);
+            }
+            .callout {
+                background: var(--panel);
+                border: 1px solid var(--edge);
+                border-left: 3px solid var(--gold);
+                border-radius: 8px;
+                padding: 14px 18px;
+                margin: 22px 0;
+            }
+            .callout p:last-child {
+                margin-bottom: 0;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 18px 0;
+                font-size: 15px;
+            }
+            th,
+            td {
+                border: 1px solid var(--edge);
+                padding: 9px 12px;
+                text-align: left;
+            }
+            th {
+                color: var(--gold);
+                background: var(--panel);
+            }
+            .cta {
+                display: inline-block;
+                margin-top: 8px;
+                background: linear-gradient(
+                    180deg,
+                    var(--gold-hi),
+                    var(--gold)
+                );
+                color: #0c0906;
+                font-weight: 800;
+                text-decoration: none;
+                padding: 12px 26px;
+                border-radius: 10px;
+            }
+            .related {
+                margin-top: 40px;
+                padding-top: 22px;
+                border-top: 1px solid var(--edge);
+            }
+            .related h3 {
+                color: var(--gold);
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+            .related a {
+                display: block;
+                margin-bottom: 6px;
+            }
+            footer {
+                margin-top: 50px;
+                padding-top: 22px;
+                border-top: 1px solid var(--edge);
+                color: var(--muted);
+                font-size: 13px;
+            }
+            footer a {
+                color: var(--muted);
+                margin-right: 14px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrap">
+            <header>
+                <a class="brand" href="/">RISKR</a>
+                <nav>
+                    <a href="/">Play</a>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy</a>
+                    <a href="/terms">Terms</a>
+                    <a href="/contact">Contact</a>
+                </nav>
+            </header>
+
+            <article>
+                <div class="eyebrow">Probability &amp; Math</div>
+                <h1>How Crash Games Work</h1>
+                <p class="meta">By the Riskr team · 6 min read</p>
+
+                <p class="lede">
+                    A crash game looks almost too simple: a multiplier starts at
+                    1.00× and climbs — 1.2×, 1.5×, 2×, 5× — until, at some
+                    unpredictable moment, it "crashes." Cash out before the
+                    crash and you keep whatever the multiplier was. Wait one beat
+                    too long and the round is gone. Underneath that simplicity is
+                    a tidy piece of probability, and once you see it, the game
+                    stops feeling mysterious.
+                </p>
+
+                <h2>The basic loop</h2>
+                <p>
+                    Every round of a crash game has the same shape. You place a
+                    bet before the round begins. The multiplier starts rising the
+                    instant the round starts. At some point a hidden
+                    <strong>crash point</strong> — decided in advance, before the
+                    curve ever moves — is reached, and the game ends. Your only
+                    decision is <em>when to cash out</em>. If you cash out at 3×,
+                    you triple your bet. If the curve crashes at 2.4× and you
+                    hadn't cashed out yet, you lose the bet entirely.
+                </p>
+                <p>
+                    The rising curve is pure theater. It feels like the game is
+                    "deciding" whether to crash as it climbs, but the crash point
+                    was already fixed the moment the round started. The tension
+                    you feel is just you racing a number that's already been
+                    written down.
+                </p>
+
+                <h2>Where the crash point comes from</h2>
+                <p>
+                    The crash point is generated by a
+                    <strong>random number generator</strong> — a process designed
+                    to produce an unpredictable result that follows a known
+                    distribution. In a well-built crash game, that result is
+                    drawn so that small multipliers are common and huge
+                    multipliers are rare. A crash at 1.3× happens constantly. A
+                    crash at 50× almost never does. The distribution has a long
+                    tail: the big wins exist, they're just spread thinly enough
+                    that they can't be counted on.
+                </p>
+                <p>
+                    Many real-money crash games publish a
+                    <strong>"provably fair"</strong> system, where the crash
+                    point is derived from a cryptographic seed that's committed to
+                    before the round and revealed afterward. That lets players
+                    verify the result wasn't changed after bets were placed. It's
+                    a transparency mechanism — it proves the game didn't cheat. It
+                    does <em>not</em> change the odds, which are designed to favor
+                    the house regardless.
+                </p>
+
+                <div class="callout">
+                    <p>
+                        <strong>Key idea:</strong> the curve doesn't decide when
+                        to crash while you watch. The crash point is set before
+                        the round starts. Cashing out is a race against a number
+                        that already exists.
+                    </p>
+                </div>
+
+                <h2>The built-in edge</h2>
+                <p>
+                    Here's the part that matters. In a fair game with no house
+                    edge, a strategy of "always cash out at 2×" would win half the
+                    time and break even over the long run. But crash games aren't
+                    built to break even. They include a small chance that the
+                    round crashes instantly — at or barely above 1.00× — before
+                    anyone can cash out. That sliver of "instant crash" rounds is
+                    the <strong>house edge</strong>. It's usually around 1%, and
+                    it's the reason the game is profitable for the operator.
+                </p>
+                <p>
+                    Because of that edge, no cash-out target is a winning strategy
+                    over time. Cashing out early at 1.5× wins often but pays
+                    little. Holding out for 10× pays big but rarely lands. Every
+                    target sits on the same curve, and that curve is tilted —
+                    slightly — against you. The expected value of any bet is a
+                    little less than the bet itself.
+                </p>
+
+                <table>
+                    <tr>
+                        <th>Cash-out target</th>
+                        <th>Roughly how often it hits</th>
+                        <th>Payout when it does</th>
+                    </tr>
+                    <tr>
+                        <td>1.5×</td>
+                        <td>About 2 in 3 rounds</td>
+                        <td>1.5× your bet</td>
+                    </tr>
+                    <tr>
+                        <td>2×</td>
+                        <td>About 1 in 2 rounds</td>
+                        <td>2× your bet</td>
+                    </tr>
+                    <tr>
+                        <td>10×</td>
+                        <td>About 1 in 10 rounds</td>
+                        <td>10× your bet</td>
+                    </tr>
+                </table>
+                <p>
+                    Notice the pattern: higher targets pay more but hit less, in
+                    almost exact proportion. The trade is balanced — and then
+                    tilted a hair toward the house by the instant-crash chance. No
+                    target escapes it.
+                </p>
+
+                <h2>Why it feels beatable</h2>
+                <p>
+                    Crash games are gripping precisely because the decision feels
+                    like skill. You watch the curve, you feel a streak coming, you
+                    pull out "just in time." But the moment of cashing out doesn't
+                    change the odds — the crash point was fixed before you did
+                    anything. What feels like timing is really just a guess about
+                    a number you can't see. A winning round and a losing round
+                    differ only in luck, not in how well you played.
+                </p>
+                <p>
+                    That's worth internalizing whether you're playing for fake
+                    money or just trying to understand the genre: the rising
+                    curve is designed to make a fixed, slightly-unfavorable
+                    gamble feel like a game of nerve and skill.
+                </p>
+
+                <div class="callout">
+                    <p>
+                        On Riskr, the Crash table runs on exactly these
+                        principles — except the money is fake and the only thing
+                        on the line is your spot on the leaderboard. It's a
+                        risk-free way to watch the math play out.
+                    </p>
+                </div>
+
+                <a class="cta" href="/">Try the Crash table on Riskr</a>
+
+                <div class="related">
+                    <h3>Keep reading</h3>
+                    <a href="/blog/expected-value-in-crash"
+                        >Expected Value in Crash →</a
+                    >
+                    <a href="/blog/house-edge-explained">House Edge Explained →</a>
+                    <a href="/blog/understanding-random-number-generators"
+                        >Understanding Random Number Generators →</a
+                    >
+                </div>
+            </article>
+
+            <footer>
+                <div>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms &amp; Disclaimer</a>
+                    <a href="/contact">Contact</a>
+                </div>
+                <p style="margin-top: 10px">
+                    This article is for education and entertainment only and is
+                    not financial, betting, or investment advice. Riskr is a
+                    free, fake-money game. No real money, no gambling, no prizes.
+                    18+.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>

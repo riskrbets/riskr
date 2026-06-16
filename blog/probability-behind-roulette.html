@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>The Probability Behind Roulette — Riskr Blog</title>
+        <meta
+            name="description"
+            content="Roulette's elegance hides a simple trick: true odds and payout odds don't match. We break down the wheel, the zeros, and why every bet carries the same edge."
+        />
+        <link
+            rel="canonical"
+            href="https://riskr.bet/blog/probability-behind-roulette"
+        />
+        <link
+            rel="icon"
+            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23d4af37'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%230c0906' font-family='serif' font-weight='bold'%3E%24%3C/text%3E%3C/svg%3E"
+        />
+
+        <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3084591484596901"
+            crossorigin="anonymous"
+        ></script>
+
+        <style>
+            :root {
+                --bg: #0c0906;
+                --panel: #171108;
+                --edge: #3a2c12;
+                --gold: #d4af37;
+                --gold-hi: #f2d57c;
+                --ink: #ece3cf;
+                --muted: #9b8d6d;
+            }
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                background: var(--bg);
+                color: var(--ink);
+                font-family: "Manrope", system-ui, sans-serif;
+                line-height: 1.7;
+                padding: 0 16px 80px;
+            }
+            .wrap {
+                max-width: 720px;
+                margin: 0 auto;
+            }
+            header {
+                padding: 22px 0 18px;
+                border-bottom: 1px solid var(--edge);
+                margin-bottom: 30px;
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            .brand {
+                font-family: "Cinzel", serif;
+                font-weight: 900;
+                font-size: 20px;
+                letter-spacing: 0.14em;
+                color: var(--gold-hi);
+                text-decoration: none;
+            }
+            nav a {
+                color: var(--muted);
+                text-decoration: none;
+                margin-left: 16px;
+                font-size: 14px;
+            }
+            nav a:hover {
+                color: var(--gold-hi);
+            }
+            .eyebrow {
+                color: var(--gold);
+                font-size: 13px;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                margin-bottom: 10px;
+            }
+            h1 {
+                font-family: "Cinzel", serif;
+                color: var(--gold-hi);
+                font-size: 30px;
+                line-height: 1.25;
+                margin-bottom: 10px;
+            }
+            .meta {
+                color: var(--muted);
+                font-size: 14px;
+                margin-bottom: 26px;
+            }
+            h2 {
+                color: var(--gold);
+                font-size: 21px;
+                margin: 30px 0 10px;
+            }
+            p,
+            li {
+                color: var(--ink);
+                margin-bottom: 14px;
+            }
+            ul,
+            ol {
+                padding-left: 22px;
+            }
+            a {
+                color: var(--gold-hi);
+            }
+            strong {
+                color: var(--gold-hi);
+            }
+            .lede {
+                font-size: 18px;
+                color: var(--ink);
+            }
+            .callout {
+                background: var(--panel);
+                border: 1px solid var(--edge);
+                border-left: 3px solid var(--gold);
+                border-radius: 8px;
+                padding: 14px 18px;
+                margin: 22px 0;
+            }
+            .callout p:last-child {
+                margin-bottom: 0;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 18px 0;
+                font-size: 15px;
+            }
+            th,
+            td {
+                border: 1px solid var(--edge);
+                padding: 9px 12px;
+                text-align: left;
+            }
+            th {
+                color: var(--gold);
+                background: var(--panel);
+            }
+            .cta {
+                display: inline-block;
+                margin-top: 8px;
+                background: linear-gradient(
+                    180deg,
+                    var(--gold-hi),
+                    var(--gold)
+                );
+                color: #0c0906;
+                font-weight: 800;
+                text-decoration: none;
+                padding: 12px 26px;
+                border-radius: 10px;
+            }
+            .related {
+                margin-top: 40px;
+                padding-top: 22px;
+                border-top: 1px solid var(--edge);
+            }
+            .related h3 {
+                color: var(--gold);
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+            .related a {
+                display: block;
+                margin-bottom: 6px;
+            }
+            footer {
+                margin-top: 50px;
+                padding-top: 22px;
+                border-top: 1px solid var(--edge);
+                color: var(--muted);
+                font-size: 13px;
+            }
+            footer a {
+                color: var(--muted);
+                margin-right: 14px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrap">
+            <header>
+                <a class="brand" href="/">RISKR</a>
+                <nav>
+                    <a href="/">Play</a>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy</a>
+                    <a href="/terms">Terms</a>
+                    <a href="/contact">Contact</a>
+                </nav>
+            </header>
+
+            <article>
+                <div class="eyebrow">Probability &amp; Math</div>
+                <h1>The Probability Behind Roulette</h1>
+                <p class="meta">By the Riskr team · 7 min read</p>
+
+                <p class="lede">
+                    Roulette is the most honest game on the casino floor about how it
+                    makes money — if you know where to look. The whole edge lives in
+                    a tiny gap between the odds of winning and the amount you get
+                    paid for winning. Find that gap and the wheel stops being
+                    mysterious. It's the same trick on every bet, dressed up in green
+                    felt.
+                </p>
+
+                <h2>The wheel: 37 or 38 pockets</h2>
+                <p>
+                    A roulette wheel has numbers 1 through 36, colored red and black,
+                    plus one or two green zeros. That zero count is everything.
+                </p>
+                <ul>
+                    <li>
+                        <strong>European wheel:</strong> 37 pockets — 1 to 36 plus a
+                        single <strong>0</strong>.
+                    </li>
+                    <li>
+                        <strong>American wheel:</strong> 38 pockets — 1 to 36 plus
+                        <strong>0</strong> and <strong>00</strong>.
+                    </li>
+                </ul>
+                <p>
+                    The numbers 1–36 are split evenly: 18 red, 18 black, 18 odd, 18
+                    even. If the wheel stopped there, even-money bets like red/black
+                    would be a true coin flip. The zeros are what break the symmetry —
+                    and that broken symmetry is the house's entire business model.
+                </p>
+
+                <h2>True odds vs payout odds</h2>
+                <p>
+                    Here's the heart of it. When you bet a single number on a European
+                    wheel, your chance of winning is 1 in 37. <em>Fair</em> odds — odds
+                    that would make the bet break even — would pay you
+                    <strong>36 to 1</strong> (your stake back plus 36 times it, so the
+                    36 losing spins are covered by the one win). On an American wheel
+                    with 38 pockets, fair odds would be 37 to 1.
+                </p>
+                <p>
+                    But the table pays a single number only <strong>35 to 1</strong>,
+                    on both wheels. That shortfall — getting paid as if there were 36
+                    pockets when there are really 37 or 38 — is the house edge,
+                    quietly skimmed off the top of the winners.
+                </p>
+
+                <div class="callout">
+                    <p>
+                        <strong>Key idea:</strong> roulette doesn't take a fee when
+                        you lose. It takes it by underpaying when you win — paying
+                        true-but-shrunken odds that pretend the zeros aren't there.
+                    </p>
+                </div>
+
+                <h2>Every bet, same edge</h2>
+                <p>
+                    Newcomers assume "outside" bets like red/black are safer than
+                    betting a single number. They're less <em>volatile</em> — you win
+                    far more often — but the house edge is identical. On a
+                    single-zero wheel, almost every bet carries the same
+                    <strong>2.70%</strong> edge; on a double-zero wheel, almost every
+                    bet carries <strong>5.26%</strong>. The math is engineered so it
+                    doesn't matter where you place your chips.
+                </p>
+
+                <table>
+                    <tr>
+                        <th>Bet type</th>
+                        <th>Numbers covered</th>
+                        <th>Payout odds</th>
+                        <th>True odds (European)</th>
+                    </tr>
+                    <tr>
+                        <td>Single number</td>
+                        <td>1</td>
+                        <td>35 to 1</td>
+                        <td>36 to 1</td>
+                    </tr>
+                    <tr>
+                        <td>Split (two numbers)</td>
+                        <td>2</td>
+                        <td>17 to 1</td>
+                        <td>17.5 to 1</td>
+                    </tr>
+                    <tr>
+                        <td>Corner (four numbers)</td>
+                        <td>4</td>
+                        <td>8 to 1</td>
+                        <td>8.25 to 1</td>
+                    </tr>
+                    <tr>
+                        <td>Dozen / column</td>
+                        <td>12</td>
+                        <td>2 to 1</td>
+                        <td>2.083 to 1</td>
+                    </tr>
+                    <tr>
+                        <td>Red / black, odd / even</td>
+                        <td>18</td>
+                        <td>1 to 1</td>
+                        <td>1.056 to 1</td>
+                    </tr>
+                </table>
+                <p>
+                    Look down the table: in every row, the payout odds are slightly
+                    stingier than the true odds, and the gap always works out to the
+                    same 2.70%. Spreading chips across the felt doesn't dodge the
+                    edge — it just averages it.
+                </p>
+
+                <h2>The handful of exceptions</h2>
+                <p>
+                    There are a couple of footnotes. Some European tables offer
+                    <strong>"la partage"</strong> or <strong>"en prison"</strong>
+                    rules, which return half your even-money bet (or hold it for one
+                    more spin) when the ball lands on zero. That cuts the edge on those
+                    specific bets roughly in half, to about 1.35%. Going the other way,
+                    one American bet — the five-number row of 0, 00, 1, 2, 3 — is the
+                    sucker's special, carrying a worse-than-usual 7.89% edge. Outside
+                    of those, the edge is flat across the table.
+                </p>
+
+                <div class="callout">
+                    <p>
+                        On Riskr, the Roulette table runs on these exact odds — single
+                        number pays 35 to 1, the zero does its quiet work — only the
+                        chips are fake. It's the cleanest way to watch true odds and
+                        payout odds drift apart, with nothing real at stake.
+                    </p>
+                </div>
+
+                <a class="cta" href="/">Try the Roulette table on Riskr</a>
+
+                <div class="related">
+                    <h3>Keep reading</h3>
+                    <a href="/blog/house-edge-explained"
+                        >House Edge Explained →</a
+                    >
+                    <a href="/blog/gamblers-fallacy-explained"
+                        >The Gambler's Fallacy Explained →</a
+                    >
+                    <a href="/blog/understanding-random-number-generators"
+                        >Understanding Random Number Generators →</a
+                    >
+                </div>
+            </article>
+
+            <footer>
+                <div>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms &amp; Disclaimer</a>
+                    <a href="/contact">Contact</a>
+                </div>
+                <p style="margin-top: 10px">
+                    This article is for education and entertainment only and is
+                    not financial, betting, or investment advice. Riskr is a
+                    free, fake-money game. No real money, no gambling, no prizes.
+                    18+.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>
