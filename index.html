@@ -375,6 +375,162 @@
                 margin-bottom: 14px;
             }
 
+            /* ---------- How to Play ---------- */
+            .htp-open-btn {
+                position: absolute;
+                top: 16px;
+                right: 16px;
+                z-index: 5;
+                width: 30px;
+                height: 30px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0;
+                border-radius: 50%;
+                background: radial-gradient(
+                    circle at 35% 30%,
+                    rgba(242, 213, 124, 0.2),
+                    rgba(212, 175, 55, 0.05)
+                );
+                border: 1px solid var(--gold-dim);
+                color: var(--gold-hi);
+                font-family: "Cinzel", serif;
+                font-weight: 700;
+                font-size: 16px;
+                line-height: 1;
+                cursor: pointer;
+                box-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+                transition:
+                    background 0.15s,
+                    border-color 0.15s,
+                    color 0.15s,
+                    transform 0.15s,
+                    box-shadow 0.15s;
+            }
+            .htp-open-btn:hover {
+                background: linear-gradient(
+                    180deg,
+                    var(--gold-hi),
+                    var(--gold)
+                );
+                border-color: var(--gold-hi);
+                color: #1a1205;
+                transform: translateY(-1px);
+                box-shadow:
+                    0 0 0 3px rgba(212, 175, 55, 0.18),
+                    0 2px 9px rgba(0, 0, 0, 0.5);
+            }
+            #htp-backdrop {
+                position: fixed;
+                inset: 0;
+                z-index: 300;
+                display: none;
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+                background: rgba(6, 4, 1, 0.78);
+                -webkit-backdrop-filter: blur(2px);
+                backdrop-filter: blur(2px);
+            }
+            #htp-backdrop.show {
+                display: flex;
+            }
+            #htp-modal {
+                position: relative;
+                width: 100%;
+                max-width: 520px;
+                max-height: 86vh;
+                display: flex;
+                flex-direction: column;
+                background: var(--panel);
+                border: 1px solid var(--gold-dim);
+                border-radius: 12px;
+                box-shadow:
+                    0 0 0 1px rgba(0, 0, 0, 0.4),
+                    0 24px 60px rgba(0, 0, 0, 0.6);
+            }
+            #htp-head {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 12px;
+                padding: 16px 18px 12px;
+                border-bottom: 1px solid var(--edge);
+            }
+            #htp-title {
+                font-family: var(--disp);
+                font-size: 20px;
+                color: var(--gold-hi);
+                letter-spacing: 0.02em;
+            }
+            #htp-close {
+                flex: 0 0 auto;
+                width: 30px;
+                height: 30px;
+                background: transparent;
+                border: 1px solid var(--gold-dim);
+                border-radius: 8px;
+                color: var(--gold-hi);
+                font-size: 16px;
+                line-height: 1;
+                cursor: pointer;
+                transition:
+                    border-color 0.15s,
+                    color 0.15s;
+            }
+            #htp-close:hover {
+                border-color: var(--gold);
+                color: var(--gold);
+            }
+            #htp-body {
+                padding: 14px 18px 4px;
+                overflow-y: auto;
+                color: var(--ink);
+                font-size: 13.5px;
+                line-height: 1.55;
+            }
+            #htp-body h3 {
+                font-family: var(--mono);
+                font-size: 11px;
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+                color: var(--gold);
+                margin: 14px 0 6px;
+            }
+            #htp-body h3:first-child {
+                margin-top: 0;
+            }
+            #htp-body p {
+                margin: 0 0 8px;
+            }
+            #htp-body ul {
+                margin: 0 0 8px;
+                padding-left: 18px;
+            }
+            #htp-body li {
+                margin: 0 0 4px;
+            }
+            #htp-body b {
+                color: var(--gold-hi);
+            }
+            #htp-foot {
+                padding: 10px 18px 16px;
+                border-top: 1px solid var(--edge);
+                color: var(--muted);
+                font-size: 11px;
+                font-style: italic;
+                text-align: center;
+            }
+            @media (max-width: 560px) {
+                #htp-title {
+                    font-size: 17px;
+                }
+                #htp-body {
+                    font-size: 13px;
+                }
+            }
+
             /* ---------- bet controls ---------- */
             .betbar {
                 display: flex;
@@ -532,6 +688,18 @@
                 border-radius: 8px;
                 background: #0a0703;
                 border: 1px solid var(--edge);
+            }
+            /* Plinko is portrait + tall; on desktop cap it by viewport height
+               so the whole board and the Drop button fit on screen at once.
+               Mobile (handled below) keeps the full-width look that works well. */
+            @media (min-width: 561px) {
+                #plinko-canvas {
+                    width: auto;
+                    height: 58vh;
+                    max-height: 500px;
+                    max-width: 100%;
+                    margin: 0 auto;
+                }
             }
             .shake {
                 animation: shake 0.45s;
@@ -857,29 +1025,289 @@
                 flex-wrap: wrap;
                 margin-top: 12px;
             }
+            #bj-player {
+                gap: 14px;
+            }
+            .bj-hand {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 4px;
+                padding: 8px 8px 6px;
+                border-radius: 10px;
+                border: 1.5px solid transparent;
+                transition:
+                    border-color 0.2s,
+                    box-shadow 0.2s,
+                    opacity 0.25s;
+            }
+            .bj-hand-cards {
+                display: flex;
+                justify-content: center;
+                gap: 6px;
+                flex-wrap: wrap;
+                min-height: 92px;
+            }
+            .bj-hand.active {
+                border-color: var(--gold);
+                box-shadow:
+                    0 0 0 1px rgba(212, 175, 55, 0.4),
+                    0 0 18px rgba(212, 175, 55, 0.35);
+                background: rgba(212, 175, 55, 0.05);
+            }
+            .bj-hand.settled {
+                opacity: 0.6;
+            }
+            .bj-hand-meta {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                font-family: var(--mono);
+                font-size: 11px;
+                letter-spacing: 0.05em;
+            }
+            .bj-hand-bet {
+                color: var(--gold-hi);
+                font-weight: 700;
+            }
+            .bj-hand-val {
+                color: rgba(236, 227, 207, 0.8);
+            }
+            .bj-hand-out {
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.12em;
+                font-size: 10px;
+                padding: 1px 6px;
+                border-radius: 4px;
+            }
+            .bj-hand-out.win {
+                color: #5fe9b4;
+                background: rgba(52, 211, 153, 0.12);
+            }
+            .bj-hand-out.lose {
+                color: #ff7a8d;
+                background: rgba(226, 59, 83, 0.12);
+            }
+            .bj-hand-out.push {
+                color: var(--gold-hi);
+                background: rgba(212, 175, 55, 0.12);
+            }
 
             /* ---------- roulette ---------- */
             #ro-layout {
                 display: flex;
-                gap: 18px;
-                flex-wrap: wrap;
-                justify-content: center;
-                align-items: flex-start;
+                flex-direction: column;
+                gap: 16px;
+                align-items: center;
             }
             #ro-wheel-wrap {
-                flex: 0 1 380px;
+                width: 100%;
+                max-width: 360px;
             }
-            #ro-bets {
-                flex: 1 1 280px;
-                max-width: 420px;
+            #ro-table-wrap {
+                width: 100%;
+                max-width: 660px;
             }
-            .ro-grid {
+            #ro-felt {
                 display: grid;
-                grid-template-columns: 1fr 1fr 1fr;
-                gap: 6px;
-                margin-bottom: 8px;
+                grid-template-columns: 0.85fr repeat(12, 1fr) 0.85fr;
+                gap: 3px;
+                background: #0a3d2c;
+                background-image: radial-gradient(
+                    circle at 50% 0,
+                    #11543c,
+                    #082b1f
+                );
+                border: 2px solid var(--gold-dim);
+                border-radius: 10px;
+                padding: 6px;
+                box-sizing: border-box;
             }
-            .ro-bet {
+            .ro-cell {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: var(--mono);
+                font-weight: 600;
+                font-size: 13px;
+                color: #fff;
+                border: 1px solid rgba(212, 175, 55, 0.4);
+                border-radius: 4px;
+                cursor: pointer;
+                user-select: none;
+                min-height: 30px;
+                text-align: center;
+                line-height: 1.05;
+                transition:
+                    filter 0.12s,
+                    box-shadow 0.12s;
+            }
+            .ro-cell:hover {
+                filter: brightness(1.3);
+                box-shadow: inset 0 0 0 1px var(--gold-hi);
+            }
+            .ro-cell.red {
+                background: #a3132c;
+            }
+            .ro-cell.black {
+                background: #15110b;
+            }
+            .ro-cell.green {
+                background: #0d6b45;
+                font-size: 16px;
+            }
+            .ro-cell.outside {
+                background: rgba(7, 40, 29, 0.85);
+                font-size: 11px;
+                letter-spacing: 0.02em;
+                padding: 6px 2px;
+            }
+            .ro-cell.outside.rbet {
+                background: #a3132c;
+            }
+            .ro-cell.outside.bbet {
+                background: #15110b;
+            }
+            #ro-felt-wrap {
+                position: relative;
+            }
+            #ro-zero-col {
+                display: flex;
+                flex-direction: column;
+                gap: 3px;
+            }
+            .ro-half {
+                flex: 1;
+                min-height: 0;
+            }
+            #ro-overlay {
+                position: absolute;
+                inset: 0;
+                pointer-events: none;
+            }
+            .ro-hot {
+                position: absolute;
+                width: 18px;
+                height: 18px;
+                transform: translate(-50%, -50%);
+                border-radius: 50%;
+                pointer-events: auto;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 4;
+            }
+            .ro-hot:hover {
+                background: rgba(242, 213, 124, 0.5);
+                box-shadow: 0 0 0 2px var(--gold-hi);
+            }
+            /* chip tokens sitting on a line/corner are centered on the hot-zone */
+            .ro-hot .ro-chip-tok {
+                position: static;
+                bottom: auto;
+                right: auto;
+            }
+            .ro-cell.win-hl {
+                box-shadow:
+                    0 0 0 2px var(--gold-hi),
+                    0 0 16px rgba(242, 213, 124, 0.75);
+                z-index: 3;
+            }
+            .ro-chip-tok {
+                position: absolute;
+                bottom: 1px;
+                right: 1px;
+                min-width: 19px;
+                height: 19px;
+                padding: 0 3px;
+                border-radius: 50%;
+                background: radial-gradient(
+                    circle at 35% 30%,
+                    #fff7df,
+                    var(--gold)
+                );
+                color: #2a1d05;
+                font-family: var(--mono);
+                font-size: 9px;
+                font-weight: 800;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 2px dashed rgba(0, 0, 0, 0.4);
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+                pointer-events: none;
+                z-index: 2;
+            }
+            #ro-chips {
+                display: flex;
+                gap: 8px;
+                flex-wrap: wrap;
+                justify-content: center;
+                margin-top: 12px;
+            }
+            .ro-denom {
+                width: 46px;
+                height: 46px;
+                border-radius: 50%;
+                border: 3px dashed rgba(255, 255, 255, 0.6);
+                font-family: var(--mono);
+                font-weight: 800;
+                font-size: 12px;
+                color: #fff;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+                transition:
+                    transform 0.12s,
+                    box-shadow 0.12s;
+            }
+            .ro-denom:hover {
+                transform: translateY(-2px);
+            }
+            .ro-denom.sel {
+                box-shadow:
+                    0 0 0 3px var(--gold-hi),
+                    0 2px 6px rgba(0, 0, 0, 0.6);
+                transform: translateY(-3px);
+            }
+            .ro-denom.c1 {
+                background: #d9d2c2;
+                color: #2a1d05;
+            }
+            .ro-denom.c5 {
+                background: #c0392b;
+            }
+            .ro-denom.c25 {
+                background: #1e7a46;
+            }
+            .ro-denom.c100 {
+                background: #1a1a1a;
+            }
+            .ro-denom.c500 {
+                background: #6a2c8f;
+            }
+            #ro-actions {
+                display: flex;
+                gap: 10px;
+                align-items: center;
+                flex-wrap: wrap;
+                justify-content: center;
+                margin-top: 12px;
+            }
+            #ro-total {
+                font-family: var(--mono);
+                font-size: 13px;
+                color: var(--gold-hi);
+                font-weight: 700;
+                min-width: 130px;
+                text-align: center;
+            }
+            .ro-ctl {
                 font-family: var(--body);
                 font-weight: 700;
                 font-size: 12px;
@@ -888,70 +1316,16 @@
                 border: 1px solid var(--edge);
                 color: var(--ink);
                 border-radius: 6px;
-                padding: 10px 6px;
+                padding: 9px 14px;
                 cursor: pointer;
                 transition: all 0.15s;
-                text-align: center;
             }
-            .ro-bet:hover {
+            .ro-ctl:hover:not(:disabled) {
                 border-color: var(--gold-dim);
             }
-            .ro-bet.sel {
-                border-color: var(--gold);
-                color: var(--gold-hi);
-                box-shadow:
-                    0 0 12px rgba(212, 175, 55, 0.3),
-                    inset 0 0 0 1px var(--gold-dim);
-            }
-            .ro-bet .pay {
-                display: block;
-                font-family: var(--mono);
-                font-size: 10px;
-                color: var(--muted);
-                font-weight: 500;
-            }
-            .ro-bet.r {
-                box-shadow: inset 3px 0 0 var(--crimson);
-            }
-            .ro-bet.b {
-                box-shadow: inset 3px 0 0 #444;
-            }
-            .ro-bet.r.sel {
-                box-shadow:
-                    inset 3px 0 0 var(--crimson),
-                    0 0 12px rgba(212, 175, 55, 0.3),
-                    inset 0 0 0 1px var(--gold-dim);
-            }
-            .ro-bet.b.sel {
-                box-shadow:
-                    inset 3px 0 0 #444,
-                    0 0 12px rgba(212, 175, 55, 0.3),
-                    inset 0 0 0 1px var(--gold-dim);
-            }
-            #ro-num-row {
-                display: flex;
-                gap: 6px;
-                align-items: center;
-                margin-bottom: 8px;
-            }
-            #ro-num-row .ro-bet {
-                flex: 1;
-            }
-            #ro-num {
-                width: 74px;
-                background: #0d0904;
-                border: 1px solid var(--edge);
-                border-radius: 6px;
-                color: var(--ink);
-                font-family: var(--mono);
-                font-size: 16px;
-                font-weight: 600;
-                padding: 9px 10px;
-                outline: none;
-                text-align: center;
-            }
-            #ro-num:focus {
-                border-color: var(--gold-dim);
+            .ro-ctl:disabled {
+                opacity: 0.4;
+                cursor: not-allowed;
             }
 
             /* ---------- crash ---------- */
@@ -1269,12 +1643,39 @@
                 .panel {
                     padding: 14px 10px;
                 }
+                .htp-open-btn {
+                    top: 12px;
+                    right: 10px;
+                    width: 28px;
+                    height: 28px;
+                    font-size: 15px;
+                }
                 .card {
                     width: 52px;
                     height: 76px;
                 }
                 .card .c-pip {
                     font-size: 24px;
+                }
+                #bj-player {
+                    gap: 6px;
+                }
+                .bj-hand {
+                    padding: 6px 4px 4px;
+                }
+                .bj-hand-cards {
+                    gap: 4px;
+                    min-height: 76px;
+                }
+                .bj-hand-cards .card {
+                    width: 44px;
+                    height: 64px;
+                }
+                .bj-hand-cards .card .c-pip {
+                    font-size: 20px;
+                }
+                .bj-hand-meta {
+                    font-size: 10px;
                 }
                 .reel {
                     width: 78px;
@@ -1285,6 +1686,36 @@
                 }
                 #busted-title {
                     font-size: 38px;
+                }
+                #ro-felt {
+                    gap: 2px;
+                    padding: 4px;
+                }
+                .ro-cell {
+                    font-size: 10px;
+                    min-height: 26px;
+                    border-radius: 3px;
+                }
+                .ro-cell.green {
+                    font-size: 12px;
+                }
+                .ro-cell.outside {
+                    font-size: 8.5px;
+                }
+                .ro-chip-tok {
+                    min-width: 15px;
+                    height: 15px;
+                    font-size: 8px;
+                    border-width: 1px;
+                }
+                .ro-denom {
+                    width: 40px;
+                    height: 40px;
+                    font-size: 11px;
+                }
+                .ro-hot {
+                    width: 13px;
+                    height: 13px;
                 }
             }
 
@@ -1366,6 +1797,13 @@
                         Ride the curve. Cash out before it crashes — wait too
                         long and the bet is gone.
                     </p>
+                    <button
+                        class="htp-open-btn"
+                        type="button"
+                        data-htp="crash"
+                    >
+                        ?
+                    </button>
                     <div class="cwrap">
                         <canvas
                             id="crash-canvas"
@@ -1447,6 +1885,13 @@
                         5x — but the ball almost always drifts to the
                         low-paying middle.
                     </p>
+                    <button
+                        class="htp-open-btn"
+                        type="button"
+                        data-htp="plinko"
+                    >
+                        ?
+                    </button>
                     <div class="cwrap">
                         <canvas
                             id="plinko-canvas"
@@ -1519,6 +1964,13 @@
                     <p class="sub">
                         Three of a kind pays. Triple sevens pays 120x.
                     </p>
+                    <button
+                        class="htp-open-btn"
+                        type="button"
+                        data-htp="slots"
+                    >
+                        ?
+                    </button>
                     <div id="slot-machine">
                         <div id="slot-title">★ GOLDEN SEVENS ★</div>
                         <div id="reels">
@@ -1602,9 +2054,16 @@
                     <h2>Blackjack</h2>
                     <div class="deco-rule"><span>◆</span></div>
                     <p class="sub">
-                        Dealer stands on 17 · Blackjack pays 3:2 · Double on any
-                        first two cards.
+                        Dealer stands on 17 · Blackjack pays 3:2 · Split any
+                        pair · Double after split.
                     </p>
+                    <button
+                        class="htp-open-btn"
+                        type="button"
+                        data-htp="blackjack"
+                    >
+                        ?
+                    </button>
                     <div id="bj-table">
                         <div class="bj-lbl">
                             Dealer <b id="bj-dealer-val"></b>
@@ -1689,6 +2148,9 @@
                         <button class="go-btn danger" id="bj-double">
                             Double
                         </button>
+                        <button class="go-btn bj-split-btn" id="bj-split">
+                            Split
+                        </button>
                     </div>
                     <div class="msg info" id="bj-msg">
                         Place a bet and deal.
@@ -1702,8 +2164,17 @@
                     <h2>Roulette</h2>
                     <div class="deco-rule"><span>◆</span></div>
                     <p class="sub">
-                        Single zero. Pick one bet, set your stake, spin.
+                        American double-zero. Pick a chip, then place as many
+                        bets as you like — on numbers, on the lines between them,
+                        or the outside boxes — and spin.
                     </p>
+                    <button
+                        class="htp-open-btn"
+                        type="button"
+                        data-htp="roulette"
+                    >
+                        ?
+                    </button>
                     <div id="ro-layout">
                         <div id="ro-wheel-wrap" class="cwrap">
                             <canvas
@@ -1713,98 +2184,26 @@
                                 height="480"
                             ></canvas>
                         </div>
-                        <div id="ro-bets">
-                            <div class="ro-grid">
-                                <button class="ro-bet r sel" data-rb="red">
-                                    Red<span class="pay">pays 2x</span>
-                                </button>
-                                <button class="ro-bet b" data-rb="black">
-                                    Black<span class="pay">pays 2x</span>
-                                </button>
-                                <button class="ro-bet" data-rb="odd">
-                                    Odd<span class="pay">pays 2x</span>
-                                </button>
-                                <button class="ro-bet" data-rb="even">
-                                    Even<span class="pay">pays 2x</span>
-                                </button>
-                                <button class="ro-bet" data-rb="low">
-                                    1–18<span class="pay">pays 2x</span>
-                                </button>
-                                <button class="ro-bet" data-rb="high">
-                                    19–36<span class="pay">pays 2x</span>
-                                </button>
-                                <button class="ro-bet" data-rb="d1">
-                                    1st 12<span class="pay">pays 3x</span>
-                                </button>
-                                <button class="ro-bet" data-rb="d2">
-                                    2nd 12<span class="pay">pays 3x</span>
-                                </button>
-                                <button class="ro-bet" data-rb="d3">
-                                    3rd 12<span class="pay">pays 3x</span>
-                                </button>
+                        <div id="ro-table-wrap">
+                            <div id="ro-felt-wrap">
+                                <div id="ro-felt"><!-- built by JS --></div>
+                                <div id="ro-overlay"><!-- hit-zones --></div>
                             </div>
-                            <div id="ro-num-row">
-                                <button class="ro-bet" data-rb="straight">
-                                    Straight number<span class="pay"
-                                        >pays 36x</span
-                                    >
+                            <div id="ro-chips"><!-- chip denominations --></div>
+                            <div id="ro-actions">
+                                <span id="ro-total">Total bet: $0.00</span>
+                                <button class="ro-ctl" id="ro-undo" disabled>
+                                    Undo
                                 </button>
-                                <input
-                                    id="ro-num"
-                                    type="number"
-                                    min="0"
-                                    max="36"
-                                    value="17"
-                                    inputmode="numeric"
-                                />
-                            </div>
-                            <div
-                                class="betbar"
-                                style="justify-content: flex-start"
-                            >
-                                <div class="bet-field">
-                                    <span>$</span
-                                    ><input
-                                        id="ro-bet"
-                                        type="number"
-                                        min="1"
-                                        step="1"
-                                        value="100"
-                                        inputmode="decimal"
-                                    />
-                                </div>
-                                <button
-                                    class="chip"
-                                    data-betchip="ro-bet"
-                                    data-add="25"
-                                >
-                                    +25
+                                <button class="ro-ctl" id="ro-clear" disabled>
+                                    Clear
                                 </button>
-                                <button
-                                    class="chip"
-                                    data-betchip="ro-bet"
-                                    data-add="100"
-                                >
-                                    +100
+                                <button class="go-btn" id="ro-go" disabled>
+                                    Spin
                                 </button>
-                                <button
-                                    class="chip"
-                                    data-betchip="ro-bet"
-                                    data-frac="0.5"
-                                >
-                                    ½
-                                </button>
-                                <button
-                                    class="chip"
-                                    data-betchip="ro-bet"
-                                    data-frac="1"
-                                >
-                                    MAX
-                                </button>
-                                <button class="go-btn" id="ro-go">Spin</button>
                             </div>
                             <div class="msg info" id="ro-msg">
-                                Betting on red.
+                                Pick a chip and place it on the table.
                             </div>
                         </div>
                     </div>
@@ -1998,6 +2397,28 @@
         </div>
 
         <div id="toast"></div>
+
+        <div id="htp-backdrop" role="presentation">
+            <div
+                id="htp-modal"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="htp-title"
+            >
+                <div id="htp-head">
+                    <div id="htp-title"></div>
+                    <button id="htp-close" type="button" aria-label="Close">
+                        ✕
+                    </button>
+                </div>
+                <div id="htp-body"></div>
+                <div id="htp-foot">
+                    Remember: Riskr is free, fake-money fun — no real money, no
+                    prizes.
+                </div>
+            </div>
+        </div>
+
         <script>
             "use strict";
             /* ================================================================
@@ -2948,9 +3369,10 @@
                     return aces > 0 && v <= 21;
                 };
 
-                let player = [],
+                // Each hand: {cards:[], bet, done, doubled, fromAces, outcome, el, cardsEl, valEl, outEl}
+                let hands = [],
+                    activeHand = 0,
                     dealer = [],
-                    bet = 0,
                     inHand = false,
                     holeEl = null;
 
@@ -2980,10 +3402,14 @@
                     );
                     return el;
                 }
+                function totalBet() {
+                    return hands.reduce((s, h) => s + h.bet, 0);
+                }
                 function renderChips() {
                     const wrap = $("bj-chips");
                     wrap.innerHTML = "";
-                    if (bet <= 0) return;
+                    const bet = totalBet();
+                    if (!inHand || bet <= 0) return;
                     const n = Math.max(
                         1,
                         Math.min(8, Math.round(Math.log2(bet / 10 + 1)) + 1),
@@ -2997,10 +3423,69 @@
                     }
                     wrap.appendChild(st);
                 }
+                // Build a fresh hand object with its DOM scaffold.
+                function makeHand(bet) {
+                    const el = document.createElement("div");
+                    el.className = "bj-hand";
+                    const cardsEl = document.createElement("div");
+                    cardsEl.className = "bj-hand-cards";
+                    const meta = document.createElement("div");
+                    meta.className = "bj-hand-meta";
+                    const betEl = document.createElement("span");
+                    betEl.className = "bj-hand-bet";
+                    const valEl = document.createElement("span");
+                    valEl.className = "bj-hand-val";
+                    const outEl = document.createElement("span");
+                    outEl.className = "bj-hand-out";
+                    outEl.style.display = "none";
+                    meta.appendChild(betEl);
+                    meta.appendChild(valEl);
+                    meta.appendChild(outEl);
+                    el.appendChild(cardsEl);
+                    el.appendChild(meta);
+                    return {
+                        cards: [],
+                        bet,
+                        done: false,
+                        doubled: false,
+                        fromAces: false,
+                        outcome: null,
+                        el,
+                        cardsEl,
+                        betEl,
+                        valEl,
+                        outEl,
+                    };
+                }
+                // Single hand should look just like the old single-row layout:
+                // hide the per-hand chrome when there's only one hand and it's
+                // not yet resolved.
+                function refreshHandChrome() {
+                    const single = hands.length === 1;
+                    hands.forEach((h, i) => {
+                        h.el.classList.toggle(
+                            "active",
+                            inHand && i === activeHand && !h.done,
+                        );
+                        h.el.classList.toggle("settled", h.outcome !== null);
+                        const showMeta = !single || h.outcome !== null;
+                        h.betEl.textContent = showMeta ? fmt$(h.bet) : "";
+                        h.outEl.style.display =
+                            h.outcome !== null ? "" : "none";
+                    });
+                }
                 function renderVals(revealHole) {
-                    $("bj-player-val").textContent = player.length
-                        ? handVal(player)
-                        : "";
+                    // Per-hand value labels.
+                    hands.forEach((h) => {
+                        h.valEl.textContent = h.cards.length
+                            ? handVal(h.cards)
+                            : "";
+                    });
+                    // Top "You" label tracks the active hand (or first).
+                    const ph = hands[activeHand] || hands[0];
+                    $("bj-player-val").textContent =
+                        ph && ph.cards.length ? handVal(ph.cards) : "";
+                    refreshHandChrome();
                     if (!dealer.length) {
                         $("bj-dealer-val").textContent = "";
                         return;
@@ -3009,13 +3494,36 @@
                         ? handVal(dealer)
                         : cardVal(dealer[0]);
                 }
+                // Can the active hand be split right now?
+                function canSplit() {
+                    const h = hands[activeHand];
+                    return (
+                        h &&
+                        h.cards.length === 2 &&
+                        cardVal(h.cards[0]) === cardVal(h.cards[1]) &&
+                        hands.length < 4 &&
+                        !h.fromAces &&
+                        bankroll >= h.bet
+                    );
+                }
                 function showActions(on) {
                     $("bj-actions").style.display = on ? "flex" : "none";
                     $("bj-betbar").style.display = on ? "none" : "flex";
+                    const h = hands[activeHand];
                     $("bj-double").style.display =
-                        on && player.length === 2 && bankroll >= bet
+                        on && h && h.cards.length === 2 && bankroll >= h.bet
                             ? ""
                             : "none";
+                    $("bj-split").style.display =
+                        on && canSplit() ? "" : "none";
+                }
+
+                // Append a card to a hand and animate it in.
+                function pushCard(h, faceUp) {
+                    const c = deal();
+                    h.cards.push(c);
+                    h.cardsEl.appendChild(cardEl(c, false));
+                    return c;
                 }
 
                 $("bj-deal").addEventListener("click", () => {
@@ -3024,20 +3532,21 @@
                         setMsg("bj-msg", "Enter a bet you can cover.", "lose");
                         return;
                     }
-                    bet = b;
                     inHand = true;
                     beginRound();
-                    player = [];
                     dealer = [];
+                    activeHand = 0;
                     $("bj-player").innerHTML = "";
                     $("bj-dealer").innerHTML = "";
+                    const h = makeHand(b);
+                    hands = [h];
+                    $("bj-player").appendChild(h.el);
                     renderChips();
-                    setMsg("bj-msg", fmt$(bet) + " on the felt.", "info");
+                    setMsg("bj-msg", fmt$(b) + " on the felt.", "info");
 
                     const seq = [
                         () => {
-                            player.push(deal());
-                            $("bj-player").appendChild(cardEl(player[0]));
+                            pushCard(h);
                             renderVals(false);
                         },
                         () => {
@@ -3046,8 +3555,7 @@
                             renderVals(false);
                         },
                         () => {
-                            player.push(deal());
-                            $("bj-player").appendChild(cardEl(player[1]));
+                            pushCard(h);
                             renderVals(false);
                         },
                         () => {
@@ -3063,15 +3571,22 @@
                 });
 
                 function afterDeal() {
-                    const pBJ = handVal(player) === 21;
+                    const h = hands[0];
+                    const pBJ = handVal(h.cards) === 21;
                     const dBJ = handVal(dealer) === 21;
                     if (pBJ || dBJ) {
                         revealHole(() => {
                             renderVals(true);
-                            if (pBJ && dBJ)
-                                finish("push", "Both blackjack — push.");
-                            else if (pBJ) finish("bj", "Blackjack! Pays 3:2.");
-                            else finish("lose", "Dealer blackjack.");
+                            if (pBJ && dBJ) {
+                                h.outcome = "push";
+                                settleAll("Both blackjack — push.");
+                            } else if (pBJ) {
+                                h.outcome = "bj";
+                                settleAll("Blackjack! Pays 3:2.");
+                            } else {
+                                h.outcome = "lose";
+                                settleAll("Dealer blackjack.");
+                            }
                         });
                         return;
                     }
@@ -3108,67 +3623,147 @@
                     }, 430);
                 }
 
+                // Move to the next not-done hand, or play the dealer if all done.
+                function advance() {
+                    let i = activeHand + 1;
+                    while (i < hands.length && hands[i].done) i++;
+                    if (i < hands.length) {
+                        activeHand = i;
+                        renderVals(handsRevealed());
+                        // Aces hands auto-complete on their single card.
+                        if (hands[activeHand].fromAces) {
+                            hands[activeHand].done = true;
+                            setTimeout(advance, 250);
+                            return;
+                        }
+                        showActions(true);
+                        setMsg(
+                            "bj-msg",
+                            "Playing hand " + (activeHand + 1) + ".",
+                            "info",
+                        );
+                    } else {
+                        dealerPlay();
+                    }
+                }
+                function handsRevealed() {
+                    return false;
+                }
+
                 $("bj-hit").addEventListener("click", () => {
                     if (!inHand) return;
-                    player.push(deal());
-                    $("bj-player").appendChild(
-                        cardEl(player[player.length - 1]),
-                    );
+                    const h = hands[activeHand];
+                    if (h.done) return;
+                    pushCard(h);
                     renderVals(false);
                     $("bj-double").style.display = "none";
-                    if (handVal(player) > 21) {
-                        revealHole(() => {
-                            renderVals(true);
-                            finish(
-                                "lose",
-                                "Bust with " + handVal(player) + ".",
-                            );
-                        });
-                    } else if (handVal(player) === 21) {
-                        stand();
+                    $("bj-split").style.display = "none";
+                    const v = handVal(h.cards);
+                    if (v > 21) {
+                        h.done = true;
+                        h.outcome = "bust";
+                        renderVals(false);
+                        showActions(false);
+                        setTimeout(advance, 350);
+                    } else if (v === 21) {
+                        h.done = true;
+                        showActions(false);
+                        setTimeout(advance, 350);
+                    } else {
+                        showActions(true);
                     }
                 });
 
                 $("bj-stand").addEventListener("click", () => {
-                    if (inHand) stand();
+                    if (!inHand) return;
+                    const h = hands[activeHand];
+                    if (h.done) return;
+                    h.done = true;
+                    showActions(false);
+                    advance();
                 });
 
                 $("bj-double").addEventListener("click", () => {
-                    if (!inHand || player.length !== 2) return;
-                    if (!takeBet(bet)) {
+                    if (!inHand) return;
+                    const h = hands[activeHand];
+                    if (h.done || h.cards.length !== 2) return;
+                    if (!takeBet(h.bet)) {
                         setMsg("bj-msg", "Not enough to double.", "lose");
                         return;
                     }
-                    bet = cents(bet * 2);
+                    h.bet = cents(h.bet * 2);
+                    h.doubled = true;
                     renderChips();
-                    setMsg(
-                        "bj-msg",
-                        "Doubled to " + fmt$(bet) + ". One card.",
-                        "info",
-                    );
-                    player.push(deal());
-                    $("bj-player").appendChild(
-                        cardEl(player[player.length - 1]),
-                    );
+                    setMsg("bj-msg", "Doubled to " + fmt$(h.bet) + ".", "info");
+                    showActions(false);
+                    pushCard(h);
                     renderVals(false);
-                    if (handVal(player) > 21) {
-                        revealHole(() => {
-                            renderVals(true);
-                            finish(
-                                "lose",
-                                "Bust with " + handVal(player) + ".",
-                            );
-                        });
-                    } else {
-                        setTimeout(stand, 350);
-                    }
+                    h.done = true;
+                    if (handVal(h.cards) > 21) h.outcome = "bust";
+                    setTimeout(advance, 350);
                 });
 
-                function stand() {
+                $("bj-split").addEventListener("click", () => {
+                    if (!inHand || !canSplit()) return;
+                    const h = hands[activeHand];
+                    if (!takeBet(h.bet)) {
+                        setMsg("bj-msg", "Not enough to split.", "lose");
+                        return;
+                    }
+                    showActions(false);
+                    const aces = h.cards[0].r === "A";
+                    // New hand inherits the moved second card and the same bet.
+                    const nh = makeHand(h.bet);
+                    nh.cards.push(h.cards.pop());
+                    h.cardsEl.removeChild(
+                        h.cardsEl.lastElementChild,
+                    );
+                    nh.cardsEl.appendChild(cardEl(nh.cards[0], false));
+                    // Insert the new hand right after the active one.
+                    hands.splice(activeHand + 1, 0, nh);
+                    h.el.after(nh.el);
+                    if (aces) {
+                        h.fromAces = true;
+                        nh.fromAces = true;
+                    }
+                    renderChips();
+                    renderVals(false);
+                    setMsg("bj-msg", "Split! Two hands.", "info");
+
+                    // Deal one card to each split hand, then resume play.
+                    setTimeout(() => {
+                        pushCard(h);
+                        renderVals(false);
+                        setTimeout(() => {
+                            pushCard(nh);
+                            renderVals(false);
+                            if (h.fromAces) {
+                                // Split aces: each gets one card, then done.
+                                h.done = true;
+                                nh.done = true;
+                                // activeHand still points at h; advance skips
+                                // both ace hands to dealer/next.
+                                setTimeout(advance, 350);
+                            } else {
+                                showActions(true);
+                            }
+                        }, 260);
+                    }, 260);
+                });
+
+                function dealerPlay() {
                     showActions(false);
                     $("bj-betbar").style.display = "none";
+                    // If every hand busted, dealer doesn't draw.
+                    const anyLive = hands.some(
+                        (h) => handVal(h.cards) <= 21 && h.outcome !== "bust",
+                    );
                     revealHole(() => {
                         renderVals(true);
+                        if (!anyLive) {
+                            resolveAll();
+                            return;
+                        }
                         const drawNext = () => {
                             if (handVal(dealer) < 17) {
                                 // dealer stands on all 17s
@@ -3179,55 +3774,131 @@
                                 renderVals(true);
                                 setTimeout(drawNext, 480);
                             } else {
-                                const pv = handVal(player),
-                                    dv = handVal(dealer);
-                                if (dv > 21)
-                                    finish(
-                                        "win",
-                                        "Dealer busts with " + dv + ".",
-                                    );
-                                else if (pv > dv)
-                                    finish("win", pv + " beats " + dv + ".");
-                                else if (pv < dv)
-                                    finish(
-                                        "lose",
-                                        "Dealer " + dv + " beats " + pv + ".",
-                                    );
-                                else finish("push", "Push at " + pv + ".");
+                                resolveAll();
                             }
                         };
                         setTimeout(drawNext, 420);
                     });
                 }
 
-                function finish(outcome, text) {
+                // Resolve every hand vs the dealer's final total.
+                function resolveAll() {
+                    const dv = handVal(dealer);
+                    const dBust = dv > 21;
+                    hands.forEach((h) => {
+                        if (h.outcome !== null) return; // already set (bust)
+                        const pv = handVal(h.cards);
+                        if (pv > 21) h.outcome = "bust";
+                        else if (dBust) h.outcome = "win";
+                        else if (pv > dv) h.outcome = "win";
+                        else if (pv < dv) h.outcome = "lose";
+                        else h.outcome = "push";
+                    });
+                    settleAll();
+                }
+
+                // Apply payouts + per-hand badges + summary, then end the round.
+                function settleAll(headline) {
                     inHand = false;
+                    let net = 0;
+                    const labels = {
+                        win: "Win",
+                        lose: "Lose",
+                        push: "Push",
+                        bust: "Bust",
+                        bj: "BJ",
+                        twentyone: "21",
+                    };
+                    hands.forEach((h) => {
+                        let oc = h.outcome;
+                        // A non-bust 21 across two cards on a split hand is
+                        // "21" (pays 1:1, never blackjack 3:2).
+                        if (
+                            oc === "win" &&
+                            hands.length > 1 &&
+                            handVal(h.cards) === 21 &&
+                            h.cards.length === 2
+                        ) {
+                            oc = "twentyone";
+                        }
+                        if (oc === "win" || oc === "twentyone") {
+                            payout(h.bet * 2);
+                            net += h.bet;
+                        } else if (oc === "bj") {
+                            payout(h.bet * 2.5);
+                            net += cents(h.bet * 1.5);
+                        } else if (oc === "push") {
+                            payout(h.bet);
+                        } else {
+                            net -= h.bet;
+                        }
+                        h.outEl.textContent = labels[oc] || oc;
+                        h.outEl.className =
+                            "bj-hand-out " +
+                            (oc === "win" || oc === "twentyone" || oc === "bj"
+                                ? "win"
+                                : oc === "push"
+                                  ? "push"
+                                  : "lose");
+                    });
+                    refreshHandChrome();
+
+                    let msg, tone;
+                    if (headline) {
+                        // Single-hand natural outcomes use the existing wording.
+                        const h = hands[0];
+                        if (h.outcome === "bj") {
+                            msg = headline + " Paid " + fmt$(cents(h.bet * 2.5)) + ".";
+                            tone = "win";
+                        } else if (h.outcome === "push") {
+                            msg = headline + " Bet returned.";
+                            tone = "info";
+                        } else {
+                            msg = headline + " Lost " + fmt$(h.bet) + ".";
+                            tone = "lose";
+                        }
+                    } else if (hands.length === 1) {
+                        const h = hands[0];
+                        const dv = handVal(dealer);
+                        if (h.outcome === "win") {
+                            msg =
+                                (dv > 21
+                                    ? "Dealer busts with " + dv + "."
+                                    : handVal(h.cards) + " beats " + dv + ".") +
+                                " Paid " +
+                                fmt$(cents(h.bet * 2)) +
+                                ".";
+                            tone = "win";
+                        } else if (h.outcome === "push") {
+                            msg = "Push at " + handVal(h.cards) + ". Bet returned.";
+                            tone = "info";
+                        } else if (h.outcome === "bust") {
+                            msg = "Bust with " + handVal(h.cards) + ". Lost " + fmt$(h.bet) + ".";
+                            tone = "lose";
+                        } else {
+                            msg =
+                                "Dealer " + dv + " beats " + handVal(h.cards) +
+                                ". Lost " + fmt$(h.bet) + ".";
+                            tone = "lose";
+                        }
+                    } else {
+                        // Multi-hand summary.
+                        net = cents(net);
+                        if (net > 0) {
+                            msg = "Net win " + fmt$(net) + " across " + hands.length + " hands.";
+                            tone = "win";
+                        } else if (net < 0) {
+                            msg = "Net loss " + fmt$(-net) + " across " + hands.length + " hands.";
+                            tone = "lose";
+                        } else {
+                            msg = "Even across " + hands.length + " hands.";
+                            tone = "info";
+                        }
+                    }
+                    setMsg("bj-msg", msg, tone);
+
                     showActions(false);
                     $("bj-betbar").style.display = "flex";
-                    if (outcome === "win") {
-                        payout(bet * 2);
-                        setMsg(
-                            "bj-msg",
-                            text + " Paid " + fmt$(cents(bet * 2)) + ".",
-                            "win",
-                        );
-                    } else if (outcome === "bj") {
-                        payout(bet * 2.5);
-                        setMsg(
-                            "bj-msg",
-                            text + " Paid " + fmt$(cents(bet * 2.5)) + ".",
-                            "win",
-                        );
-                    } else if (outcome === "push") {
-                        payout(bet);
-                        setMsg("bj-msg", text + " Bet returned.", "info");
-                    } else
-                        setMsg(
-                            "bj-msg",
-                            text + " Lost " + fmt$(bet) + ".",
-                            "lose",
-                        );
-                    bet = 0;
                     renderChips();
                     endRound();
                 }
@@ -3245,16 +3916,20 @@
                     H = cv.height,
                     CX = W / 2,
                     CY = H / 2;
+                // American double-zero wheel. 00 is represented by 37.
+                const DZERO = 37;
                 const ORDER = [
-                    0, 32, 15, 19, 4, 21, 2, 25, 17, 34, 6, 27, 13, 36, 11, 30,
-                    8, 23, 10, 5, 24, 16, 33, 1, 20, 14, 31, 9, 22, 18, 29, 7,
-                    28, 12, 35, 3, 26,
+                    0, 28, 9, 26, 30, 11, 7, 20, 32, 17, 5, 22, 34, 15, 3, 24,
+                    36, 13, 1, 37, 27, 10, 25, 29, 12, 8, 19, 31, 18, 6, 21, 33,
+                    16, 4, 23, 35, 14, 2,
                 ];
                 const REDS = new Set([
                     1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32,
                     34, 36,
                 ]);
-                const SEG = (Math.PI * 2) / 37;
+                const POCKETS = ORDER.length; // 38
+                const SEG = (Math.PI * 2) / POCKETS;
+                const numText = (n) => (n === DZERO ? "00" : String(n));
                 const R_OUT = 224,
                     R_POCKET = 198,
                     R_IN = 148,
@@ -3266,12 +3941,11 @@
                     ballR = R_BALL_RIM,
                     ballVisible = false;
                 let raf = null,
-                    anim = null; // anim: {t0,dur,w0,w1,b0,b1,result,bet,betType,num}
-                let betType = "red",
-                    lastWin = null;
+                    anim = null; // anim: {t0,dur,w0,w1,b0,b1,result}
+                let lastWin = null;
 
                 function pocketColor(n) {
-                    if (n === 0) return "#0d6b45";
+                    if (n === 0 || n === DZERO) return "#0d6b45";
                     return REDS.has(n) ? "#a3132c" : "#15110b";
                 }
 
@@ -3316,7 +3990,7 @@
                     ctx.fill();
 
                     // pockets
-                    for (let i = 0; i < 37; i++) {
+                    for (let i = 0; i < POCKETS; i++) {
                         const a0 = wheelAngle + i * SEG - SEG / 2,
                             a1 = a0 + SEG;
                         ctx.beginPath();
@@ -3344,10 +4018,10 @@
                         );
                         ctx.rotate(am + Math.PI / 2);
                         ctx.fillStyle = "#ece3cf";
-                        ctx.font = "600 13px 'IBM Plex Mono', monospace";
+                        ctx.font = "600 12px 'IBM Plex Mono', monospace";
                         ctx.textAlign = "center";
                         ctx.textBaseline = "middle";
-                        ctx.fillText(ORDER[i], 0, 0);
+                        ctx.fillText(numText(ORDER[i]), 0, 0);
                         ctx.restore();
                     }
 
@@ -3392,16 +4066,16 @@
                     ctx.textAlign = "center";
                     ctx.textBaseline = "middle";
                     if (lastWin !== null && !anim) {
-                        ctx.font = "700 44px 'IBM Plex Mono', monospace";
+                        ctx.font = "700 42px 'IBM Plex Mono', monospace";
                         ctx.fillStyle =
-                            lastWin === 0
+                            lastWin === 0 || lastWin === DZERO
                                 ? "#34d399"
                                 : REDS.has(lastWin)
                                   ? "#ffb3bf"
                                   : "#ece3cf";
                         ctx.shadowColor = "#000";
                         ctx.shadowBlur = 8;
-                        ctx.fillText(lastWin, CX, CY);
+                        ctx.fillText(numText(lastWin), CX, CY);
                         ctx.shadowBlur = 0;
                     } else {
                         ctx.font = "700 16px 'Cinzel', serif";
@@ -3433,93 +4107,371 @@
                     }
                 }
 
-                function wins(n, type, num) {
-                    switch (type) {
-                        case "red":
-                            return REDS.has(n);
-                        case "black":
-                            return n !== 0 && !REDS.has(n);
-                        case "odd":
-                            return n !== 0 && n % 2 === 1;
-                        case "even":
-                            return n !== 0 && n % 2 === 0;
-                        case "low":
-                            return n >= 1 && n <= 18;
-                        case "high":
-                            return n >= 19 && n <= 36;
-                        case "d1":
-                            return n >= 1 && n <= 12;
-                        case "d2":
-                            return n >= 13 && n <= 24;
-                        case "d3":
-                            return n >= 25 && n <= 36;
-                        case "straight":
-                            return n === num;
-                    }
-                    return false;
+                // ---- table bet model: each spot covers a set of numbers ----
+                // (00 is represented by the number 37 throughout)
+                function colSet(start) {
+                    const s = new Set();
+                    for (let n = start; n <= 36; n += 3) s.add(n);
+                    return s;
                 }
-                const PAYS = {
-                    red: 2,
-                    black: 2,
-                    odd: 2,
-                    even: 2,
-                    low: 2,
-                    high: 2,
-                    d1: 3,
-                    d2: 3,
-                    d3: 3,
-                    straight: 36,
+                function rangeSet(a, b) {
+                    const s = new Set();
+                    for (let n = a; n <= b; n++) s.add(n);
+                    return s;
+                }
+                const nums1to36 = [];
+                for (let n = 1; n <= 36; n++) nums1to36.push(n);
+                const BETS = {};
+                // straights, including 0 and 00 (37)
+                for (let n = 0; n <= 36; n++)
+                    BETS["s" + n] = { numbers: new Set([n]), payout: 36 };
+                BETS.s37 = { numbers: new Set([37]), payout: 36 };
+                // columns / dozens (2:1)
+                BETS.col3 = { numbers: colSet(3), payout: 3 };
+                BETS.col2 = { numbers: colSet(2), payout: 3 };
+                BETS.col1 = { numbers: colSet(1), payout: 3 };
+                BETS.d1 = { numbers: rangeSet(1, 12), payout: 3 };
+                BETS.d2 = { numbers: rangeSet(13, 24), payout: 3 };
+                BETS.d3 = { numbers: rangeSet(25, 36), payout: 3 };
+                // even-money (zeros never win these)
+                BETS.low = { numbers: rangeSet(1, 18), payout: 2 };
+                BETS.high = { numbers: rangeSet(19, 36), payout: 2 };
+                BETS.even = {
+                    numbers: new Set(nums1to36.filter((n) => n % 2 === 0)),
+                    payout: 2,
                 };
-                const LABELS = {
-                    red: "red",
-                    black: "black",
-                    odd: "odd",
-                    even: "even",
-                    low: "1–18",
-                    high: "19–36",
-                    d1: "the 1st dozen",
-                    d2: "the 2nd dozen",
-                    d3: "the 3rd dozen",
-                    straight: "straight up",
+                BETS.odd = {
+                    numbers: new Set(nums1to36.filter((n) => n % 2 === 1)),
+                    payout: 2,
+                };
+                BETS.red = { numbers: new Set(REDS), payout: 2 };
+                BETS.black = {
+                    numbers: new Set(nums1to36.filter((n) => !REDS.has(n))),
+                    payout: 2,
                 };
 
-                document.querySelectorAll(".ro-bet").forEach((b) => {
-                    b.addEventListener("click", () => {
-                        if (anim) return;
-                        document
-                            .querySelector(".ro-bet.sel")
-                            .classList.remove("sel");
-                        b.classList.add("sel");
-                        betType = b.dataset.rb;
+                // ---- "between" bets placed on the lines/corners of the grid ----
+                // number at grid column c (1..12), grid row gr (1=top..3=bottom)
+                const numAt = (c, gr) =>
+                    gr === 1 ? 3 * c : gr === 2 ? 3 * c - 1 : 3 * c - 2;
+                const between = []; // {id, posFn}
+                function addBetween(id, nList, payout, posFn) {
+                    BETS[id] = { numbers: new Set(nList), payout };
+                    between.push({ id, posFn });
+                }
+                // splits within a column (vertically adjacent numbers): pay 18
+                for (let c = 1; c <= 12; c++)
+                    for (let gr = 1; gr <= 2; gr++) {
+                        const a = numAt(c, gr),
+                            b = numAt(c, gr + 1);
+                        addBetween("v" + c + "_" + gr, [a, b], 18, (R) => {
+                            const A = R("s" + a),
+                                B = R("s" + b);
+                            return { x: (A.cx + B.cx) / 2, y: (A.cy + B.cy) / 2 };
+                        });
+                    }
+                // splits between adjacent columns (horizontally adjacent): pay 18
+                for (let c = 1; c <= 11; c++)
+                    for (let gr = 1; gr <= 3; gr++) {
+                        const a = numAt(c, gr),
+                            b = numAt(c + 1, gr);
+                        addBetween("h" + c + "_" + gr, [a, b], 18, (R) => {
+                            const A = R("s" + a),
+                                B = R("s" + b);
+                            return { x: (A.cx + B.cx) / 2, y: (A.cy + B.cy) / 2 };
+                        });
+                    }
+                // corners (4 numbers): pay 9
+                for (let c = 1; c <= 11; c++)
+                    for (let gr = 1; gr <= 2; gr++) {
+                        const ns = [
+                            numAt(c, gr),
+                            numAt(c + 1, gr),
+                            numAt(c, gr + 1),
+                            numAt(c + 1, gr + 1),
+                        ];
+                        addBetween("k" + c + "_" + gr, ns, 9, (R) => {
+                            const A = R("s" + ns[0]),
+                                D = R("s" + ns[3]);
+                            return { x: (A.r + D.l) / 2, y: (A.b + D.t) / 2 };
+                        });
+                    }
+                // streets (3 numbers in a column): pay 12 — chip on the outer edge
+                for (let c = 1; c <= 12; c++) {
+                    const ns = [numAt(c, 1), numAt(c, 2), numAt(c, 3)];
+                    addBetween("st" + c, ns, 12, (R) => {
+                        const B = R("s" + ns[2]);
+                        return { x: B.cx, y: B.b };
+                    });
+                }
+                // six-lines (2 adjacent streets, 6 numbers): pay 6
+                for (let c = 1; c <= 11; c++) {
+                    const ns = [
+                        numAt(c, 1),
+                        numAt(c, 2),
+                        numAt(c, 3),
+                        numAt(c + 1, 1),
+                        numAt(c + 1, 2),
+                        numAt(c + 1, 3),
+                    ];
+                    addBetween("sl" + c, ns, 6, (R) => {
+                        const B = R("s" + numAt(c, 3));
+                        return { x: B.r, y: B.b };
+                    });
+                }
+                // 0 / 00 split: pay 18
+                addBetween("z0z", [0, 37], 18, (R) => {
+                    const A = R("s0"),
+                        B = R("s37");
+                    return { x: (A.cx + B.cx) / 2, y: (A.cy + B.cy) / 2 };
+                });
+                // five-number / top line (0, 00, 1, 2, 3): pay 7 (American only)
+                addBetween("five", [0, 37, 1, 2, 3], 7, (R) => {
+                    const Z = R("s0"),
+                        T = R("s3");
+                    return { x: (Z.r + T.l) / 2, y: T.t };
+                });
+
+                const bets = {}; // spotId -> amount staked
+                const placements = []; // history for Undo: {id, amt}
+                let chip = 25; // selected chip denomination
+                const cellEls = {}; // spotId -> DOM cell (straights + outside)
+                const betweenEls = {}; // spotId -> {el, tok} for line/corner bets
+                let hlEls = []; // currently highlighted winning cells
+
+                function numClass(n) {
+                    return n === 0 || n === 37
+                        ? "green"
+                        : REDS.has(n)
+                          ? "red"
+                          : "black";
+                }
+                function chipLabel(v) {
+                    return v >= 1000
+                        ? v % 1000 === 0
+                            ? v / 1000 + "k"
+                            : (v / 1000).toFixed(1) + "k"
+                        : String(v);
+                }
+                function totalBet() {
+                    let t = 0;
+                    for (const k in bets) t = cents(t + bets[k]);
+                    return t;
+                }
+
+                // build the felt table
+                (function buildTable() {
+                    const felt = $("ro-felt");
+                    const mk = (id, cls, text, gc, gr) => {
+                        const d = document.createElement("div");
+                        d.className = "ro-cell " + cls;
+                        d.dataset.bet = id;
+                        d.style.gridColumn = gc;
+                        if (gr) d.style.gridRow = gr;
+                        const s = document.createElement("span");
+                        s.textContent = text;
+                        d.appendChild(s);
+                        d.addEventListener("click", () => place(id));
+                        felt.appendChild(d);
+                        cellEls[id] = d;
+                    };
+                    // left zero column: 0 (top half) and 00 (bottom half)
+                    const zcol = document.createElement("div");
+                    zcol.id = "ro-zero-col";
+                    zcol.style.gridColumn = "1";
+                    zcol.style.gridRow = "1 / span 3";
+                    [
+                        ["s0", "0"],
+                        ["s37", "00"],
+                    ].forEach(([id, txt]) => {
+                        const d = document.createElement("div");
+                        d.className = "ro-cell green ro-half";
+                        d.dataset.bet = id;
+                        const s = document.createElement("span");
+                        s.textContent = txt;
+                        d.appendChild(s);
+                        d.addEventListener("click", () => place(id));
+                        zcol.appendChild(d);
+                        cellEls[id] = d;
+                    });
+                    felt.appendChild(zcol);
+
+                    for (let n = 1; n <= 36; n++) {
+                        const col = Math.ceil(n / 3); // 1..12
+                        const row = n % 3 === 0 ? 1 : n % 3 === 2 ? 2 : 3;
+                        mk("s" + n, numClass(n), String(n), String(col + 1), String(row));
+                    }
+                    mk("col3", "outside", "2:1", "14", "1");
+                    mk("col2", "outside", "2:1", "14", "2");
+                    mk("col1", "outside", "2:1", "14", "3");
+                    mk("d1", "outside", "1st 12", "2 / span 4", "4");
+                    mk("d2", "outside", "2nd 12", "6 / span 4", "4");
+                    mk("d3", "outside", "3rd 12", "10 / span 4", "4");
+                    mk("low", "outside", "1-18", "2 / span 2", "5");
+                    mk("even", "outside", "EVEN", "4 / span 2", "5");
+                    mk("red", "outside rbet", "RED", "6 / span 2", "5");
+                    mk("black", "outside bbet", "BLACK", "8 / span 2", "5");
+                    mk("odd", "outside", "ODD", "10 / span 2", "5");
+                    mk("high", "outside", "19-36", "12 / span 2", "5");
+
+                    // overlay hit-zones for the between bets
+                    const overlay = $("ro-overlay");
+                    between.forEach((spec) => {
+                        const h = document.createElement("div");
+                        h.className = "ro-hot";
+                        h.dataset.bet = spec.id;
+                        const tok = document.createElement("div");
+                        tok.className = "ro-chip-tok";
+                        tok.style.display = "none";
+                        h.appendChild(tok);
+                        h.addEventListener("click", (e) => {
+                            e.stopPropagation();
+                            place(spec.id);
+                        });
+                        overlay.appendChild(h);
+                        betweenEls[spec.id] = { el: h, tok };
+                    });
+
+                    // chip tray
+                    const tray = $("ro-chips");
+                    [
+                        [1, "c1"],
+                        [5, "c5"],
+                        [25, "c25"],
+                        [100, "c100"],
+                        [500, "c500"],
+                    ].forEach(([v, c]) => {
+                        const btn = document.createElement("button");
+                        btn.className =
+                            "ro-denom " + c + (v === chip ? " sel" : "");
+                        btn.textContent = "$" + chipLabel(v);
+                        btn.dataset.denom = v;
+                        btn.addEventListener("click", () => {
+                            chip = v;
+                            document
+                                .querySelectorAll(".ro-denom")
+                                .forEach((e) => e.classList.remove("sel"));
+                            btn.classList.add("sel");
+                        });
+                        tray.appendChild(btn);
+                    });
+                })();
+
+                // position the between-bet hit-zones over the felt grid lines
+                function computePositions() {
+                    const wrap = $("ro-felt-wrap");
+                    const wr = wrap.getBoundingClientRect();
+                    if (wr.width < 10) return; // view hidden — skip
+                    const R = (id) => {
+                        const r = cellEls[id].getBoundingClientRect();
+                        return {
+                            l: r.left - wr.left,
+                            t: r.top - wr.top,
+                            r: r.right - wr.left,
+                            b: r.bottom - wr.top,
+                            cx: (r.left + r.right) / 2 - wr.left,
+                            cy: (r.top + r.bottom) / 2 - wr.top,
+                        };
+                    };
+                    between.forEach((spec) => {
+                        const p = spec.posFn(R);
+                        const h = betweenEls[spec.id].el;
+                        h.style.left = p.x + "px";
+                        h.style.top = p.y + "px";
+                    });
+                }
+
+                function clearHighlights() {
+                    hlEls.forEach((e) => e.classList.remove("win-hl"));
+                    hlEls = [];
+                }
+                function renderChips() {
+                    for (const id in cellEls) {
+                        const cell = cellEls[id];
+                        const tok = cell.querySelector(".ro-chip-tok");
+                        if (bets[id] > 0) {
+                            if (tok) tok.textContent = chipLabel(bets[id]);
+                            else {
+                                const t = document.createElement("div");
+                                t.className = "ro-chip-tok";
+                                t.textContent = chipLabel(bets[id]);
+                                cell.appendChild(t);
+                            }
+                        } else if (tok) {
+                            tok.remove();
+                        }
+                    }
+                    for (const id in betweenEls) {
+                        const { tok } = betweenEls[id];
+                        if (bets[id] > 0) {
+                            tok.style.display = "flex";
+                            tok.textContent = chipLabel(bets[id]);
+                        } else {
+                            tok.style.display = "none";
+                        }
+                    }
+                }
+                function updateControls() {
+                    const t = totalBet();
+                    $("ro-total").textContent = "Total bet: " + fmt$(t);
+                    $("ro-go").disabled = anim || t <= 0;
+                    $("ro-undo").disabled = anim || placements.length === 0;
+                    $("ro-clear").disabled = anim || t <= 0;
+                }
+
+                function place(id) {
+                    if (anim) return;
+                    clearHighlights();
+                    if (lastWin !== null) lastWin = null;
+                    if (!takeBet(chip)) {
                         setMsg(
                             "ro-msg",
-                            "Betting on " +
-                                (betType === "straight"
-                                    ? "number " + ($("ro-num").value || "?")
-                                    : LABELS[betType]) +
-                                ".",
-                            "info",
+                            "Not enough left to cover that $" +
+                                chipLabel(chip) +
+                                " chip.",
+                            "lose",
                         );
-                    });
+                        return;
+                    }
+                    bets[id] = cents((bets[id] || 0) + chip);
+                    placements.push({ id, amt: chip });
+                    renderChips();
+                    updateControls();
+                    setMsg(
+                        "ro-msg",
+                        "Total on the table: " + fmt$(totalBet()) + ".",
+                        "info",
+                    );
+                }
+
+                $("ro-undo").addEventListener("click", () => {
+                    if (anim) return;
+                    const last = placements.pop();
+                    if (!last) return;
+                    bets[last.id] = cents((bets[last.id] || 0) - last.amt);
+                    if (bets[last.id] <= 0.0001) delete bets[last.id];
+                    payout(last.amt); // refund to bankroll
+                    renderChips();
+                    updateControls();
+                });
+
+                $("ro-clear").addEventListener("click", () => {
+                    if (anim) return;
+                    const refund = totalBet();
+                    if (refund <= 0) return;
+                    payout(refund);
+                    for (const k in bets) delete bets[k];
+                    placements.length = 0;
+                    renderChips();
+                    updateControls();
+                    setMsg("ro-msg", "Bets cleared.", "info");
                 });
 
                 $("ro-go").addEventListener("click", () => {
-                    if (anim) return;
-                    let num = 0;
-                    if (betType === "straight") {
-                        num = parseInt($("ro-num").value, 10);
-                        if (!Number.isInteger(num) || num < 0 || num > 36) {
-                            setMsg("ro-msg", "Pick a number 0–36.", "lose");
-                            return;
-                        }
-                    }
-                    const b = readBet("ro-bet");
-                    if (b === null || !takeBet(b)) {
-                        setMsg("ro-msg", "Enter a bet you can cover.", "lose");
-                        return;
-                    }
-                    beginRound();
-                    const result = Math.floor(rand() * 37);
+                    if (anim || totalBet() <= 0) return;
+                    clearHighlights();
+                    beginRound(); // stakes are already taken as chips were placed
+                    const result = Math.floor(rand() * POCKETS); // 0..37 (37 = 00)
                     const wi = ORDER.indexOf(result);
                     const w0 = wheelAngle % (Math.PI * 2);
                     const targetWheel = -Math.PI / 2 - wi * SEG; // pocket wi under the ball at top
@@ -3535,24 +4487,30 @@
                         b0,
                         b1,
                         result,
-                        bet: b,
-                        betType,
-                        num,
                     };
                     ballVisible = true;
                     lastWin = null;
+                    const nb = Object.keys(bets).length;
                     setMsg(
                         "ro-msg",
-                        fmt$(b) +
-                            " on " +
-                            (betType === "straight"
-                                ? "number " + num
-                                : LABELS[betType]) +
+                        fmt$(totalBet()) +
+                            " in play across " +
+                            nb +
+                            " bet" +
+                            (nb === 1 ? "" : "s") +
                             ". No more bets…",
                         "info",
                     );
-                    $("ro-go").disabled = true;
+                    updateControls();
                 });
+
+                function colorName(n) {
+                    return n === 0 || n === 37
+                        ? " (green)"
+                        : REDS.has(n)
+                          ? " (red)"
+                          : " (black)";
+                }
 
                 function settle() {
                     const a = anim;
@@ -3562,45 +4520,58 @@
                     ballAngle = wheelAngle + wi * SEG;
                     ballR = R_BALL_SET;
                     lastWin = a.result;
-                    const win = wins(a.result, a.betType, a.num);
-                    if (win) {
-                        const winAmt = cents(a.bet * PAYS[a.betType]);
-                        payout(winAmt);
-                        setMsg(
-                            "ro-msg",
-                            a.result +
-                                (a.result === 0
-                                    ? " (green)"
-                                    : REDS.has(a.result)
-                                      ? " (red)"
-                                      : " (black)") +
-                                " — you win " +
-                                fmt$(winAmt) +
-                                ".",
-                            "win",
-                        );
-                    } else {
-                        setMsg(
-                            "ro-msg",
-                            a.result +
-                                (a.result === 0
-                                    ? " (green)"
-                                    : REDS.has(a.result)
-                                      ? " (red)"
-                                      : " (black)") +
-                                " — lost " +
-                                fmt$(a.bet) +
-                                ".",
-                            "lose",
-                        );
+
+                    let returned = 0;
+                    const winSpots = [];
+                    for (const id in bets) {
+                        if (BETS[id].numbers.has(a.result)) {
+                            returned = cents(returned + bets[id] * BETS[id].payout);
+                            winSpots.push(id);
+                        }
                     }
-                    $("ro-go").disabled = false;
+                    const staked = totalBet();
+                    if (returned > 0) payout(returned);
+
+                    // highlight the winning number cell
+                    clearHighlights();
+                    const winCell = cellEls["s" + a.result];
+                    if (winCell) {
+                        winCell.classList.add("win-hl");
+                        hlEls.push(winCell);
+                    }
+
+                    const net = cents(returned - staked);
+                    const label = numText(a.result) + colorName(a.result);
+                    setMsg(
+                        "ro-msg",
+                        returned > 0
+                            ? label +
+                                  " — won " +
+                                  fmt$(returned) +
+                                  (net >= 0
+                                      ? " (net +" + fmt$(net) + ")."
+                                      : " (net −" + fmt$(-net) + ").")
+                            : label + " — no win. Lost " + fmt$(staked) + ".",
+                        returned > 0 && net >= 0 ? "win" : "lose",
+                    );
+
+                    // clear the table for the next round (chips are resolved)
+                    for (const k in bets) delete bets[k];
+                    placements.length = 0;
+                    renderChips();
+                    updateControls();
                     endRound();
                 }
+
+                window.addEventListener("resize", computePositions);
 
                 views.roulette = {
                     activate() {
                         if (!raf) raf = requestAnimationFrame(draw);
+                        // recompute hit-zones once the view is visible & laid out
+                        requestAnimationFrame(() =>
+                            requestAnimationFrame(computePositions),
+                        );
                     },
                     deactivate() {
                         if (raf) {
@@ -3885,6 +4856,154 @@
                         localStorage.setItem(KEY, "1");
                     } catch (e) {}
                     overlay.classList.remove("show");
+                });
+            })();
+
+            /* ================================================================
+            RISKR — How to Play modal
+            ================================================================ */
+            (function () {
+                const HTP = {
+                    crash: {
+                        title: "How to Play — Crash",
+                        body: `
+                            <p>A multiplier starts at <b>1.00×</b> and climbs higher and higher — until, at a random moment, it <b>crashes</b>.</p>
+                            <h3>How to win</h3>
+                            <ul>
+                                <li>Set your bet, then watch the curve rise.</li>
+                                <li><b>Cash out</b> before it crashes to win your bet × the current multiplier.</li>
+                                <li>If it crashes before you cash out, you lose the bet.</li>
+                            </ul>
+                            <h3>Tips</h3>
+                            <ul>
+                                <li>There's no auto-cash-out — it's all on your nerve and timing.</li>
+                                <li>Bigger multipliers are rarer, so greed is risky.</li>
+                            </ul>`,
+                    },
+                    plinko: {
+                        title: "How to Play — Plinko",
+                        body: `
+                            <p>Set a bet and drop a ball. It bounces down through the pegs and lands in one of the slots along the bottom, paying your bet × that slot's multiplier.</p>
+                            <h3>The slots</h3>
+                            <ul>
+                                <li>Multipliers, left to right: <b>5× · 1.9× · 1.1× · 1× · 0.5× · 1× · 1.1× · 1.9× · 5×</b>.</li>
+                                <li>The center slots are by far the most likely — and pay the least (0.5×).</li>
+                                <li>The rare outer slots pay the most (up to 5×).</li>
+                            </ul>
+                            <h3>Good to know</h3>
+                            <ul>
+                                <li>The outcome is decided fairly by a random draw (like a run of coin-flips), then the ball is animated into that slot.</li>
+                                <li>House edge is about <b>2.7%</b>.</li>
+                            </ul>`,
+                    },
+                    slots: {
+                        title: "How to Play — Slots",
+                        body: `
+                            <p>Set a bet and spin the three reels. Land matching symbols to win your bet × the payout below.</p>
+                            <h3>Payouts (three of a kind)</h3>
+                            <ul>
+                                <li>7 7 7 — Triple sevens <b>120×</b></li>
+                                <li>💎 💎 💎 — Diamonds <b>70×</b></li>
+                                <li>⭐ ⭐ ⭐ — Stars <b>35×</b></li>
+                                <li>🔔 🔔 🔔 — Bells <b>18×</b></li>
+                                <li>🍋 🍋 🍋 — Lemons <b>10×</b></li>
+                                <li>🍒 🍒 🍒 — Cherries <b>8×</b></li>
+                            </ul>
+                            <h3>Bonus</h3>
+                            <ul>
+                                <li>Any <b>two cherries</b> pays <b>2×</b>.</li>
+                                <li>Rarer symbols pay more — and show up less often.</li>
+                            </ul>`,
+                    },
+                    blackjack: {
+                        title: "How to Play — Blackjack",
+                        body: `
+                            <p>Get closer to <b>21</b> than the dealer without going over (a "bust").</p>
+                            <h3>Card values</h3>
+                            <ul>
+                                <li>Number cards = face value.</li>
+                                <li>J, Q, K = 10.</li>
+                                <li>Ace = 1 or 11, whichever helps.</li>
+                            </ul>
+                            <h3>Your moves</h3>
+                            <ul>
+                                <li><b>Hit</b> — take another card.</li>
+                                <li><b>Stand</b> — keep your current total.</li>
+                                <li><b>Double</b> — double your bet for exactly one more card.</li>
+                                <li><b>Split</b> — with two equal-value cards, split into two hands (a second equal bet). Re-split up to 4 hands; split Aces get one card each; double-after-split is allowed.</li>
+                            </ul>
+                            <h3>Payouts</h3>
+                            <ul>
+                                <li>Dealer stands on all 17s.</li>
+                                <li><b>Blackjack</b> (Ace + 10-value on your first two cards) pays <b>3:2</b>.</li>
+                                <li>A two-card 21 made after a split counts as 21 (pays 1:1), not blackjack.</li>
+                                <li>A regular win pays even money (1:1); a push returns your bet.</li>
+                            </ul>`,
+                    },
+                    roulette: {
+                        title: "How to Play — Roulette",
+                        body: `
+                            <p>An American double-zero wheel (0 and 00). Pick a chip denomination from the tray, then place chips anywhere on the table — you can make many bets at once.</p>
+                            <h3>Placing bets</h3>
+                            <ul>
+                                <li>Click a number for a <b>straight-up</b> bet.</li>
+                                <li>Click the <b>lines between numbers</b> for splits, streets, corners and six-lines — one chip can cover several numbers.</li>
+                                <li>Click the outside boxes for dozens, columns, red/black, odd/even, or 1–18 / 19–36.</li>
+                                <li><b>Undo</b> removes your last chip, <b>Clear</b> refunds all, <b>Spin</b> resolves them.</li>
+                            </ul>
+                            <h3>Payouts</h3>
+                            <ul>
+                                <li>Straight 35:1 · Split 17:1 · Street 11:1</li>
+                                <li>Corner 8:1 · Six-line 5:1</li>
+                                <li>Column / Dozen 2:1 · Even-money bets 1:1</li>
+                                <li>Five-number (0, 00, 1, 2, 3) 6:1</li>
+                            </ul>
+                            <h3>House edge</h3>
+                            <ul>
+                                <li><b>5.26%</b> on every bet — except the five-number bet, which is <b>7.89%</b>.</li>
+                            </ul>`,
+                    },
+                };
+
+                const backdrop = document.getElementById("htp-backdrop");
+                const titleEl = document.getElementById("htp-title");
+                const bodyEl = document.getElementById("htp-body");
+                const closeBtn = document.getElementById("htp-close");
+
+                function open(key) {
+                    const data = HTP[key];
+                    if (!data) return;
+                    titleEl.textContent = data.title;
+                    bodyEl.innerHTML = data.body;
+                    bodyEl.scrollTop = 0;
+                    backdrop.classList.add("show");
+                    document.body.style.overflow = "hidden";
+                }
+                function close() {
+                    backdrop.classList.remove("show");
+                    document.body.style.overflow = "";
+                }
+
+                document
+                    .querySelectorAll(".htp-open-btn")
+                    .forEach((btn) => {
+                        btn.setAttribute("aria-label", "How to play");
+                        btn.title = "How to play";
+                        btn.addEventListener("click", () =>
+                            open(btn.getAttribute("data-htp")),
+                        );
+                    });
+
+                closeBtn.addEventListener("click", close);
+                backdrop.addEventListener("click", (e) => {
+                    if (e.target === backdrop) close();
+                });
+                document.addEventListener("keydown", (e) => {
+                    if (
+                        e.key === "Escape" &&
+                        backdrop.classList.contains("show")
+                    )
+                        close();
                 });
             })();
         </script>
